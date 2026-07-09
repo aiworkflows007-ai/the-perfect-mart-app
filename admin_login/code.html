@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Perfect Mart Admin — Sign In</title>
+<link rel="manifest" href="../pwa/admin/manifest.json"/>
+<meta name="theme-color" content="#6a1b9a"/>
+<link rel="apple-touch-icon" href="../pwa/admin/icon-192.png"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+  body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block; line-height: 1;
+  }
+</style>
+</head>
+<body class="bg-[#f5f3fa] min-h-screen flex items-center justify-center px-6">
+<div class="w-full max-w-sm">
+<div class="text-center mb-8">
+<div class="w-16 h-16 rounded-2xl bg-[#6a1b9a] text-white flex items-center justify-center mx-auto mb-4 shadow-lg">
+<span class="material-symbols-outlined text-3xl">admin_panel_settings</span>
+</div>
+<h1 class="text-2xl font-extrabold text-[#3f1a5c]">The Perfect Mart</h1>
+<p class="text-sm text-gray-500 mt-1">Admin Panel</p>
+</div>
+<div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-6">
+<h2 class="text-lg font-bold text-gray-800 mb-1">Sign in</h2>
+<p class="text-xs text-gray-500 mb-5">Access is invite-only. Contact the business owner for credentials — there is no self-signup for this panel.</p>
+<div class="space-y-4">
+<div>
+<label class="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1" for="password">Admin Password</label>
+<input class="w-full h-12 px-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#6a1b9a] focus:border-transparent outline-none text-sm" id="password" placeholder="••••••••" type="password"/>
+</div>
+<p class="text-sm text-red-600 hidden" id="error-msg">Invalid username or password.</p>
+<button class="w-full h-12 bg-[#6a1b9a] text-white rounded-xl font-bold text-sm hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2" id="login-btn">
+<span id="login-btn-label">Sign In</span>
+</button>
+</div>
+</div>
+<button class="w-full mt-4 h-11 border-2 border-[#6a1b9a] text-[#6a1b9a] rounded-xl font-semibold text-sm hidden items-center justify-center gap-2" id="install-btn">
+<span class="material-symbols-outlined text-[18px]">download</span>
+Install Admin App
+</button>
+<p class="text-center text-xs text-gray-400 mt-6">Ask the business owner for your admin password.</p>
+</div>
+<script src="../assets/auth.js"></script>
+<script src="../assets/supabase.js"></script>
+<script src="../assets/supabase-admin.js"></script>
+<script>
+  const ADMIN_EMAIL = 'admin@theperfectmart.app';
+
+  document.getElementById('login-btn').addEventListener('click', async () => {
+    const p = document.getElementById('password').value;
+    const btn = document.getElementById('login-btn');
+    const label = document.getElementById('login-btn-label');
+    document.getElementById('error-msg').classList.add('hidden');
+    if (!p) {
+      document.getElementById('error-msg').textContent = 'Enter your password.';
+      document.getElementById('error-msg').classList.remove('hidden');
+      return;
+    }
+    btn.disabled = true;
+    label.textContent = 'Signing in…';
+    try {
+      await PMSupabaseAdmin.adminSignIn(ADMIN_EMAIL, p);
+      PMAuth.loginAdmin('admin', 'admin123'); // keep the local UX flag in sync for guardAdmin()
+      location.href = '../admin_order_feed/code.html';
+    } catch (err) {
+      document.getElementById('error-msg').textContent = 'Invalid password.';
+      document.getElementById('error-msg').classList.remove('hidden');
+      btn.disabled = false;
+      label.textContent = 'Sign In';
+    }
+  });
+  document.getElementById('password').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') document.getElementById('login-btn').click();
+  });
+
+  // PWA install prompt
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    const btn = document.getElementById('install-btn');
+    btn.classList.remove('hidden');
+    btn.classList.add('flex');
+    btn.addEventListener('click', async () => {
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      btn.classList.add('hidden');
+    });
+  });
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('../pwa/admin/service-worker.js').catch(() => {});
+  }
+</script>
+</body>
+</html>

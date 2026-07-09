@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Offers &amp; Coupons - The Perfect Mart</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#735a00",
+                    "error-container": "#ffdad6",
+                    "inverse-primary": "#74dd6e",
+                    "tertiary-fixed-dim": "#ffb0c9",
+                    "on-primary-container": "#e0ffd7",
+                    "on-background": "#171d15",
+                    "surface-container-low": "#eff6e9",
+                    "surface-container-highest": "#dee5d8",
+                    "surface-variant": "#dee5d8",
+                    "secondary-fixed-dim": "#edc23c",
+                    "on-surface": "#171d15",
+                    "surface-bright": "#f5fbee",
+                    "primary-fixed": "#8ffb87",
+                    "outline": "#6f7a6a",
+                    "on-tertiary-fixed": "#3e001e",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#006e16",
+                    "on-surface-variant": "#3f4a3c",
+                    "outline-variant": "#becab7",
+                    "secondary-fixed": "#ffe08d",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#89104c",
+                    "cosmetics-accent": "#FF85A2",
+                    "on-primary-fixed": "#002203",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#2c322a",
+                    "inverse-on-surface": "#ecf3e6",
+                    "secondary-container": "#ffd24c",
+                    "on-error-container": "#93000a",
+                    "surface-container": "#eaf0e3",
+                    "on-secondary-fixed-variant": "#584400",
+                    "status-success": "#16A34A",
+                    "tertiary": "#a1275e",
+                    "on-secondary-fixed": "#241a00",
+                    "tertiary-fixed": "#ffd9e3",
+                    "on-primary-fixed-variant": "#00530e",
+                    "primary-container": "#0c831f",
+                    "granite-accent": "#475569",
+                    "surface-dim": "#d6dccf",
+                    "on-tertiary-container": "#fff4f5",
+                    "surface-container-high": "#e4eadd",
+                    "secondary": "#745b00",
+                    "tertiary-container": "#c14177",
+                    "status-warning": "#F59E0B",
+                    "primary-fixed-dim": "#74dd6e",
+                    "surface-main": "#FFFFFF",
+                    "primary": "#006714",
+                    "background": "#f5fbee",
+                    "surface": "#f5fbee",
+                    "status-error": "#DC2626",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "touch-target": "48px",
+                    "gutter": "12px",
+                    "container-margin": "16px",
+                    "base": "4px",
+                    "stack-lg": "24px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px"
+            },
+            "fontFamily": {
+                    "label-bold": ["Inter"],
+                    "body-md": ["Inter"],
+                    "price-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-eta": ["Inter"]
+            },
+            "fontSize": {
+                    "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "price-lg": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "display-eta": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .coupon-dashed-border {
+            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='12' ry='12' stroke='%23BECAB7FF' stroke-width='2' stroke-dasharray='8%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+            border-radius: 12px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface selection:bg-primary-container/30">
+<!-- Header Section (Transactional sub-page: Suppress Global Nav Shell as per instructions) -->
+<header class="sticky top-0 z-40 bg-surface/80 backdrop-blur-md shadow-sm w-full">
+<div class="flex items-center px-container-margin h-touch-target justify-between">
+<div class="flex items-center gap-stack-md">
+<button class="active:scale-95 transition-transform w-touch-target h-touch-target flex items-center justify-center -ml-2" onclick="history.back()">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary">Offers &amp; Coupons</h1>
+</div>
+<button class="w-touch-target h-touch-target flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">help_outline</span>
+</button>
+</div>
+</header>
+<main class="pb-24">
+<!-- Search & Filters -->
+<section class="px-container-margin mt-stack-md">
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">search</span>
+</div>
+<input class="w-full h-12 pl-12 pr-4 bg-surface-container-high border-none rounded-xl focus:ring-2 focus:ring-primary/20 transition-all font-body-md" placeholder="Search for brands or offers..." type="text"/>
+</div>
+<div class="flex gap-stack-sm overflow-x-auto hide-scrollbar mt-stack-md py-2">
+<button class="px-4 py-2 rounded-full bg-primary text-on-primary font-label-bold whitespace-nowrap shadow-md shadow-primary/20">All</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-label-bold whitespace-nowrap hover:bg-outline-variant transition-colors">Grocery</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-label-bold whitespace-nowrap hover:bg-outline-variant transition-colors">Cosmetics</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-label-bold whitespace-nowrap hover:bg-outline-variant transition-colors">Granite</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-label-bold whitespace-nowrap hover:bg-outline-variant transition-colors">Electronics</button>
+</div>
+</section>
+<!-- Featured Banner: Deal of the Day -->
+<section class="mt-stack-lg px-container-margin">
+<div class="relative overflow-hidden rounded-xl h-48 group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A cinematic, high-contrast promotional banner for a mega sale at a grocery store. The background features lush, vibrant green gradients and bokeh lighting effects to convey energy and freshness. Bold, white high-impact typography displays 'MEGA SALE UP TO 60% OFF' centered in the frame. The overall aesthetic is professional, minimalist yet high-energy, matching a premium e-commerce design language." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAfXUVGUwPQ0BXN7RBAAJaeU3FSxlsKlDwamZ6rRGtnX8FfFCwWAWRnEo0oJarKYjraJlhHqOQleqneOXNzfnLdEyZxFYmBgE12vi0sRiFHJMMdEg7L6elnssXHuRmUOnMgD3FXuwE8v9Y9G55Jc0bribYvQovV2rUKU1BuXzgqXAJDVYDSeoEU1XNLHhHMFSDKv3EtzBWAWH1iKdWwNbBQzZyLHMtdCALkWAAKPqJK4TJuIFrbl1ulJ8sp3ixC3Qildj_I8yPiK6Tc')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-transparent flex flex-col justify-center p-6">
+<div class="bg-status-warning text-on-background px-3 py-1 rounded-full w-fit font-label-bold text-[10px] uppercase mb-2">Deal of the Day</div>
+<h2 class="text-on-primary font-display-eta text-headline-lg-mobile leading-tight mb-2">Mega Savings<br/>Flash Sale</h2>
+<p class="text-on-primary/90 font-body-sm max-w-[200px]">Up to 60% off on all organic fresh produce. Ends in 04:22:10.</p>
+</div>
+</div>
+</section>
+<!-- Promo Coupons: Horizontal Scroll -->
+<section class="mt-stack-lg">
+<div class="flex justify-between items-center px-container-margin mb-stack-sm">
+<h3 class="font-headline-md text-headline-md">Promo Coupons</h3>
+<button class="text-primary font-label-bold flex items-center gap-1">View All <span class="material-symbols-outlined text-[16px]">chevron_right</span></button>
+</div>
+<div class="flex gap-stack-md overflow-x-auto hide-scrollbar px-container-margin py-2">
+<!-- Coupon Card 1 -->
+<div class="min-w-[280px] bg-surface-main p-1 rounded-xl shadow-sm coupon-dashed-border flex flex-col justify-between h-40">
+<div class="p-4">
+<div class="flex justify-between items-start">
+<div>
+<span class="text-status-success font-headline-lg text-headline-lg leading-none">₹50 OFF</span>
+<p class="text-on-surface-variant font-body-sm mt-1">On your first order above ₹500</p>
+</div>
+<div class="p-2 bg-primary-container/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">local_activity</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-3 rounded-b-xl flex justify-between items-center border-t border-outline-variant/30">
+<code class="font-label-bold text-primary tracking-widest text-lg">FIRSTORDER</code>
+<button class="bg-primary text-on-primary px-3 py-1.5 rounded-lg font-label-bold text-xs active:scale-95 transition-all" onclick="copyCode(this, 'FIRSTORDER')">Tap to Copy</button>
+</div>
+</div>
+<!-- Coupon Card 2 -->
+<div class="min-w-[280px] bg-surface-main p-1 rounded-xl shadow-sm coupon-dashed-border flex flex-col justify-between h-40">
+<div class="p-4">
+<div class="flex justify-between items-start">
+<div>
+<span class="text-status-success font-headline-lg text-headline-lg leading-none">FREE DEL</span>
+<p class="text-on-surface-variant font-body-sm mt-1">Free delivery on weekend orders</p>
+</div>
+<div class="p-2 bg-primary-container/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">delivery_dining</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-3 rounded-b-xl flex justify-between items-center border-t border-outline-variant/30">
+<code class="font-label-bold text-primary tracking-widest text-lg">WEEKEND</code>
+<button class="bg-primary text-on-primary px-3 py-1.5 rounded-lg font-label-bold text-xs active:scale-95 transition-all" onclick="copyCode(this, 'WEEKEND')">Tap to Copy</button>
+</div>
+</div>
+<!-- Coupon Card 3 -->
+<div class="min-w-[280px] bg-surface-main p-1 rounded-xl shadow-sm coupon-dashed-border flex flex-col justify-between h-40">
+<div class="p-4">
+<div class="flex justify-between items-start">
+<div>
+<span class="text-status-success font-headline-lg text-headline-lg leading-none">20% OFF</span>
+<p class="text-on-surface-variant font-body-sm mt-1">Cosmetics &amp; skincare essentials</p>
+</div>
+<div class="p-2 bg-cosmetics-accent/10 rounded-lg">
+<span class="material-symbols-outlined text-cosmetics-accent">flare</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-3 rounded-b-xl flex justify-between items-center border-t border-outline-variant/30">
+<code class="font-label-bold text-primary tracking-widest text-lg">GLOW20</code>
+<button class="bg-primary text-on-primary px-3 py-1.5 rounded-lg font-label-bold text-xs active:scale-95 transition-all" onclick="copyCode(this, 'GLOW20')">Tap to Copy</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Category Offers: Asymmetric Layout -->
+<section class="mt-stack-lg px-container-margin">
+<h3 class="font-headline-md text-headline-md mb-stack-md">Exclusive Category Deals</h3>
+<div class="grid grid-cols-2 gap-4">
+<!-- Large Card -->
+<div class="col-span-2 relative h-40 rounded-2xl overflow-hidden shadow-sm group">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="A bright, fresh display of organic vegetables inside a rustic wooden crate. The scene includes bright red bell peppers, dark green kale, and deep orange carrots under soft natural sunlight. The image is captured in a high-key minimalist style with plenty of white space around the subject, radiating freshness and quality. Professional food photography aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCqNBzs2AJw7uwtQ8WooelyeWFxBiI9xvDBSQnUvqAnB8MqZsjD6EOE8WB1cEhuQJpJOJZsQPtdhR88zSJ99ODOIgXPHZ01jk82x-PuydZ_AMrXWzUbL0k3aCOtGyizvPa6ec9oqW6-Qd681cQuOzfbvFSrpx_ZQBxkTzl7OYxHExnbGVPjff4yu9WRmEgR-1DZki0WdfneHrQamb1tz77C-bvgBdAUmJ44xuqNMfohdT7S3Lk2dWXRmrXTBe3bvoK8afEtl_b7PVKM')"></div>
+<div class="absolute inset-0 bg-black/30 flex items-end p-4">
+<div>
+<h4 class="text-on-primary font-headline-md leading-tight">Flat 20% off on Organic Vegetables</h4>
+<p class="text-on-primary/80 font-body-sm">Farm fresh, delivered in 15 mins</p>
+</div>
+</div>
+</div>
+<!-- Small Card 1 -->
+<div class="relative h-48 rounded-2xl overflow-hidden shadow-sm group">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="A collection of premium minimalist skincare bottles in soft rose gold and frosted glass. The products are arranged elegantly on a clean white marble surface with a blurred spa-like bathroom background. Soft, diffused lighting creates a sense of luxury and calmness. Modern cosmetic photography with a focus on high-end textures and materials." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD7naTSihuVBeKf_QaK6k5xBkQCmBxBHyzYctRoK9mDbfMYGwAsUp0VK3c9wRi7LKArxbP2TDe6N4mEY8JmtKJTfGZ5M8apovm1OFhqCyZ9R-OeWuvAGYSzqdoJL_MRKp3Ij87mdl9X3XaR21niKY2TebY44bfpIFc_mmOkfXiKY2QIEd7n8NBHRr40WVpxNMgnDl06apjzMAV9gLPjONCOetHEodrXfFHBUS_TkFhJepdCKRib98EKfh8Dq4cwB27NpuVsuGFHlqq-')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
+<span class="text-on-primary font-label-bold">Buy 1 Get 1 on Skincare</span>
+</div>
+</div>
+<!-- Small Card 2 -->
+<div class="relative h-48 rounded-2xl overflow-hidden shadow-sm group">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Close-up of a high-end galaxy black granite slab with gold and white specks shimmering under sharp directional lighting. The texture is polished to a mirror-like finish, showing reflections of a modern high-end kitchen. The overall mood is sophisticated and premium, highlighting natural stone elegance and luxury home decor." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAOPBslyosxBTCPgaxjLQZO1puugS4FYCJlBv1Z282UEzM0E05lsca5MWfN5Yww-ER9I0SroxMoe8XmLPgNM1MUPmHJ1Xn0FBFmkEgT5YUdUIF1071R-QmCuXbKzX4fXv4Q9TLVdJ_YT03GqoCtPXhBxJsDnC9jmv-u42Jvpa11Aw-ujQQigdwmpn3FjBCVWMaKrnrcMAQt0zEJiosZG5TT_u3EnLdkyeIPx2lij9iUamicWvcZ1ojFThKdat-D7F5taeKMowJQWceU')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-3">
+<span class="text-on-primary font-label-bold">15% Off Premium Granite</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bank & Wallet Offers -->
+<section class="mt-stack-lg px-container-margin">
+<h3 class="font-headline-md text-headline-md mb-stack-md">Bank &amp; Wallet Offers</h3>
+<div class="space-y-3">
+<div class="flex items-center gap-4 p-4 bg-surface-main rounded-xl shadow-sm border border-outline-variant/30 active:bg-surface-container transition-colors">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[32px]">account_balance_wallet</span>
+</div>
+<div class="flex-1">
+<h4 class="font-label-bold text-on-surface">10% Cashback on UPI</h4>
+<p class="text-on-surface-variant font-body-sm">Max cashback ₹100 on orders above ₹800</p>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<div class="flex items-center gap-4 p-4 bg-surface-main rounded-xl shadow-sm border border-outline-variant/30 active:bg-surface-container transition-colors">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[32px]">credit_card</span>
+</div>
+<div class="flex-1">
+<h4 class="font-label-bold text-on-surface">Save ₹150 with HDFC Cards</h4>
+<p class="text-on-surface-variant font-body-sm">Instant discount on first order of the month</p>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Contextual FAB for "Active Action" - Only visible if intent aligns -->
+<!-- As per instructions: Suppress FAB on Details/Transactional screens if not aligning perfectly -->
+<!-- We'll keep it simple: no FAB here to prioritize coupon browsing focus -->
+<!-- Placeholder for BottomNavBar logic - Since this is a sub-page (Close/Back intent), shell is suppressed per instructions -->
+<script>
+        function copyCode(btn, code) {
+            const originalText = btn.innerText;
+            
+            // Simple visual feedback
+            btn.innerText = 'Copied!';
+            btn.classList.remove('bg-primary');
+            btn.classList.add('bg-status-success');
+            
+            // Interaction scale
+            btn.classList.add('scale-90');
+            
+            // Copy to clipboard logic
+            navigator.clipboard.writeText(code).then(() => {
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.classList.add('bg-primary');
+                    btn.classList.remove('bg-status-success');
+                    btn.classList.remove('scale-90');
+                }, 2000);
+            });
+        }
+
+        // Search micro-interaction
+        const searchInput = document.querySelector('input');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.02]');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.02]');
+        });
+    </script>
+</body></html>

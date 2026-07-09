@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<link rel="manifest" href="../pwa/rider/manifest.json"/>
+<meta name="theme-color" content="#1976d2"/>
+<link rel="apple-touch-icon" href="../pwa/rider/icon-192.png"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rider Onboarding - Application Status</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "granite-accent": "#475569",
+                    "surface-dim": "#d6dccf",
+                    "surface-container-highest": "#dee5d8",
+                    "primary": "#006714",
+                    "inverse-on-surface": "#ecf3e6",
+                    "background": "#f5fbee",
+                    "surface-variant": "#dee5d8",
+                    "error": "#ba1a1a",
+                    "tertiary": "#a1275e",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#8ffb87",
+                    "on-error": "#ffffff",
+                    "surface": "#f5fbee",
+                    "primary-container": "#0c831f",
+                    "primary-fixed-dim": "#74dd6e",
+                    "on-surface": "#171d15",
+                    "tertiary-fixed-dim": "#ffb0c9",
+                    "on-secondary-fixed": "#241a00",
+                    "tertiary-fixed": "#ffd9e3",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#eff6e9",
+                    "outline-variant": "#becab7",
+                    "on-tertiary-fixed-variant": "#89104c",
+                    "cosmetics-accent": "#FF85A2",
+                    "secondary-fixed": "#ffe08d",
+                    "on-primary-container": "#e0ffd7",
+                    "on-surface-variant": "#3f4a3c",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#eaf0e3",
+                    "inverse-surface": "#2c322a",
+                    "surface-bright": "#f5fbee",
+                    "secondary-container": "#ffd24c",
+                    "surface-container-high": "#e4eadd",
+                    "on-primary-fixed": "#002203",
+                    "on-background": "#171d15",
+                    "secondary": "#745b00",
+                    "tertiary-container": "#c14177",
+                    "inverse-primary": "#74dd6e",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#3e001e",
+                    "on-secondary-container": "#735a00",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#00530e",
+                    "secondary-fixed-dim": "#edc23c",
+                    "status-warning": "#F59E0B",
+                    "on-secondary-fixed-variant": "#584400",
+                    "on-primary": "#ffffff",
+                    "surface-main": "#FFFFFF",
+                    "surface-tint": "#006e16",
+                    "outline": "#6f7a6a",
+                    "status-error": "#DC2626",
+                    "status-success": "#16A34A",
+                    "on-tertiary-container": "#fff4f5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "touch-target": "48px",
+                    "stack-sm": "8px",
+                    "stack-lg": "24px",
+                    "container-margin": "16px",
+                    "base": "4px",
+                    "gutter": "12px",
+                    "stack-md": "16px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "price-lg": ["Inter"],
+                    "label-bold": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-eta": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "price-lg": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display-eta": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(0.98); }
+        }
+        .animate-pulse-soft { animation: pulse-soft 3s ease-in-out infinite; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  <script src="../assets/auth.js"></script>
+<script>PMAuth.guardRider();</script>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="flex items-center w-full px-container-margin h-touch-target bg-background dark:bg-on-surface docked full-width top-0 sticky z-50">
+<div class="flex items-center gap-4">
+<button class="Active: scale-95 transition-transform duration-150 p-2 rounded-full hover:bg-surface-container-low dark:hover:bg-inverse-surface" onclick="history.back()">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed">Rider Onboarding</h1>
+</div>
+</header>
+<main class="flex-grow px-container-margin py-stack-lg max-w-lg mx-auto w-full">
+<!-- Status Illustration Section -->
+<div class="relative w-full aspect-square mb-stack-lg flex items-center justify-center overflow-hidden rounded-xl bg-surface-container-low">
+<!-- Animated Background Mesh for depth -->
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+<div class="absolute w-full h-full bg-gradient-to-br from-primary to-secondary opacity-10"></div>
+</div>
+<div class="relative z-10 flex flex-col items-center">
+<div class="w-48 h-48 mb-stack-md relative animate-pulse-soft">
+<img class="w-full h-full object-contain" data-alt="A high-quality 3D minimalist illustration of a stylized digital clipboard with a magnifying glass hovering over it. The scene is set in a bright light-mode environment with a clean Action Green and soft grey color palette. Floating geometric data points and subtle sparkles suggest a high-tech verification process. The aesthetic is corporate yet friendly and modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy32a6p3cQRL2TsB2OfGzw1E26b9WJQKZdRZF3_QaXWnkNqQLLtKIMuXG6LxBtDQnNjgVW6OJ8D8FpYNuS4EdKCS3isOtoYSQJKl6fnuoMnAr4iJtRSwOkQnlKkRq7Fu07fz-bEn17ttMwdEF4zrckY6ZOLdACpkKHGEFfT53wyZsdp11gaJr9_Ct11UZVNvDR6o0H8EF0aqntcCkTqMvuIaUeh_rMI2Hj9iF3GBIg5LGZq5OJ05lQ8EdqK8cunfY-QON6k8PcGm7v"/>
+</div>
+<div class="inline-flex items-center gap-2 px-4 py-2 bg-primary-container text-on-primary-container rounded-full shadow-sm">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-bold text-label-bold">Verification in Progress</span>
+</div>
+</div>
+</div>
+<!-- Content Section -->
+<div class="space-y-stack-md text-center">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface">We're checking your details</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                Great job! You've successfully submitted your application. Our team is now reviewing your documents to ensure everything is in order.
+            </p>
+<!-- Info Card -->
+<div class="glass-panel p-stack-md rounded-xl border border-outline-variant text-left flex items-start gap-4">
+<div class="bg-secondary-container p-2 rounded-lg text-on-secondary-container">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<div>
+<h3 class="font-label-bold text-label-bold text-on-surface mb-1">Expected Wait Time</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Applications are usually verified within <span class="font-bold text-primary">24-48 hours</span>. You'll receive a notification as soon as you're cleared to ride.</p>
+</div>
+</div>
+</div>
+<!-- Next Steps Bento Grid -->
+<div class="mt-stack-lg grid grid-cols-2 gap-gutter">
+<div class="col-span-2 p-stack-md bg-surface-container-high rounded-xl border border-transparent hover:border-primary transition-colors duration-200">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">contact_support</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-label-bold text-label-bold">Need help?</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Talk to our rider support team</p>
+</div>
+<button class="p-2 text-primary Active: scale-90 transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="p-stack-md bg-white rounded-xl shadow-sm border border-outline-variant/30 flex flex-col justify-between h-32">
+<span class="material-symbols-outlined text-tertiary">description</span>
+<span class="font-label-bold text-label-bold">View My Application</span>
+</div>
+<div class="p-stack-md bg-white rounded-xl shadow-sm border border-outline-variant/30 flex flex-col justify-between h-32">
+<span class="material-symbols-outlined text-status-warning">school</span>
+<span class="font-label-bold text-label-bold">Rider Academy</span>
+</div>
+</div>
+<!-- Secondary Support Callout -->
+<div class="mt-stack-lg text-center">
+<button class="inline-flex items-center gap-2 text-primary font-label-bold py-2 px-4 hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined text-sm">mail</span>
+<span>Contact support via email</span>
+</button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-lowest dark:bg-inverse-surface docked full-width bottom-0 rounded-t-xl border-t border-outline-variant dark:border-outline shadow-lg">
+<!-- Status Tab (Active) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 Active: scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assignment_ind</span>
+<span class="font-label-bold text-label-bold">Status</span>
+</a>
+<!-- Support Tab -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container dark:hover:bg-on-surface-variant Active: scale-90 transition-all duration-200 p-2" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+<span class="font-label-bold text-label-bold">Support</span>
+</a>
+<!-- Profile Tab -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container dark:hover:bg-on-surface-variant Active: scale-90 transition-all duration-200 p-2" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-bold text-label-bold">Profile</span>
+</a>
+</nav>
+<!-- Extra spacing for bottom nav -->
+<div class="h-20"></div>
+<script>
+        // Micro-interaction for buttons
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.classList.add('scale-95');
+            });
+            el.addEventListener('mouseup', () => {
+                el.classList.remove('scale-95');
+            });
+            el.addEventListener('mouseleave', () => {
+                el.classList.remove('scale-95');
+            });
+        });
+    </script>
+<script>if ('serviceWorker' in navigator) { navigator.serviceWorker.register('../pwa/rider/service-worker.js').catch(()=>{}); }</script>
+</body></html>

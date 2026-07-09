@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>The Perfect Mart - Freshness Delivered</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-container-low": "#eff6e9",
+                "on-error-container": "#93000a",
+                "surface-variant": "#dee5d8",
+                "cosmetics-accent": "#FF85A2",
+                "on-secondary-container": "#735a00",
+                "on-primary-fixed": "#002203",
+                "primary-container": "#0c831f",
+                "status-error": "#DC2626",
+                "inverse-on-surface": "#ecf3e6",
+                "inverse-primary": "#74dd6e",
+                "secondary-fixed": "#ffe08d",
+                "inverse-surface": "#2c322a",
+                "error-container": "#ffdad6",
+                "surface-container-high": "#e4eadd",
+                "outline": "#6f7a6a",
+                "on-secondary-fixed-variant": "#584400",
+                "surface-container-lowest": "#ffffff",
+                "on-tertiary-container": "#fff4f5",
+                "secondary": "#745b00",
+                "secondary-container": "#ffd24c",
+                "on-secondary-fixed": "#241a00",
+                "tertiary-fixed": "#ffd9e3",
+                "surface-tint": "#006e16",
+                "tertiary-fixed-dim": "#ffb0c9",
+                "status-warning": "#F59E0B",
+                "surface-bright": "#f5fbee",
+                "on-error": "#ffffff",
+                "on-primary": "#ffffff",
+                "surface-dim": "#d6dccf",
+                "primary": "#006714",
+                "status-success": "#16A34A",
+                "primary-fixed-dim": "#74dd6e",
+                "background": "#f5fbee",
+                "surface-container": "#eaf0e3",
+                "on-secondary": "#ffffff",
+                "on-primary-fixed-variant": "#00530e",
+                "on-surface-variant": "#3f4a3c",
+                "on-background": "#171d15",
+                "on-primary-container": "#e0ffd7",
+                "outline-variant": "#becab7",
+                "surface-container-highest": "#dee5d8",
+                "on-surface": "#171d15",
+                "error": "#ba1a1a",
+                "surface-main": "#FFFFFF",
+                "surface": "#f5fbee",
+                "tertiary": "#a1275e",
+                "on-tertiary-fixed": "#3e001e",
+                "on-tertiary-fixed-variant": "#89104c",
+                "tertiary-container": "#c14177",
+                "primary-fixed": "#8ffb87",
+                "granite-accent": "#475569",
+                "secondary-fixed-dim": "#edc23c",
+                "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "container-margin": "16px",
+                "gutter": "12px",
+                "stack-sm": "8px",
+                "stack-lg": "24px",
+                "stack-md": "16px",
+                "touch-target": "48px",
+                "base": "4px"
+            },
+            "fontFamily": {
+                "price-lg": ["Inter"],
+                "body-md": ["Inter"],
+                "headline-md": ["Inter"],
+                "headline-lg": ["Inter"],
+                "body-lg": ["Inter"],
+                "label-bold": ["Inter"],
+                "body-sm": ["Inter"],
+                "headline-lg-mobile": ["Inter"],
+                "display-eta": ["Inter"]
+            },
+            "fontSize": {
+                "price-lg": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                "display-eta": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .btn-shimmer {
+            background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7) 20%, rgba(255,255,255,1) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite linear;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: scale(1.05) translateY(0); }
+            50% { transform: scale(1.1) translateY(-5px); }
+        }
+        .animate-float {
+            animation: float 10s ease-in-out infinite;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .btn-shimmer, .animate-float, .carousel-inner {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        .carousel-container {
+            overflow: hidden;
+            position: relative;
+        }
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .carousel-item {
+            flex: 0 0 100%;
+            width: 100%;
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased mb-20">
+<!-- Top App Bar -->
+<header class="bg-surface-bright dark:bg-inverse-surface docked full-width top-0 z-50 sticky transition-all duration-300">
+<div class="flex flex-col gap-2 px-container-margin py-stack-sm w-full max-w-full">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 overflow-hidden">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" data-icon="location_on">location_on</span>
+<div class="flex flex-col">
+<span class="font-label-bold text-label-bold text-primary">Delivery to</span>
+<span class="font-body-md text-body-md truncate max-w-[150px] font-bold">742 Evergreen Terrace...</span>
+</div>
+</div>
+<div class="text-headline-lg-mobile font-headline-lg-mobile font-extrabold text-primary dark:text-primary-fixed-dim">The Perfect Mart</div>
+<button class="relative hover:bg-surface-container-low transition-colors duration-200 p-2 rounded-full active:scale-95 transition-transform" onclick="location.href='../checkout/code.html'">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" data-icon="shopping_cart">shopping_cart</span>
+<span class="absolute -top-1 -right-1 bg-primary text-on-primary text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold" data-cart-badge>0</span>
+</button>
+</div>
+<!-- Search Bar -->
+<div class="relative mt-2">
+<div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+</div>
+<input class="w-full h-touch-target bg-surface-container-lowest border-none rounded-xl pl-10 pr-10 focus:ring-2 focus:ring-primary text-body-md font-body-md shadow-sm" onclick="location.href='../search_results/code.html'" placeholder="Search for 'avocados'..." type="text"/>
+<div class="absolute inset-y-0 right-3 flex items-center">
+<span class="material-symbols-outlined text-primary" data-icon="mic">mic</span>
+</div>
+</div>
+</div>
+</header>
+<main class="flex flex-col gap-stack-lg pb-10">
+<!-- Hero Section: Auto-playing Carousel -->
+<section class="px-container-margin pt-4">
+<div class="carousel-container rounded-2xl shadow-lg h-48">
+<div class="carousel-inner h-full" id="bannerCarousel">
+<!-- Grocery Banner -->
+<div class="carousel-item relative overflow-hidden bg-primary-container text-on-primary-container">
+<img alt="Freshness, Delivered" class="absolute inset-0 w-full h-full object-cover opacity-40 animate-float" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJ_uygFz8dlI7uNuSJgpJtL5RPkVdbkS0yc-C2-mdmvQm_YhMX7EvJ2l9xqgTfF-VfbEDXCViIpPm_gR3iurCkYUJV2phjSF8LXYHuKpEB_S_mb8KWWe-FloH7PYOECPaelc6cAVp81taWy6uBTlTAfDhqve4SS0vlGcwlmsAZkl0wK7yvaT8hlGSxxqi5awsDaVdSpzKph9PeUYM3g8DUH1bkw329ZTJk9SDxPAnx4qEEWTSTJ-2iI9lzg7om0o8RIHfGciO26N3i"/>
+<div class="relative z-10 flex flex-col h-full justify-center p-6">
+<h1 class="font-display-eta text-display-eta leading-tight">Freshness,<br/><span class="text-white">Delivered</span></h1>
+<button class="mt-4 w-fit px-6 py-2 bg-white text-primary rounded-full text-label-bold font-label-bold btn-shimmer hover:bg-primary-fixed transition-colors" onclick="location.href='../offers_coupons/code.html'">Shop Now</button>
+</div>
+</div>
+<!-- Cosmetics Banner -->
+<div class="carousel-item relative overflow-hidden bg-tertiary-container text-on-tertiary-container">
+<img alt="Luxe Glow: New Arrivals" class="absolute inset-0 w-full h-full object-cover opacity-40 animate-float" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwzSjbhSTZ6lxJQzjxq4kr0Ab-FzyJdkmZztQHBhViR5c7uA-cklwqcQTBEddcvbhC5lfpzo80IC8HeeLSTuZzFd6Z2Tg6CYdbVGz-g7ulXRGsS2TiBKW29F4YcXht2Vpw5Uk_rR44-gRDJwkxF0BBhw5joXmywRLvoZm8KSOIc5F-ZfK6-pKwai--ribajGnu0TqwGAnk_z1TjUWyXLPKQ9C5h3OhjevyVpS66bKtWGxflqD4RRtojpK3_cvgOq_aTg6h_OMu9lM_"/>
+<div class="relative z-10 flex flex-col h-full justify-center p-6">
+<h1 class="font-display-eta text-display-eta leading-tight">Luxe Glow:<br/><span class="text-white">New Arrivals</span></h1>
+<button class="mt-4 w-fit px-6 py-2 bg-white text-tertiary rounded-full text-label-bold font-label-bold btn-shimmer hover:bg-tertiary-fixed transition-colors" onclick="location.href='../offers_coupons/code.html'">Explore</button>
+</div>
+</div>
+<!-- Granite Banner -->
+<div class="carousel-item relative overflow-hidden bg-granite-accent text-white">
+<img alt="Premium Stone for Your Home" class="absolute inset-0 w-full h-full object-cover opacity-40 animate-float" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQMxCUdc8XLmqAVQXoC7SIIWo_TBlFLD51X6GZX2-6ibdv9t0cSdMpSjCaY9jpPOKbKYxI-G68AtSRpquUgzauaXRcp_2kzu3HF0yQDCZeA8DrlH6C9_ktkcEyRIDX2x27PAFaogXcT8kOeD7OspWvOkh-GFhCEDv4lS2DyThK996JXQTj5CQj2IWGQe1CPtebu3f3feeazeFs7_36HRpA9aXPCL7riJqghrzTeYa9VEpft6zA45n-fdW2apGZek_Syp7w8xsGTkg8"/>
+<div class="relative z-10 flex flex-col h-full justify-center p-6">
+<h1 class="font-display-eta text-display-eta leading-tight">Premium Stone<br/><span class="text-secondary-fixed">for Your Home</span></h1>
+<button class="mt-4 w-fit px-6 py-2 bg-white text-granite-accent rounded-full text-label-bold font-label-bold btn-shimmer hover:bg-surface-variant transition-colors" onclick="location.href='../offers_coupons/code.html'">Learn More</button>
+</div>
+</div>
+</div>
+<!-- Indicators -->
+<div class="absolute bottom-4 right-6 flex gap-2 z-20" id="carouselIndicators">
+<div class="w-2 h-2 rounded-full bg-white transition-all duration-300" data-slide="0"></div>
+<div class="w-2 h-2 rounded-full bg-white/50 transition-all duration-300" data-slide="1"></div>
+<div class="w-2 h-2 rounded-full bg-white/50 transition-all duration-300" data-slide="2"></div>
+</div>
+</div>
+</section>
+<!-- Category Grid: Bento Style -->
+<section class="px-container-margin">
+<div class="grid grid-cols-4 gap-gutter">
+<!-- Groceries (Large) -->
+<div class="col-span-2 row-span-2 bg-surface-main p-4 rounded-2xl shadow-sm border border-outline-variant/30 flex flex-col justify-between hover:border-primary transition-colors cursor-pointer group" onclick="location.href='../search_results/code.html'">
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md">Groceries</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Daily Essentials</span>
+</div>
+<div class="h-24 mt-2 overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc_q040yGBrwM9S-AnFQyU1XCCnly8Pm2sKs31xyVrk-ZweXMgU0kJBs9bR7KOZf3M6Hm6FFtdfW9AYL9E0RyRLBFS5Xi7GbxJ8vKuwFiizctH6zZ3EaC8KKzicqG1TrYlU8dzAWEYnef3sVk22Ddb9-y7otQpxTi7UOdDkrf9QVzXkh7bi4pG3rUmRovgdl01VhobtV1hFW7fKwS3bqYNZj5e-SSbIS20q_OT_pAfzQ2r16Nn829m1Os_GpgsUry5adXqfnvdRYt0"/>
+</div>
+</div>
+<!-- Cosmetics -->
+<div class="col-span-2 bg-cosmetics-accent/10 p-4 rounded-2xl shadow-sm border border-cosmetics-accent/20 flex items-center justify-between hover:bg-cosmetics-accent/20 transition-colors cursor-pointer group" onclick="location.href='../search_results/code.html'">
+<div class="flex flex-col">
+<span class="font-label-bold text-label-bold text-tertiary">Cosmetics</span>
+<span class="text-[10px] text-tertiary/70">Luxury Care</span>
+</div>
+<span class="material-symbols-outlined text-tertiary text-3xl group-hover:rotate-12 transition-transform" data-icon="face_6">face_6</span>
+</div>
+<!-- Granite -->
+<div class="col-span-1 bg-granite-accent/10 p-3 rounded-2xl shadow-sm border border-granite-accent/20 flex flex-col items-center justify-center text-center hover:bg-granite-accent/20 transition-colors cursor-pointer group" onclick="location.href='../search_results/code.html'">
+<span class="material-symbols-outlined text-granite-accent mb-1" data-icon="texture">texture</span>
+<span class="text-[10px] font-bold text-granite-accent">Granite</span>
+</div>
+<!-- General -->
+<div class="col-span-1 bg-secondary-container/20 p-3 rounded-2xl shadow-sm border border-secondary-container/40 flex flex-col items-center justify-center text-center hover:bg-secondary-container/30 transition-colors cursor-pointer group" onclick="location.href='../search_results/code.html'">
+<span class="material-symbols-outlined text-secondary mb-1" data-icon="category">category</span>
+<span class="text-[10px] font-bold text-secondary">General</span>
+</div>
+</div>
+</section>
+<!-- Fresh Vegetables: Horizontal Scroll -->
+<section class="flex flex-col gap-4">
+<div class="px-container-margin flex justify-between items-end">
+<div>
+<h2 class="font-headline-md text-headline-md">Fresh Vegetables</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Handpicked from the farm</p>
+</div>
+<button class="text-primary font-label-bold text-label-bold flex items-center" onclick="location.href='../search_results/code.html'">
+                See All <span class="material-symbols-outlined text-sm ml-1" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar px-container-margin">
+<!-- Product Card 1 -->
+<div class="flex-shrink-0 w-36 bg-surface-main rounded-xl p-2 border border-outline-variant/30 shadow-sm flex flex-col" onclick="location.href='../product_details/code.html'">
+<div class="w-full aspect-square bg-surface-container rounded-lg overflow-hidden relative mb-2">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE4i1jpyjLHytP4wFfAV020ztscyYbZiOdl847dU7tx5Fow-bjRScNI5MlhQ0299aTw4y_6y5IYl7IHOyodpCxndfXWdui_ry6it_fbJ03Q9TUA1egTQzSzOWRx6uGh6mpFfayW8EHvTcJr1_GrFi3X6pUgwr8vA1JacRDnI5qpY_Jk-8MTllYA5ofdzig1yjaeFVbbc_5L8SXdudKvbGh9DAPjjOUMKvDcq7leOiNbN0lzm2uRTKL6oJhCA1uLaUVn1De_zlR42xN"/>
+<div class="absolute top-1 left-1 bg-primary text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full">8 MINS</div>
+</div>
+<span class="text-body-sm font-bold truncate">Fresh Broccoli</span>
+<span class="text-body-sm text-on-surface-variant mb-2">250g</span>
+<div class="flex items-center justify-between mt-auto">
+<span class="font-price-lg text-price-lg text-on-surface">$2.49</span>
+<button class="w-8 h-8 bg-primary-container text-on-primary-container rounded-lg flex items-center justify-center hover:scale-95 transition-transform active:scale-90">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="flex-shrink-0 w-36 bg-surface-main rounded-xl p-2 border border-outline-variant/30 shadow-sm flex flex-col" onclick="location.href='../product_details/code.html'">
+<div class="w-full aspect-square bg-surface-container rounded-lg overflow-hidden relative mb-2">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0cMPCcpfjd0WNcGPBSMZX0oPV7AJYMYRADSB8xdCyymxcrvvSAIIEu_ikg6LsFmH6grMwaihn0zmrZ0TO7jbxutCsiC3_s00VWQoF4IPsQ3q9vB21ix9J9GnEhaTB9TiXnjIkiIJg20Oj-9bUaslIOrJpNUj9b7_it9Zg40wflRkLWiahHkl_X7LhM5IelHfBDxMh0p7k8wTlLmej6k9LmzwY1KKHFj_vBcnQCIYnKhhuMY6Yvhx9qK4udRLLN44aUGiApJTmCj81"/>
+<div class="absolute top-1 left-1 bg-primary text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full">10 MINS</div>
+</div>
+<span class="text-body-sm font-bold truncate">Red Bell Pepper</span>
+<span class="text-body-sm text-on-surface-variant mb-2">2 units</span>
+<div class="flex items-center justify-between mt-auto">
+<span class="font-price-lg text-price-lg text-on-surface">$1.99</span>
+<button class="w-8 h-8 bg-primary-container text-on-primary-container rounded-lg flex items-center justify-center hover:scale-95 transition-transform active:scale-90">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="flex-shrink-0 w-36 bg-surface-main rounded-xl p-2 border border-outline-variant/30 shadow-sm flex flex-col" onclick="location.href='../product_details/code.html'">
+<div class="w-full aspect-square bg-surface-container rounded-lg overflow-hidden relative mb-2">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeJFrk8IUxvoZ6kUobBm2Xt0IR9UBQCYFYZImwwXjMsmDMZXsU7glTP4lKw284vCgZLUb-U7yklyvvekB7quU5JpNrW9hJgG3G2lPbCKVpAa_4TK_qjt68TFDViB924j3yOqVoptyiU_aLVau-_qliRIokWg9Eaw2lfEjhMixFptnPZfG_gT4uFWE8q_Vl9HZjMj5BxIMdOuRsElA4meGlfBS2ZhxF7vS6Qm8xQ0bdZIrRYRCgbkMiWRTF6Xjc2BY7BXWGADObBQOI"/>
+<div class="absolute top-1 left-1 bg-primary text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full">12 MINS</div>
+</div>
+<span class="text-body-sm font-bold truncate">Organic Carrots</span>
+<span class="text-body-sm text-on-surface-variant mb-2">500g</span>
+<div class="flex items-center justify-between mt-auto">
+<span class="font-price-lg text-price-lg text-on-surface">$3.25</span>
+<button class="w-8 h-8 bg-primary-container text-on-primary-container rounded-lg flex items-center justify-center hover:scale-95 transition-transform active:scale-90">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Popular in Cosmetics: Grid -->
+<section class="flex flex-col gap-4">
+<div class="px-container-margin">
+<h2 class="font-headline-md text-headline-md">Popular in Cosmetics</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Glow up instantly</p>
+</div>
+<div class="grid grid-cols-2 gap-gutter px-container-margin">
+<!-- Cosmetic Item 1 -->
+<div class="bg-surface-main rounded-2xl p-3 border border-outline-variant/30 shadow-sm flex flex-col gap-2" onclick="location.href='../product_details/code.html'">
+<div class="w-full h-32 rounded-xl bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpKfziKdGLKBfBpPaF2H7jllqeE3fzbkBZ2_YTjykl7kDzpBwTKc2rySluXklBrrVPqeDyvk2R6jmAWefaVBBxXJWWrMR250bRqhmiHT6OleM0x0Z-YlaBth4gRxeh-7dQ65sD7QPbMboYcZvcUJE4OyUIy56I-NUIvm-bokFMTsrElHA1kr1S70cmmwh-gFnjLNS6p5wkgCVLloUHzKYZ_BkHFu9VN9za4Je3S2D8_3Oj9C3XI1lB9InjFKqIYIj1lEM-OOojP6jz"/>
+</div>
+<div>
+<h3 class="font-label-bold text-label-bold truncate">Hydrating Glow Serum</h3>
+<p class="text-[10px] text-on-surface-variant">Vitamin C + E, 30ml</p>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-price-lg text-price-lg text-tertiary">$18.50</span>
+<button class="px-4 py-1 bg-tertiary-container text-on-tertiary-container rounded-full text-label-bold font-label-bold hover:scale-95 transition-all" onclick="location.href='../product_details/code.html'">
+                        ADD
+                    </button>
+</div>
+</div>
+<!-- Cosmetic Item 2 -->
+<div class="bg-surface-main rounded-2xl p-3 border border-outline-variant/30 shadow-sm flex flex-col gap-2" onclick="location.href='../product_details/code.html'">
+<div class="w-full h-32 rounded-xl bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2wtAa3kPMJyJ1ZYXLHtjQx7DMEQX0DSPF1Vycv-e_Bp2hbPqlcS75EBwo_aAwasyUTYHjCvwguVv3uB3uE61hcCvFpFC66L92-ZvKJnw0v-2sZ5Msed6Cc7srNA_a3qz0ueowagi7SrPAgVoCPSgATKs5VZdGqp_lYIsbM4l_3Rvr6o7-A76g3qjC0F0Kta_xQ4AIFND10FZXB11NDouSLpLk236PAjADPpI7EVZ_kyYrE8wEIKup7FdnMkc3x34aQKI6RYroRmd5"/>
+</div>
+<div>
+<h3 class="font-label-bold text-label-bold truncate">Matte Velvet Lipstick</h3>
+<p class="text-[10px] text-on-surface-variant">Shade: Crimson Red</p>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-price-lg text-price-lg text-tertiary">$12.00</span>
+<button class="px-4 py-1 bg-tertiary-container text-on-tertiary-container rounded-full text-label-bold font-label-bold hover:scale-95 transition-all" onclick="location.href='../product_details/code.html'">
+                        ADD
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Dynamic Offer Banner -->
+<section class="px-container-margin">
+<div class="bg-secondary-fixed text-on-secondary-fixed p-6 rounded-3xl flex items-center justify-between relative overflow-hidden">
+<div class="flex flex-col gap-1 z-10">
+<span class="text-headline-md font-headline-md">Get $5 OFF</span>
+<span class="text-body-sm font-body-sm">On orders above $20. Use code: <span class="font-bold">FRESH5</span></span>
+<button class="mt-2 w-fit px-6 py-2 bg-on-secondary-fixed text-secondary-fixed rounded-full text-label-bold font-label-bold hover:opacity-90 transition-opacity" onclick="location.href='../offers_coupons/code.html'">
+                    Apply Now
+                </button>
+</div>
+<div class="absolute -right-10 -bottom-10 w-40 h-40 bg-secondary-fixed-dim/30 rounded-full blur-3xl"></div>
+<span class="material-symbols-outlined text-7xl text-on-secondary-fixed/10 absolute right-4 bottom-0 rotate-12" data-icon="redeem">redeem</span>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-touch-target bg-surface-main dark:bg-surface-container-highest px-2 pb-safe rounded-t-xl shadow-lg border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1 scale-90 transition-transform duration-150" href="../home_greenmart/code.html">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-label-bold font-label-bold">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:opacity-80 transition-opacity" href="../search_results/code.html">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="text-label-bold font-label-bold">Categories</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:opacity-80 transition-opacity" href="../search_results/code.html">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="text-label-bold font-label-bold">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:opacity-80 transition-opacity" href="../customer_profile/code.html">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-label-bold font-label-bold">Account</span>
+</a>
+</nav>
+<script>
+    // Carousel Implementation
+    const carouselInner = document.getElementById('bannerCarousel');
+    const indicators = document.querySelectorAll('#carouselIndicators > div');
+    let currentSlide = 0;
+    const totalSlides = indicators.length;
+
+    function goToSlide(index) {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            carouselInner.style.transition = 'none';
+        }
+        currentSlide = index;
+        carouselInner.style.transform = `translateX(-${index * 100}%)`;
+        indicators.forEach((ind, i) => {
+            ind.classList.toggle('bg-white', i === index);
+            ind.classList.toggle('bg-white/50', i !== index);
+        });
+    }
+
+    function autoPlay() {
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            const nextSlide = (currentSlide + 1) % totalSlides;
+            goToSlide(nextSlide);
+        }
+    }
+
+    let slideInterval = setInterval(autoPlay, 5000);
+
+    // Pause on interaction
+    carouselInner.parentElement.addEventListener('touchstart', () => clearInterval(slideInterval));
+    carouselInner.parentElement.addEventListener('touchend', () => {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(autoPlay, 5000);
+    });
+
+    // Button Micro-interactions
+    document.querySelectorAll('button').forEach(button => {
+        button.addEventListener('click', function(e) {
+            if (this.innerText.includes('ADD') || this.querySelector('[data-icon="add"]')) {
+                const originalContent = this.innerHTML;
+                this.innerHTML = `<span class="material-symbols-outlined animate-spin text-sm" data-icon="sync">sync</span>`;
+                setTimeout(() => {
+                    this.innerHTML = `<span class="material-symbols-outlined text-sm" data-icon="check">check</span>`;
+                    this.classList.add('bg-status-success', 'text-white');
+                    setTimeout(() => {
+                        this.innerHTML = originalContent;
+                        this.classList.remove('bg-status-success', 'text-white');
+                    }, 2000);
+                }, 800);
+            }
+        });
+    });
+
+    // Header shadow on scroll
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 10) {
+            header.classList.add('shadow-md');
+        } else {
+            header.classList.remove('shadow-md');
+        }
+    });
+</script>
+<script src="../assets/cart.js"></script>
+</body></html>

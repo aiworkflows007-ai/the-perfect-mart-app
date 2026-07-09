@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Success - The Perfect Mart</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#3e001e",
+                    "outline": "#6f7a6a",
+                    "surface-tint": "#006e16",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#ffe08d",
+                    "on-surface-variant": "#3f4a3c",
+                    "outline-variant": "#becab7",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-container": "#735a00",
+                    "tertiary-fixed-dim": "#ffb0c9",
+                    "inverse-primary": "#74dd6e",
+                    "on-background": "#171d15",
+                    "on-primary-container": "#e0ffd7",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#dee5d8",
+                    "secondary-fixed-dim": "#edc23c",
+                    "on-surface": "#171d15",
+                    "surface-container-low": "#eff6e9",
+                    "surface-container-highest": "#dee5d8",
+                    "surface-bright": "#f5fbee",
+                    "primary-fixed": "#8ffb87",
+                    "on-tertiary-container": "#fff4f5",
+                    "surface-container-high": "#e4eadd",
+                    "secondary": "#745b00",
+                    "surface-dim": "#d6dccf",
+                    "primary-container": "#0c831f",
+                    "granite-accent": "#475569",
+                    "primary-fixed-dim": "#74dd6e",
+                    "background": "#f5fbee",
+                    "surface-main": "#FFFFFF",
+                    "primary": "#006714",
+                    "tertiary-container": "#c14177",
+                    "status-warning": "#F59E0B",
+                    "on-tertiary": "#ffffff",
+                    "status-error": "#DC2626",
+                    "surface": "#f5fbee",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#2c322a",
+                    "on-primary-fixed": "#002203",
+                    "on-tertiary-fixed-variant": "#89104c",
+                    "cosmetics-accent": "#FF85A2",
+                    "inverse-on-surface": "#ecf3e6",
+                    "on-secondary-fixed-variant": "#584400",
+                    "secondary-container": "#ffd24c",
+                    "surface-container": "#eaf0e3",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#ffd9e3",
+                    "on-primary-fixed-variant": "#00530e",
+                    "status-success": "#16A34A",
+                    "tertiary": "#a1275e",
+                    "on-secondary-fixed": "#241a00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "stack-md": "16px",
+                    "base": "4px",
+                    "touch-target": "48px",
+                    "gutter": "12px",
+                    "container-margin": "16px",
+                    "stack-lg": "24px"
+            },
+            "fontFamily": {
+                    "label-bold": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "price-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-eta": ["Inter"]
+            },
+            "fontSize": {
+                    "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "price-lg": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "display-eta": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .order-card-blur {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.85);
+        }
+        @keyframes bounce-subtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+        .animate-bounce-subtle {
+            animation: bounce-subtle 3s ease-in-out infinite;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface-bright text-on-surface overflow-hidden h-screen flex flex-col">
+<!-- Success Confetti Shader Background -->
+<div class="fixed inset-0 z-0">
+<!-- STITCH_SVG_START:ANIMATION_42 class="absolute inset-0 w-full h-full opacity-60" --><div class="absolute inset-0 w-full h-full opacity-60" id="animated-svg-ANIMATION_42" style="display:block;"><svg class="w-32 h-32" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<circle cx="50" cy="50" fill="none" r="45" stroke="#0c831f" stroke-dasharray="283" stroke-dashoffset="283" stroke-width="8">
+<animate attributename="stroke-dashoffset" dur="0.6s" fill="freeze" from="283" to="0"></animate>
+</circle>
+<path d="M25 50 L45 70 L75 35" fill="none" stroke="#0c831f" stroke-dasharray="100" stroke-dashoffset="100" stroke-linecap="round" stroke-linejoin="round" stroke-width="8">
+<animate attributename="stroke-dashoffset" begin="0.6s" dur="0.4s" fill="freeze" from="100" to="0"></animate>
+</path>
+</svg></div><!-- STITCH_SVG_END:ANIMATION_42 -->
+</div>
+<!-- Content Wrapper -->
+<main class="relative z-10 flex flex-col items-center justify-center h-full px-container-margin text-center">
+<!-- Animated Checkmark Container -->
+<div class="mb-stack-lg w-32 h-32 flex items-center justify-center">
+<!-- STITCH_SHADER_START:ANIMATION_43 class="w-full h-full" -->
+<div class="w-full h-full" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_43" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_43');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+varying vec2 v_texCoord;
+uniform float u_time;
+uniform vec2 u_resolution;
+
+float hash(vec2 p) {
+    return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
+}
+
+void main() {
+    vec2 uv = v_texCoord;
+    vec3 color = vec3(0.96, 0.98, 0.93); // Light surface color from design system
+    
+    // Confetti particles
+    for (float i = 0.0; i < 50.0; i++) {
+        float h = hash(vec2(i, 123.45));
+        float x = hash(vec2(i, 678.90));
+        
+        // Falling motion
+        float speed = 0.5 + h * 0.5;
+        float y = mod(1.5 - (u_time * speed + h), 1.5) - 0.25;
+        
+        // Wobble
+        float wobble = sin(u_time * 5.0 + h * 6.28) * 0.05;
+        vec2 pos = vec2(x + wobble, y);
+        
+        // Particle shape
+        float dist = length(uv - pos);
+        float size = 0.01 + h * 0.01;
+        
+        if (dist < size) {
+            // Random colors from the The Perfect Mart palette (greens and accents)
+            vec3 pCol;
+            if (h < 0.33) pCol = vec3(0.05, 0.51, 0.12); // Primary Green
+            else if (h < 0.66) pCol = vec3(0.44, 0.76, 0.49); // Secondary Green
+            else pCol = vec3(1.0, 0.84, 0.0); // Gold accent
+            
+            // Spinning effect
+            float spin = sin(u_time * 10.0 + h * 10.0);
+            if (abs(uv.x - pos.x) < size * spin) {
+                color = pCol;
+            }
+        }
+    }
+    
+    gl_FragColor = vec4(color, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_43 -->
+</div>
+<!-- Headline & Subtext -->
+<div class="space-y-base max-w-sm mb-stack-lg">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight">
+                Order Placed Successfully!
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant px-4">
+                Your groceries are being handpicked and will arrive in <span class="text-primary font-bold">15 minutes</span>.
+            </p>
+</div>
+<!-- Order Details Card -->
+<div class="order-card-blur border border-outline-variant rounded-xl p-stack-md w-full max-w-sm shadow-xl mb-stack-lg transform transition-all duration-300 hover:scale-[1.02]">
+<div class="space-y-stack-md text-left">
+<!-- Order ID -->
+<div class="flex justify-between items-center pb-base border-b border-surface-variant">
+<span class="font-label-bold text-label-bold text-on-surface-variant">Order ID</span>
+<span class="font-body-md text-body-md font-bold text-on-surface" id="order-id-label">#GM-99281</span>
+</div>
+<!-- Status Badge -->
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-body-md text-primary font-semibold">Payment Confirmed</span>
+</div>
+<!-- Info Grid -->
+<div class="grid grid-cols-1 gap-stack-md pt-base">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">payments</span>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface-variant leading-none mb-1">Payment Method</p>
+<p class="font-body-md text-body-md text-on-surface">UPI (Paid)</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">location_on</span>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface-variant leading-none mb-1">Delivery To</p>
+<p class="font-body-md text-body-md text-on-surface" id="order-address-label">742 Evergreen Terrace</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- CTA Actions -->
+<div class="w-full max-w-sm flex flex-col gap-stack-md mt-auto mb-stack-lg md:mb-0">
+<button class="bg-primary text-on-primary font-headline-md text-headline-md h-touch-target rounded-xl shadow-lg active:scale-95 transition-all w-full flex items-center justify-center gap-2" onclick="location.href='../order_tracking/code.html'">
+<span class="material-symbols-outlined">map</span>
+                Track Order
+            </button>
+<button class="bg-transparent border-2 border-primary text-primary font-headline-md text-headline-md h-touch-target rounded-xl active:scale-95 transition-all w-full flex items-center justify-center gap-2" onclick="location.href='../home_greenmart/code.html'">
+<span class="material-symbols-outlined">home</span>
+                Back to Home
+            </button>
+</div>
+<!-- Delivery Partner ETA Indicator -->
+<div class="mt-stack-lg flex items-center gap-2 animate-bounce-subtle">
+<div class="bg-primary-container w-10 h-10 rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">delivery_dining</span>
+</div>
+<p class="font-label-bold text-label-bold text-on-primary-fixed-variant">Rider arriving soon</p>
+</div>
+</main>
+<!-- Bottom Decorative Gradient -->
+<div class="fixed bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary/10 to-transparent pointer-events-none z-0"></div>
+<script src="../assets/cart.js"></script>
+<script>
+        (function() {
+            const order = GMCart.getLatestOrder();
+            if (order) {
+                document.getElementById('order-id-label').textContent = '#' + order.id;
+                document.getElementById('order-address-label').textContent = order.address ? order.address.line : '';
+            }
+        })();
+
+        // Simple micro-interaction for the buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+    </script>
+</body></html>

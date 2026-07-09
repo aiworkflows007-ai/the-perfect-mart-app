@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<link rel="manifest" href="../pwa/admin/manifest.json"/>
+<meta name="theme-color" content="#6a1b9a"/>
+<link rel="apple-touch-icon" href="../pwa/admin/icon-192.png"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Perfect Mart Admin - Rider Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Custom scrollbar for high-density tables */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #becab7;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6f7a6a;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#f5fbee",
+                        "on-tertiary-fixed": "#3e001e",
+                        "on-surface": "#171d15",
+                        "tertiary-container": "#c14177",
+                        "surface-container": "#eaf0e3",
+                        "tertiary-fixed-dim": "#ffb0c9",
+                        "on-primary-fixed-variant": "#00530e",
+                        "surface-dim": "#d6dccf",
+                        "granite-accent": "#475569",
+                        "background": "#f5fbee",
+                        "inverse-surface": "#2c322a",
+                        "status-success": "#16A34A",
+                        "surface-main": "#FFFFFF",
+                        "tertiary": "#a1275e",
+                        "inverse-primary": "#74dd6e",
+                        "status-error": "#DC2626",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#ffd9e3",
+                        "surface-variant": "#F3F4F6",
+                        "on-primary-container": "#e0ffd7",
+                        "secondary-fixed-dim": "#edc23c",
+                        "primary": "#006714",
+                        "on-primary-fixed": "#002203",
+                        "surface-tint": "#006e16",
+                        "secondary-fixed": "#ffe08d",
+                        "primary-container": "#0c831f",
+                        "surface-container-high": "#e4eadd",
+                        "on-secondary-fixed-variant": "#584400",
+                        "primary-fixed": "#8ffb87",
+                        "on-tertiary-container": "#fff4f5",
+                        "cosmetics-accent": "#FF85A2",
+                        "inverse-on-surface": "#ecf3e6",
+                        "secondary": "#745b00",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#dee5d8",
+                        "surface-bright": "#f5fbee",
+                        "on-error": "#ffffff",
+                        "on-background": "#171d15",
+                        "on-secondary-fixed": "#241a00",
+                        "on-secondary-container": "#735a00",
+                        "surface-container-low": "#eff6e9",
+                        "secondary-container": "#ffd24c",
+                        "status-warning": "#F59E0B",
+                        "on-tertiary-fixed-variant": "#89104c",
+                        "outline": "#6f7a6a",
+                        "on-error-container": "#93000a",
+                        "outline-variant": "#becab7",
+                        "primary-fixed-dim": "#74dd6e",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#3f4a3c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "touch-target": "48px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "stack-lg": "24px",
+                        "container-margin": "16px",
+                        "base": "4px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "price-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-eta": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<script src="../assets/auth.js"></script>
+<script>PMAuth.guardAdmin();</script>
+<link rel="stylesheet" href="../assets/admin-responsive.css"/>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden">
+<!-- Side Navigation Shell -->
+<aside class="bg-surface-container-low h-screen w-64 fixed left-0 top-0 shadow-sm flex flex-col py-stack-lg z-50">
+<div class="px-container-margin mb-stack-lg">
+<h1 class="font-headline-lg text-headline-lg font-black text-primary">The Perfect Mart Admin</h1>
+<p class="font-body-sm text-on-surface-variant opacity-75">Fleet Management</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Dashboard (Inactive) -->
+<a class="flex items-center px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors group" href="../admin_order_feed/code.html">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<!-- Rider Fleet (Active) -->
+<a class="flex items-center px-6 py-3 text-primary font-bold border-r-4 border-primary bg-surface-container-high transition-colors group" href="../admin_rider_management/code.html">
+<span class="material-symbols-outlined mr-3 fill-icon" style="font-variation-settings: 'FILL' 1;">motorcycle</span>
+<span class="font-body-md">Rider Fleet</span>
+</a>
+<!-- Live Tracking -->
+<a class="flex items-center px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">distance</span>
+<span class="font-body-md">Live Tracking</span>
+</a>
+<!-- Verification -->
+<a class="flex items-center px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">fact_check</span>
+<span class="font-body-md">Verification</span>
+</a>
+<!-- Payouts -->
+<a class="flex items-center px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">payments</span>
+<span class="font-body-md">Payouts</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<div class="flex items-center space-x-3 p-3 bg-surface-container rounded-xl">
+<img class="w-10 h-10 rounded-full bg-outline-variant" data-alt="Close up professional portrait of a tech administrator with short dark hair, wearing a minimalist black polo shirt, in a brightly lit office setting with soft green accents. Professional studio lighting with sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSyPisgY7FGHC8RiVJ7N5VyfvBoyem1iAdZchbi9YaGR_oB-4wMwxeOnOVXGb81Sdg8-bN15r9pVdRIeNUhIDDB49bfj751OLGByCUP7zjazKry5CgiXmJpUi7JrklNptZkG-Rpf8firkmv4GzahxjNVChzlQK-k-wxgMcqd0ZFhtjgOqmUbZiZAPSAtI43ZrVqOdvWQVCFB3oy4rYnNzVOZHIseFUDdEtGgKkibxZARRnqy7DRVws0yg7QF0qUDs7Cqb572XbqdR7"/>
+<div class="overflow-hidden">
+<p class="font-label-bold truncate">Admin User</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Fleet Lead</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Top App Bar -->
+<header class="bg-surface docked full-width top-0 sticky z-40 flex justify-between items-center h-touch-target px-container-margin ml-64 border-b border-outline-variant">
+<div class="flex items-center flex-1">
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Rider Management</h2>
+<div class="ml-stack-lg relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-primary text-body-md" placeholder="Search Riders by ID, Name or Plate..." type="text"/>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<button class="material-symbols-outlined p-2 hover:bg-surface-variant rounded-full transition-all">notifications</button>
+<button class="material-symbols-outlined p-2 hover:bg-surface-variant rounded-full transition-all">help_outline</button>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-bold hover:opacity-90 active:scale-95 transition-all">
+                Add Rider
+            </button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 p-stack-lg h-[calc(100vh-48px)] overflow-y-auto">
+<!-- Dashboard Stats Grid -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-stack-lg">
+<div class="bg-surface-container-lowest p-stack-md rounded-xl shadow-sm border border-outline-variant">
+<div class="flex items-center justify-between mb-2">
+<span class="text-on-surface-variant font-label-bold uppercase tracking-tight">Total Riders</span>
+<span class="material-symbols-outlined text-primary bg-primary-fixed/20 p-2 rounded-lg">groups</span>
+</div>
+<div class="text-display-eta font-display-eta">1,284</div>
+<div class="text-status-success font-label-bold text-[10px] flex items-center">
+<span class="material-symbols-outlined text-sm">trending_up</span> +12% from last month
+                </div>
+</div>
+<div class="bg-surface-container-lowest p-stack-md rounded-xl shadow-sm border border-outline-variant">
+<div class="flex items-center justify-between mb-2">
+<span class="text-on-surface-variant font-label-bold uppercase tracking-tight">Online Now</span>
+<span class="material-symbols-outlined text-status-success bg-status-success/10 p-2 rounded-lg">sensors</span>
+</div>
+<div class="text-display-eta font-display-eta">432</div>
+<div class="text-on-surface-variant font-label-bold text-[10px]">Peak traffic expected in 20m</div>
+</div>
+<div class="bg-surface-container-lowest p-stack-md rounded-xl shadow-sm border border-outline-variant">
+<div class="flex items-center justify-between mb-2">
+<span class="text-on-surface-variant font-label-bold uppercase tracking-tight">Active Deliveries</span>
+<span class="material-symbols-outlined text-secondary bg-secondary-container/30 p-2 rounded-lg">package_2</span>
+</div>
+<div class="text-display-eta font-display-eta">156</div>
+<div class="text-on-surface-variant font-label-bold text-[10px]">98.2% on-time rate</div>
+</div>
+<div class="bg-surface-container-lowest p-stack-md rounded-xl shadow-sm border border-outline-variant">
+<div class="flex items-center justify-between mb-2">
+<span class="text-on-surface-variant font-label-bold uppercase tracking-tight">Pending KYC</span>
+<span class="material-symbols-outlined text-status-warning bg-status-warning/10 p-2 rounded-lg">pending_actions</span>
+</div>
+<div class="text-display-eta font-display-eta">28</div>
+<div class="text-status-error font-label-bold text-[10px]">Requires immediate attention</div>
+</div>
+</section>
+<!-- Main Body: Table & KYC Sidebar -->
+<div class="flex gap-gutter h-full min-h-0">
+<!-- Rider Fleet Table Section -->
+<div class="flex-grow bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant overflow-hidden flex flex-col">
+<div class="p-4 border-b border-outline-variant flex items-center justify-between bg-surface-bright">
+<div class="flex items-center space-x-2">
+<span class="font-headline-md text-on-surface">Rider Fleet</span>
+<span class="bg-surface-container-high px-2 py-0.5 rounded text-body-sm text-on-surface-variant font-bold">1,284 Total</span>
+</div>
+<div class="flex items-center space-x-3">
+<select class="bg-surface-container-low border-none rounded-lg text-body-sm font-label-bold focus:ring-primary cursor-pointer">
+<option>All Vehicles</option>
+<option>Electric Bike</option>
+<option>Cargo Van</option>
+</select>
+<select class="bg-surface-container-low border-none rounded-lg text-body-sm font-label-bold focus:ring-primary cursor-pointer">
+<option>All Status</option>
+<option>Online</option>
+<option>In-Transit</option>
+<option>Offline</option>
+</select>
+<button class="material-symbols-outlined p-2 hover:bg-surface-variant rounded-full">filter_list</button>
+</div>
+</div>
+<div class="overflow-x-auto flex-1">
+<table class="w-full text-left border-collapse">
+<thead class="sticky top-0 bg-surface-container-low z-10">
+<tr>
+<th class="px-6 py-3 text-[11px] font-bold text-on-surface-variant uppercase tracking-widest border-b border-outline-variant">Rider Profile</th>
+<th class="px-6 py-3 text-[11px] font-bold text-on-surface-variant uppercase tracking-widest border-b border-outline-variant text-center">Vehicle</th>
+<th class="px-6 py-3 text-[11px] font-bold text-on-surface-variant uppercase tracking-widest border-b border-outline-variant">Status</th>
+<th class="px-6 py-3 text-[11px] font-bold text-on-surface-variant uppercase tracking-widest border-b border-outline-variant">KYC</th>
+<th class="px-6 py-3 text-[11px] font-bold text-on-surface-variant uppercase tracking-widest border-b border-outline-variant">Performance</th>
+<th class="px-6 py-3 text-[11px] font-bold text-on-surface-variant uppercase tracking-widest border-b border-outline-variant text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<!-- Row 1: Pending KYC -->
+<tr class="hover:bg-surface-container/50 transition-colors bg-secondary-container/5">
+<td class="px-6 py-4">
+<div class="flex items-center">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="Close up of a young energetic male delivery rider with a friendly smile, wearing a bright green velocity commerce branded vest and a helmet tucked under his arm. Professional high-contrast photography with warm outdoor morning light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHCKKrqCttUaa8Wdcnpd3VRAFJ0m9kMusKB3wDgXrEH10TR81DGi8byhVehLQtrLMbVIvDegi65GjfxM0mHL7xMZWjX45zp5eOpxJDSut9-dQCXYr1VAl0ifxKz9wYQi2C6wQawOPMiX400WuJ8ZJZFi1sowKN9OrKy8GLfK_4B9hwJZmPSqreZPDvMYMtkGPySQNWegvMLSoWbcvtmKYzS1r48s-F8bdZVAUSH_aPLBCQWaFsVNHYRK7Ave3IZE_9ngo-sYW2NyQg"/>
+<div class="ml-4">
+<p class="font-label-bold text-on-surface">Marcus Sterling</p>
+<p class="text-[10px] text-on-surface-variant">ID: #VEL-9821</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-center">
+<div class="inline-flex flex-col items-center">
+<span class="material-symbols-outlined text-granite-accent">electric_bike</span>
+<span class="text-[10px] font-bold text-granite-accent uppercase">Bike</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center text-status-warning">
+<span class="w-2 h-2 rounded-full bg-status-warning mr-2 animate-pulse"></span>
+<span class="text-body-sm font-label-bold">Connecting</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full uppercase border border-secondary">Pending Review</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center text-secondary">
+<span class="material-symbols-outlined text-sm fill-icon">star</span>
+<span class="text-body-sm font-bold ml-1">New</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end space-x-2">
+<button class="px-3 py-1 bg-primary text-on-primary rounded-lg text-[10px] font-bold hover:opacity-90" onclick="toggleKYCPane('Marcus Sterling')">Review</button>
+<button class="material-symbols-outlined p-1 text-on-surface-variant hover:bg-surface-variant rounded-full">chat</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Active Rider -->
+<tr class="hover:bg-surface-container/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="Middle-aged woman with a determined expression, wearing a velocity commerce uniform. She is standing next to a large white logistics cargo van in a modern urban warehouse district. Sharp, clean lighting with a professional minimalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqppZFx2T2nFS6mmkD7D76p6yglzYV3hbtE-YuKkl8MngYGUhuJqztmgOFa2iqc1ifc2W7lvN1gBqNe4Hda5BizhNJcayHfqJ0ANanMVSEtfN34ZCPJO8X_00k766bS6gL1zBC3eibR1fvmpxwXKqThkAjYCnWHnAwCYxfQNDfF7PLumnv8WCe3KcpiZEr09nbp8d6SzM3KumB-vcL_reFu1HoJzr_7lgnWYxJrKwbLnoOgw3ybqkjlsoWTQJjVfKlacPEBf_NIgOW"/>
+<div class="ml-4">
+<p class="font-label-bold text-on-surface">Sarah Chen</p>
+<p class="text-[10px] text-on-surface-variant">ID: #VEL-7732</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-center">
+<div class="inline-flex flex-col items-center">
+<span class="material-symbols-outlined text-granite-accent">local_shipping</span>
+<span class="text-[10px] font-bold text-granite-accent uppercase">Van</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center text-status-success">
+<span class="w-2 h-2 rounded-full bg-status-success mr-2"></span>
+<span class="text-body-sm font-label-bold">In-Transit</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-surface-container-high text-primary text-[10px] font-bold rounded-full uppercase flex items-center w-fit">
+<span class="material-symbols-outlined text-[14px] mr-1">verified</span> Verified
+                                    </span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<div class="flex items-center text-status-warning">
+<span class="material-symbols-outlined text-[14px] fill-icon">star</span>
+<span class="text-body-sm font-bold ml-1 text-on-surface">4.9</span>
+</div>
+<span class="text-[10px] text-on-surface-variant">$2,450.00</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end space-x-2">
+<button class="px-3 py-1 border border-outline text-on-surface-variant rounded-lg text-[10px] font-bold hover:bg-surface-variant">Details</button>
+<button class="material-symbols-outlined p-1 text-on-surface-variant hover:bg-surface-variant rounded-full">chat</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Offline -->
+<tr class="hover:bg-surface-container/50 transition-colors opacity-70">
+<td class="px-6 py-4">
+<div class="flex items-center">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A male rider in his late 20s, with short cropped hair and a focused look, wearing a green Velocity logistics jacket. Behind him is a blurred cityscape with modern architecture. Cool-toned, professional photography with deep shadows and vibrant accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDspK3vzmvKr_ojvc7uhUY4bYAVeY3twILa56QlJ7YrR5PJ2oBim5MNhS3LkxDRig4n7Y3jtbN6Wq5ty67ZVxNYqBjik18TdUNyYdNBKGRDfnmbJ2yqo1ePiyihpq9GW31N7VCRy9yCuVG00W7kRbGeL7dOpE-5EPMYISwDheH6qF3HAJ8Ti6-qyvyxaPT3xU0w9woOL9uz6mkoz8F_AJTIKorm3eOHv6kmvdCeeaT0_3pfAVskemI8-en-i5X1fCTnDH1-CwJYWtzG"/>
+<div class="ml-4">
+<p class="font-label-bold text-on-surface">Derrick Wilson</p>
+<p class="text-[10px] text-on-surface-variant">ID: #VEL-1209</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-center">
+<div class="inline-flex flex-col items-center">
+<span class="material-symbols-outlined text-granite-accent">electric_bike</span>
+<span class="text-[10px] font-bold text-granite-accent uppercase">Bike</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-outline-variant mr-2"></span>
+<span class="text-body-sm font-label-bold">Offline</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-surface-container-high text-primary text-[10px] font-bold rounded-full uppercase flex items-center w-fit">
+<span class="material-symbols-outlined text-[14px] mr-1">verified</span> Verified
+                                    </span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-[14px] fill-icon text-status-warning">star</span>
+<span class="text-body-sm font-bold ml-1 text-on-surface">4.7</span>
+</div>
+<span class="text-[10px] text-on-surface-variant">$1,120.00</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end space-x-2">
+<button class="px-3 py-1 border border-outline text-on-surface-variant rounded-lg text-[10px] font-bold hover:bg-surface-variant">Details</button>
+<button class="material-symbols-outlined p-1 text-on-surface-variant hover:bg-surface-variant rounded-full">chat</button>
+</div>
+</td>
+</tr>
+<!-- More data points... -->
+<!-- Row 4: Active Rider -->
+<tr class="hover:bg-surface-container/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A portrait of a confident young South Asian woman rider wearing a branded Velocity green cap and windbreaker, standing by her electric delivery bike. Soft bokeh of a busy delivery hub in the background. Fresh, energetic daylight lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5Q9NyzNTF8ck839ZsUb00u56ycfta6fOHf2tUj9bHiqSucZBdzHzHFYfslwzuCt55N_SLM6CBfQcS20UDsWXz2KE12H-ziJFocPb86nZo61WrckJ_6hN4YF91URzZnr30Jwn05f4G0Bb62QUVCGRspx6ULPtx-B-uOeltljZcS7D5iORtcLOvo7YbnDC7Gi3yUxp_CXRcNuut7lilD8rbyM-IjLZBI02ZgYm0HFNr2QPS_4PsH-PbY4Em7qh4DtPyPI-CD-htEGlK"/>
+<div class="ml-4">
+<p class="font-label-bold text-on-surface">Priya Sharma</p>
+<p class="text-[10px] text-on-surface-variant">ID: #VEL-8821</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-center">
+<div class="inline-flex flex-col items-center">
+<span class="material-symbols-outlined text-granite-accent">electric_bike</span>
+<span class="text-[10px] font-bold text-granite-accent uppercase">Bike</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center text-status-success">
+<span class="w-2 h-2 rounded-full bg-status-success mr-2"></span>
+<span class="text-body-sm font-label-bold">Online</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-surface-container-high text-primary text-[10px] font-bold rounded-full uppercase flex items-center w-fit">
+<span class="material-symbols-outlined text-[14px] mr-1">verified</span> Verified
+                                    </span>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<div class="flex items-center text-status-warning">
+<span class="material-symbols-outlined text-[14px] fill-icon">star</span>
+<span class="text-body-sm font-bold ml-1 text-on-surface">5.0</span>
+</div>
+<span class="text-[10px] text-on-surface-variant">$4,100.00</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end space-x-2">
+<button class="px-3 py-1 border border-outline text-on-surface-variant rounded-lg text-[10px] font-bold hover:bg-surface-variant">Details</button>
+<button class="material-symbols-outlined p-1 text-on-surface-variant hover:bg-surface-variant rounded-full">chat</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-outline-variant flex items-center justify-between bg-surface-bright">
+<p class="text-body-sm text-on-surface-variant">Showing 1-10 of 1,284 riders</p>
+<div class="flex items-center space-x-2">
+<button class="p-1 rounded hover:bg-surface-container-high disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded bg-primary text-on-primary font-bold text-body-sm">1</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container-high font-bold text-body-sm">2</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container-high font-bold text-body-sm">3</button>
+<span class="px-2">...</span>
+<button class="w-8 h-8 rounded hover:bg-surface-container-high font-bold text-body-sm">129</button>
+<button class="p-1 rounded hover:bg-surface-container-high">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- KYC Review Panel (Drawer-like behavior) -->
+<aside class="w-96 bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant flex flex-col hidden overflow-hidden" id="kyc-review-panel">
+<div class="p-4 border-b border-outline-variant flex items-center justify-between bg-surface-container-low">
+<h3 class="font-headline-md text-on-surface">KYC Review</h3>
+<button class="material-symbols-outlined hover:bg-surface-variant p-1 rounded-full transition-all" onclick="closeKYCPane()">close</button>
+</div>
+<div class="p-stack-md overflow-y-auto flex-1 space-y-6">
+<div class="flex items-center space-x-4">
+<img class="w-16 h-16 rounded-xl bg-outline-variant" data-alt="Detailed close up of a rider's face for identification review. High resolution photo showing clear facial features, neutral background, professional ID photo style." id="kyc-avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGzLf2TX0zRVrwOVtQgbKxlWD1wMLXHK_PqfGxbxWC91AnlmRhfMKqdzUcFvVJGkiUCjfwzMviRNQc3jV8DmLgiI3ZlvyKeJOwSSJdav7hvIgAdlkXTVcgCZCbFk7VRn3lQal-o4Tpj1CIlDCShRrf8V3X4YZvTZZ-OQmHqdSiRVvso8Dm7YhDkMmuolOx0ebp-rmG61gFhXvWIa0CwafI9ixGUBIA0ZPG7HUDdmdn7u-VmEcj10ttcLo356BUsSvdDziRmXxYnNgB"/>
+<div>
+<p class="font-headline-md" id="kyc-name">Marcus Sterling</p>
+<p class="text-body-sm text-on-surface-variant">Joined: Oct 24, 2023</p>
+</div>
+</div>
+<!-- Document Section -->
+<div class="space-y-4">
+<label class="font-label-bold text-[10px] uppercase text-on-surface-variant tracking-wider">Government ID (Front)</label>
+<div class="relative group cursor-zoom-in">
+<div class="w-full h-40 bg-cover bg-center rounded-lg border-2 border-dashed border-outline-variant group-hover:border-primary transition-all" data-alt="Photocopy of a standard government-issued identification card on a neutral grey background. The image is clear, showing official holographic elements and crisp text." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAXbwuDtqe0bAiHBN4OVkMEOW1HvqyvARwTYcwmHc4XI2SXXu0v1MzqtcOVOPk7VSR4_pfEnJuCqAPFKcOm2T9xhSd83y56MLwtmO_t9FtI7SDHoMgQ-P8YnLLfugjnpVsXjjvL11DV11qKGCTndqO37CdXCHbd1XBl_ViMXL_hoV_wCFNB96nZgntjEsq9jWAu-SIZHlH2l5Srw2X2FR1gj1RM2QyyHc4id1ccDfIdc11o1OpxasmffnSYunTXFtrcMfq4YkguWY4k')"></div>
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all">
+<span class="material-symbols-outlined text-white">zoom_in</span>
+</div>
+</div>
+<label class="font-label-bold text-[10px] uppercase text-on-surface-variant tracking-wider">Driver's License</label>
+<div class="relative group cursor-zoom-in">
+<div class="w-full h-40 bg-cover bg-center rounded-lg border-2 border-dashed border-outline-variant group-hover:border-primary transition-all" data-alt="High-resolution scan of a motorcycle driver's license, displayed horizontally. The image highlights the driver's portrait and license categories. Clean, professional administrative capture." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCNScax13mfL1NYpb9FqGkKc4VEqshQRuve80GAi0yACVnCP67qBVzmYHaUkZzT6MPNMsr1BJ-3AbZ4eiF9r780rUkaeOybRvT3NyE-QXqb4GQoVI28dVlzSw3eeV5PNBeQcSTB0HKpdWdJ2gefZg_Z8hwSqcw1u-lwpAAN8_Mz6rf7a5Vdtg5wwoX9a_tLJEmDhv72E7YcOPSXmVftAmujGM__ZorEy6rcI3pliE6LHTIo56Vn4xPtwTC3JyG0se1MB18ewXnXIb3q')"></div>
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all">
+<span class="material-symbols-outlined text-white">zoom_in</span>
+</div>
+</div>
+<label class="font-label-bold text-[10px] uppercase text-on-surface-variant tracking-wider">Vehicle Photo (Plate: AB-123-CD)</label>
+<div class="relative group cursor-zoom-in">
+<div class="w-full h-40 bg-cover bg-center rounded-lg border-2 border-dashed border-outline-variant group-hover:border-primary transition-all" data-alt="A clean, modern electric delivery bike with a The Perfect Mart branded cargo box attached to the rear. The photo is taken in a well-lit urban environment, clearly showing the license plate and vehicle condition." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCSS3SijgecwBqShWEGEikB5ju9ObnCa2BvVLTtgbm0K4wxlZcAzMovKuBbK8W0Q37nIBjeOcBx3NidOo5rViNwjOUcX41H6TCPBTkY_7srlckbbKiDunxUxHSBO6W5vnGB3q6dpEwOKHzAlh6iovgLIlVDcIpWM2iQRCs4nu94KesobGXqQw3Bdv6JHZdDjXahhrX-72umCCt4xCZBwvfiBQr5l5KUM0VU_1DCrkK4qYhhkqnZQjNU_0Rcc8WVAKWqVgktBuIrsOCx')"></div>
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all">
+<span class="material-symbols-outlined text-white">zoom_in</span>
+</div>
+</div>
+</div>
+<!-- Verification Notes -->
+<div class="space-y-2">
+<label class="font-label-bold text-body-sm">Admin Notes</label>
+<textarea class="w-full bg-surface-container rounded-lg border-none focus:ring-primary text-body-sm p-3" placeholder="Add reason for rejection or special notes..." rows="3"></textarea>
+</div>
+</div>
+<div class="p-4 bg-surface-container-low border-t border-outline-variant flex gap-3">
+<button class="flex-1 bg-status-error text-white py-3 rounded-lg font-label-bold hover:opacity-90 active:scale-95 transition-all">Reject</button>
+<button class="flex-1 bg-primary text-on-primary py-3 rounded-lg font-label-bold hover:opacity-90 active:scale-95 transition-all">Approve Rider</button>
+</div>
+</aside>
+</div>
+</main>
+<!-- Micro-interactions Script -->
+<script>
+        function toggleKYCPane(riderName) {
+            const panel = document.getElementById('kyc-review-panel');
+            const nameEl = document.getElementById('kyc-name');
+            
+            if (nameEl.innerText === riderName && !panel.classList.contains('hidden')) {
+                panel.classList.add('hidden');
+            } else {
+                nameEl.innerText = riderName;
+                panel.classList.remove('hidden');
+                // Trigger a small animation
+                panel.classList.add('animate-slide-in');
+            }
+        }
+
+        function closeKYCPane() {
+            document.getElementById('kyc-review-panel').classList.add('hidden');
+        }
+
+        // Handle active navigation state changes
+        const navLinks = document.querySelectorAll('aside nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // e.preventDefault(); // Uncomment if using for SPA logic
+                navLinks.forEach(l => {
+                    l.classList.remove('text-primary', 'font-bold', 'border-r-4', 'border-primary', 'bg-surface-container-high');
+                    l.classList.add('text-on-surface-variant');
+                    const icon = l.querySelector('.material-symbols-outlined');
+                    if (icon) icon.style.fontVariationSettings = "'FILL' 0";
+                });
+                link.classList.add('text-primary', 'font-bold', 'border-r-4', 'border-primary', 'bg-surface-container-high');
+                link.classList.remove('text-on-surface-variant');
+                const icon = link.querySelector('.material-symbols-outlined');
+                if (icon) icon.style.fontVariationSettings = "'FILL' 1";
+            });
+        });
+    </script>
+<style>
+        @keyframes slide-in {
+            from { transform: translateX(20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .animate-slide-in {
+            animation: slide-in 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
+        }
+    </style>
+<script>if ('serviceWorker' in navigator) { navigator.serviceWorker.register('../pwa/admin/service-worker.js').catch(()=>{}); }</script>
+<script src="../assets/admin-responsive.js"></script>
+</body></html>

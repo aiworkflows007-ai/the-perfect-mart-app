@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Perfect Mart - WhatsApp Ordering</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>.whatsapp-bg {
+    background-color: #e5ddd5;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAoPiQ2XGOIUezS30j83hf5k5T1IhsfFcagYVe_15N1hEDcoiStLOQSe0bYyoW_eQt0K707vwG3kMxJfjDR-mf3cdX3qe5kpIhnybBRO6kizbEX0nNeGn1wIRDXgTk5RBb8IcF17x5tP11YuofTBLGItIpC49u1abIjYUCHoullrdl34qbVx7YX00ge6fJkAH-9BBnjyTDFuhP0XhIRWC6GY2TS7KpRZV7rsKErF6WTmXC4Yu3e-e0NZua5ReN8vZerpM-Gtk-6j4lC);
+    background-repeat: repeat;
+    background-attachment: fixed
+    }
+.chat-bubble-tail::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 10px solid white;
+    border-left: 10px solid transparent;
+    left: -8px;
+    top: 0
+    }
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    vertical-align: middle;
+    font-size: 20px
+    }
+.verified-icon {
+    font-variation-settings: "FILL" 1;
+    color: #00a884;
+    font-size: 18px
+    }</style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#eaf0e3",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#fff4f5",
+                        "tertiary-fixed": "#ffd9e3",
+                        "granite-accent": "#475569",
+                        "surface-container-highest": "#dee5d8",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#ecf3e6",
+                        "surface-main": "#FFFFFF",
+                        "tertiary": "#a1275e",
+                        "surface-container-lowest": "#ffffff",
+                        "cosmetics-accent": "#FF85A2",
+                        "surface": "#f5fbee",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#584400",
+                        "on-tertiary-fixed": "#3e001e",
+                        "on-background": "#171d15",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#F3F4F6",
+                        "secondary": "#745b00",
+                        "on-tertiary-fixed-variant": "#89104c",
+                        "on-secondary-fixed": "#241a00",
+                        "on-secondary-container": "#735a00",
+                        "on-primary-fixed": "#002203",
+                        "inverse-primary": "#74dd6e",
+                        "surface-tint": "#006e16",
+                        "secondary-container": "#ffd24c",
+                        "primary-fixed-dim": "#74dd6e",
+                        "secondary-fixed-dim": "#edc23c",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#8ffb87",
+                        "error-container": "#ffdad6",
+                        "background": "#f5fbee",
+                        "surface-dim": "#d6dccf",
+                        "surface-container-low": "#eff6e9",
+                        "on-primary-container": "#e0ffd7",
+                        "tertiary-container": "#c14177",
+                        "status-error": "#DC2626",
+                        "outline-variant": "#becab7",
+                        "on-primary-fixed-variant": "#00530e",
+                        "secondary-fixed": "#ffe08d",
+                        "surface-bright": "#f5fbee",
+                        "inverse-surface": "#2c322a",
+                        "surface-container-high": "#e4eadd",
+                        "status-warning": "#F59E0B",
+                        "primary": "#006714",
+                        "status-success": "#16A34A",
+                        "outline": "#6f7a6a",
+                        "primary-container": "#0c831f",
+                        "on-surface-variant": "#3f4a3c",
+                        "on-surface": "#171d15",
+                        "tertiary-fixed-dim": "#ffb0c9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "gutter": "12px",
+                        "container-margin": "16px",
+                        "touch-target": "48px",
+                        "stack-lg": "24px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "price-lg": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "display-eta": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "price-lg": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                        "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "display-eta": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md whatsapp-bg min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface-container shadow-sm flex items-center justify-between px-container-margin h-touch-target">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 bg-primary-container/20 border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist corporate logo for 'The Perfect Mart' featuring a stylized green leaf merging with a delivery lightning bolt. The logo uses Action Green and White, set against a professional soft grey background. The style is modern, vector-based, and represents reliability and freshness in logistics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdtFeYLTVXp5SkCeYk8XRK_g1F0ryJzFmADfuXw7mN1nPYyBpVfapadgcHreQlLNC2k78Hyr09EG7Os0Mg4V9xtt41VLRKC9P0rnitcxb6YTFS0uLoaQKMId17iGwBc9dGM9IBIuQAG6b6TBnuRfDxq1RT3Xjc-2z37NaxeUAKzLoM9RNIrp0elgqxQzdv77MXIclyPiqLqSpzYwI2GFKJ7fo6lrkKLaFVYanRyWDKccu_zQTtaGK6yTHEOtSQPWFibmraFkwimh-C"/>
+</div>
+<div class="flex flex-col leading-tight">
+<div class="flex items-center gap-1">
+<h1 class="text-headline-md font-headline-md font-bold text-on-surface">The Perfect Mart</h1>
+<span class="material-symbols-outlined verified-icon" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-wider font-semibold">Verified Merchant</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">videocam</span>
+<span class="material-symbols-outlined text-primary">call</span>
+<span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+</div>
+</header>
+<!-- Main Chat Canvas -->
+<main class="flex-1 pt-16 pb-24 px-4 overflow-y-auto max-w-xl mx-auto w-full">
+<!-- Chat Date Header -->
+<div class="flex justify-center my-6">
+<span class="bg-surface-container-high/90 text-on-surface-variant text-[11px] font-bold px-3 py-1 rounded-lg uppercase shadow-sm">Today</span>
+</div>
+<!-- Bot Message 1 -->
+<div class="relative max-w-[85%] bg-white rounded-r-xl rounded-bl-xl p-3 mb-2 shadow-sm chat-bubble-tail">
+<p class="text-body-md text-on-surface">
+                Welcome to The Perfect Mart! 🛒 <br/><br/>
+                Get groceries, cosmetics, and even granite delivered in minutes.
+            </p>
+<div class="flex justify-end mt-1">
+<span class="text-[10px] text-on-surface-variant">10:42 AM</span>
+</div>
+</div>
+<!-- Bot Message 2 & Category Selection -->
+<div class="relative max-w-[85%] bg-white rounded-xl mb-4 shadow-sm overflow-hidden">
+<!-- Header Image for Category Card -->
+<div class="w-full h-32 relative">
+<img class="w-full h-full object-cover" data-alt="A vibrant, professional commercial photography shot showcasing a variety of high-quality goods: fresh crisp green broccoli, luxury pink cosmetic bottles, and a polished slab of grey granite stone. The composition is clean, bright, and organized on a white surface, reflecting an 'instant relief' and 'dependability' brand personality with high contrast and Action Green accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB6Sinf70OcOjwA5I0T14okTEjdJzQpOu2hrpSjEMydusmDnQezPW2Mhu8tVKXAvbebsIYrQhHvVXmSbxNAeUb3fkg8coUqMp8Rtxfi3IGgFhVD4j7cOFQCGSPLuZeKZjzYeJmaWhWn8lo2qw0RskK4gyZ-olsQaEpBpB1vFJxA4sh8mEmrC_Hq4Ql7HO7zvWQzdeu3UGNcuyo5xVsNIHJEbgxzeiXryD2PsIyNV-_R2fxWsQNR_xdkFkdak3YdAHb4YgMm25zdBXn"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+</div>
+<div class="p-3">
+<p class="text-body-md text-on-surface font-semibold mb-3">Please select a category to start shopping:</p>
+<!-- Category Options List -->
+<div class="space-y-2">
+<button class="w-full flex items-center justify-between p-3 bg-surface-container-low rounded-lg border border-outline-variant hover:bg-surface-container-high transition-colors text-left group" onclick="location.href='../whatsapp_product_browsing/code.html'">
+<div class="flex items-center gap-3">
+<span class="text-lg">🥦</span>
+<span class="text-body-md font-bold text-on-surface">Groceries</span>
+</div>
+<span class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-3 bg-surface-container-low rounded-lg border border-outline-variant hover:bg-surface-container-high transition-colors text-left group" onclick="location.href='../whatsapp_product_browsing/code.html'">
+<div class="flex items-center gap-3">
+<span class="text-lg">💄</span>
+<span class="text-body-md font-bold text-on-surface">Cosmetics</span>
+</div>
+<span class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-3 bg-surface-container-low rounded-lg border border-outline-variant hover:bg-surface-container-high transition-colors text-left group" onclick="location.href='../whatsapp_product_browsing/code.html'">
+<div class="flex items-center gap-3">
+<span class="text-lg">🪨</span>
+<span class="text-body-md font-bold text-on-surface">Granite &amp; Stone</span>
+</div>
+<span class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-3 bg-surface-container-low rounded-lg border border-outline-variant hover:bg-surface-container-high transition-colors text-left group" onclick="location.href='../whatsapp_product_browsing/code.html'">
+<div class="flex items-center gap-3">
+<span class="text-lg">📦</span>
+<span class="text-body-md font-bold text-on-surface">General Items</span>
+</div>
+<span class="material-symbols-outlined text-primary opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</button>
+</div>
+<div class="flex justify-end mt-2 items-center gap-1">
+<span class="text-[10px] text-on-surface-variant">10:42 AM</span>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full py-3 bg-white border-t border-outline-variant text-primary font-bold text-body-md flex items-center justify-center gap-2 active:bg-surface-container transition-colors" onclick="location.href='../whatsapp_product_browsing/code.html'">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+                View Catalog
+            </button>
+</div>
+<!-- System Alert -->
+<div class="flex justify-center my-4">
+<p class="bg-[#FFF9C4] text-[#7B6E25] text-[11px] px-4 py-2 rounded-lg text-center shadow-sm max-w-[90%]">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+                Messages are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them.
+            </p>
+</div>
+</main>
+<!-- Bottom Input Bar (Simulated) -->
+<div class="fixed bottom-0 w-full bg-surface-container-low/95 backdrop-blur-md px-3 py-3 flex items-center gap-3 z-40 max-w-xl mx-auto left-0 right-0">
+<div class="flex-1 bg-white rounded-full flex items-center px-4 py-2 shadow-sm border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant mr-3">sentiment_satisfied</span>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-body-md" placeholder="Type a message" type="text"/>
+<div class="flex gap-4 ml-2">
+<span class="material-symbols-outlined text-on-surface-variant">attach_file</span>
+<span class="material-symbols-outlined text-on-surface-variant">photo_camera</span>
+</div>
+</div>
+<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white shadow-md active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">mic</span>
+</div>
+</div>
+<!-- BottomNavBar (Shared Component) - Mobile Only Layout -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-2 bg-surface shadow-lg z-50 rounded-t-xl border-t border-outline-variant pointer-events-none opacity-0 translate-y-full transition-all duration-300" id="global-nav">
+<div class="flex flex-col items-center justify-center text-primary bg-primary-container/20 rounded-full px-4 py-1 font-label-bold text-label-bold scale-95">
+<span class="material-symbols-outlined">chat</span>
+            Chat
+        </div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant font-label-bold text-label-bold">
+<span class="material-symbols-outlined">grid_view</span>
+            Catalog
+        </div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant font-label-bold text-label-bold">
+<span class="material-symbols-outlined">receipt_long</span>
+            Orders
+        </div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant font-label-bold text-label-bold">
+<span class="material-symbols-outlined">person</span>
+            Profile
+        </div>
+</nav>
+<!-- FAB (Contextual for Catalog Shortcut) -->
+<button class="fixed bottom-24 right-4 w-14 h-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center z-40 md:hidden active:scale-95 transition-transform" onclick="location.href='../whatsapp_cart_checkout/code.html'">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+</button>
+<script>
+        // Simple micro-interaction for the chat appearance
+        document.addEventListener('DOMContentLoaded', () => {
+            const bubbles = document.querySelectorAll('.relative.shadow-sm');
+            bubbles.forEach((bubble, index) => {
+                bubble.style.opacity = '0';
+                bubble.style.transform = 'translateY(10px)';
+                setTimeout(() => {
+                    bubble.style.transition = 'all 0.4s ease-out';
+                    bubble.style.opacity = '1';
+                    bubble.style.transform = 'translateY(0)';
+                }, index * 300);
+            });
+
+            // Toggle Bottom Nav visibility based on scroll (as per rule to hide in transactional flow, but showing how it might reveal)
+            let lastScroll = 0;
+            window.addEventListener('scroll', () => {
+                const nav = document.getElementById('global-nav');
+                const currentScroll = window.pageYOffset;
+                if (currentScroll > 100) {
+                    nav.classList.remove('translate-y-full', 'opacity-0', 'pointer-events-none');
+                } else {
+                    nav.classList.add('translate-y-full', 'opacity-0', 'pointer-events-none');
+                }
+                lastScroll = currentScroll;
+            });
+        });
+    </script>
+</body></html>

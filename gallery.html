@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Perfect Mart — All Screens (Dev Gallery)</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #f4f5f7;
+    color: #1a1a1a;
+  }
+  header {
+    padding: 32px 24px 16px;
+    text-align: center;
+  }
+  header h1 { margin: 0 0 4px; font-size: 24px; }
+  header p { margin: 0; color: #666; font-size: 14px; }
+  .search {
+    display: block;
+    margin: 16px auto 0;
+    width: min(400px, 90%);
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+  }
+  section { padding: 8px 24px 40px; max-width: 1200px; margin: 0 auto; }
+  h2 {
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #888;
+    margin: 32px 0 12px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 8px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+  }
+  a.card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e5e5e5;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  a.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  }
+  .thumb {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    background: #eee;
+    overflow: hidden;
+  }
+  .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+  }
+  .label {
+    padding: 8px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+  .hidden { display: none !important; }
+  .launchers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .launcher {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #1a1a1a;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 999px;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .launcher:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .launcher .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>The Perfect Mart — Dev Gallery</h1>
+  <p id="count"></p>
+  <div class="launchers">
+    <a class="launcher" href="home_greenmart/code.html"><span class="dot" style="background:#2e7d32"></span>Launch Customer App</a>
+    <a class="launcher" href="whatsapp_welcome_categories/code.html"><span class="dot" style="background:#25D366"></span>Launch WhatsApp Flow</a>
+    <a class="launcher" href="rider_login/code.html"><span class="dot" style="background:#1976d2"></span>⬇ Download / Sign In: Rider App</a>
+    <a class="launcher" href="admin_login/code.html"><span class="dot" style="background:#6a1b9a"></span>⬇ Download / Sign In: Admin App</a>
+  </div>
+  <input class="search" type="text" placeholder="Filter screens…" oninput="filterCards(this.value)" />
+</header>
+<div id="sections"></div>
+
+<script>
+const groups = {
+  "Customer App": [
+    "home_greenmart","home_with_promo_banners","animated_home_banners",
+    "product_details","search_results","checkout","order_tracking",
+    "animated_order_tracking","order_success_animation","offers_coupons",
+    "saved_addresses","customer_profile","help_center"
+  ],
+  "WhatsApp Flow": [
+    "whatsapp_welcome_categories","whatsapp_product_browsing",
+    "whatsapp_cart_checkout","animated_whatsapp_checkout"
+  ],
+  "Rider App": [
+    "rider_welcome","rider_login","document_upload","application_pending",
+    "rider_navigation","rider_earnings_payouts","incoming_order_offer"
+  ],
+  "Admin Panel": [
+    "admin_catalog_management","admin_catalog_with_advanced_filters",
+    "admin_manual_order_entry","admin_order_feed","admin_reports_dashboard",
+    "admin_rider_management","admin_whatsapp_catalog_sync"
+  ],
+  "Banners & Marketing Art": [
+    "a_high_quality_professional_promotional_banner_for_a_quick_commerce_grocery",
+    "a_luxury_promotional_banner_for_a_cosmetics_and_skincare_collection._featuring",
+    "a_professional_industrial_style_promotional_banner_for_a_granite_and_stone",
+    "granite_stone","velocity_commerce"
+  ],
+  "Shaders / Misc": [
+    "shader_1","shader_2","shader_3","animated_svg"
+  ]
+};
+
+function titleCase(s) {
+  return s.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+}
+
+const container = document.getElementById("sections");
+let total = 0;
+for (const [group, screens] of Object.entries(groups)) {
+  const section = document.createElement("section");
+  const h2 = document.createElement("h2");
+  h2.textContent = group;
+  section.appendChild(h2);
+  const grid = document.createElement("div");
+  grid.className = "grid";
+  screens.forEach(name => {
+    total++;
+    const a = document.createElement("a");
+    a.className = "card";
+    a.href = `${name}/code.html`;
+    a.dataset.name = name.toLowerCase();
+    a.innerHTML = `
+      <div class="thumb"><img src="${name}/screen.png" alt="${titleCase(name)}" loading="lazy" onerror="this.parentElement.style.background='#ddd'"></div>
+      <div class="label">${titleCase(name)}</div>
+    `;
+    grid.appendChild(a);
+  });
+  section.appendChild(grid);
+  container.appendChild(section);
+}
+document.getElementById("count").textContent = `${total} screens`;
+
+function filterCards(q) {
+  q = q.trim().toLowerCase();
+  document.querySelectorAll("a.card").forEach(card => {
+    card.classList.toggle("hidden", q && !card.dataset.name.includes(q));
+  });
+  document.querySelectorAll("section").forEach(sec => {
+    const anyVisible = [...sec.querySelectorAll("a.card")].some(c => !c.classList.contains("hidden"));
+    sec.classList.toggle("hidden", !anyVisible);
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<link rel="manifest" href="../pwa/admin/manifest.json"/>
+<meta name="theme-color" content="#6a1b9a"/>
+<link rel="apple-touch-icon" href="../pwa/admin/icon-192.png"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Catalog Management | The Perfect Mart Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #becab7; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6f7a6a; }
+        
+        /* Custom Table Highlighting */
+        .row-hover:hover { background-color: #eff6e9; }
+        .glass-effect { backdrop-filter: blur(8px); background-color: rgba(255, 255, 255, 0.8); }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#c14177",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "status-warning": "#F59E0B",
+                        "secondary-fixed-dim": "#edc23c",
+                        "primary-fixed": "#8ffb87",
+                        "background": "#f5fbee",
+                        "inverse-on-surface": "#ecf3e6",
+                        "surface-dim": "#d6dccf",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#a1275e",
+                        "on-tertiary-container": "#fff4f5",
+                        "on-primary-fixed": "#002203",
+                        "surface": "#f5fbee",
+                        "on-secondary-container": "#735a00",
+                        "outline-variant": "#becab7",
+                        "primary-container": "#0c831f",
+                        "on-tertiary-fixed-variant": "#89104c",
+                        "secondary": "#745b00",
+                        "on-surface": "#171d15",
+                        "surface-main": "#FFFFFF",
+                        "surface-variant": "#F3F4F6",
+                        "secondary-fixed": "#ffe08d",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#74dd6e",
+                        "on-primary-fixed-variant": "#00530e",
+                        "on-secondary-fixed-variant": "#584400",
+                        "surface-tint": "#006e16",
+                        "on-secondary-fixed": "#241a00",
+                        "primary": "#006714",
+                        "error-container": "#ffdad6",
+                        "status-success": "#16A34A",
+                        "surface-container": "#eaf0e3",
+                        "on-surface-variant": "#3f4a3c",
+                        "surface-container-high": "#e4eadd",
+                        "tertiary-fixed-dim": "#ffb0c9",
+                        "on-background": "#171d15",
+                        "surface-bright": "#f5fbee",
+                        "on-primary-container": "#e0ffd7",
+                        "cosmetics-accent": "#FF85A2",
+                        "on-tertiary-fixed": "#3e001e",
+                        "on-primary": "#ffffff",
+                        "outline": "#6f7a6a",
+                        "status-error": "#DC2626",
+                        "surface-container-low": "#eff6e9",
+                        "inverse-primary": "#74dd6e",
+                        "granite-accent": "#475569",
+                        "tertiary-fixed": "#ffd9e3",
+                        "surface-container-highest": "#dee5d8",
+                        "secondary-container": "#ffd24c",
+                        "inverse-surface": "#2c322a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "touch-target": "48px",
+                        "gutter": "12px",
+                        "stack-lg": "24px",
+                        "base": "4px",
+                        "stack-sm": "8px",
+                        "container-margin": "16px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "price-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-eta": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<script src="../assets/auth.js"></script>
+<script>PMAuth.guardAdmin();</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="../assets/supabase.js"></script>
+<script src="../assets/supabase-admin.js"></script>
+<link rel="stylesheet" href="../assets/admin-responsive.css"/>
+</head>
+<body class="bg-background font-body-md text-on-surface selection:bg-primary-container selection:text-white">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low dark:bg-inverse-surface border-r border-outline-variant dark:border-outline z-50 flex flex-col py-gutter">
+<div class="px-6 mb-8">
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">The Perfect Mart</h1>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Super Admin</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors group" href="../admin_order_feed/code.html">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">shopping_cart</span>
+<span class="font-body-md text-body-md">Orders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary dark:text-primary-fixed font-bold border-r-4 border-primary bg-surface-container-highest transition-all group" href="../admin_catalog_management/code.html">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">inventory_2</span>
+<span class="font-body-md text-body-md">Catalog</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors group" href="../admin_rider_management/code.html">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">delivery_dining</span>
+<span class="font-body-md text-body-md">Riders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors group" href="../admin_reports_dashboard/code.html">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">analytics</span>
+<span class="font-body-md text-body-md">Reports</span>
+</a>
+</nav>
+<div class="px-4 mt-auto">
+<button class="w-full bg-primary text-on-primary font-label-bold text-label-bold py-3 rounded-lg hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">upload_file</span>
+                Quick Upload
+            </button>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 bg-surface/80 backdrop-blur-md border-b border-outline-variant shadow-sm h-touch-target px-container-margin flex justify-between items-center">
+<div class="flex items-center gap-container-margin w-1/2">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full focus:ring-2 focus:ring-primary text-body-md font-body-md" id="catalog-search" placeholder="Search catalog, SKU, or categories..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<span class="font-headline-md text-headline-md font-black text-primary hidden md:block">Admin Console</span>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-surface-container-highest rounded-full transition-all active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<button class="p-2 hover:bg-surface-container-highest rounded-full transition-all active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant">settings</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden ml-2 border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a female logistics administrator with a friendly expression, wearing business casual attire, set against a clean studio background with soft lighting and a professional corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWHIiIiIg8NgCppBkxbSE1Wd1l7459046TJgEo4ldz-lAC0yDOVIVWqxBlD2BOLMX6Gd1ts7FsgMYLDrY1ImFWwuCZ87-PVxlrGDpK13HFWY7hLjaqTZBqWnrnhZHByJjSzc_OWF_pBcpixm5N3eHVa4uPVSD23y6AYhC0-oZ0Nliu7fMzaU0FFhmsT0ZBZRMWF-Gvn1NpBSCQ73guWjkc1UjQkaHSPGB5BT8vcUIDya4VpvM5Q_xq1X2qC8mLXcWohDAooUjB0GTo"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-20 p-container-margin min-h-screen">
+<!-- Page Header & Sync Status -->
+<section class="flex flex-col md:flex-row justify-between items-start md:items-end gap-stack-md mb-stack-lg">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-stack-sm">Catalog Management</h2>
+<div class="flex items-center gap-stack-md">
+<div class="bg-surface-container-high rounded-xl px-4 py-3 flex items-center gap-3 border border-outline-variant shadow-sm">
+<div class="w-2 h-2 rounded-full bg-status-success animate-pulse"></div>
+<div class="text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Google Sheets:</span>
+<span class="text-primary font-bold">Connected</span>
+</div>
+<div class="w-px h-4 bg-outline-variant"></div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">
+                            Last Sync: 5 mins ago
+                        </div>
+<a class="text-primary text-label-bold font-label-bold hover:underline ml-2" href="#">View Logs</a>
+</div>
+</div>
+</div>
+<div class="flex gap-stack-sm">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-bold text-label-bold flex items-center gap-2 hover:shadow-md transition-all active:scale-95" id="add-product-btn">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                    Add Product
+                </button>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-lg font-label-bold text-label-bold flex items-center gap-2 hover:shadow-md transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]">sync</span>
+                    Sync Now
+                </button>
+<button class="bg-surface-main border border-outline text-on-surface px-4 py-2 rounded-lg font-label-bold text-label-bold hover:bg-surface-container-low transition-all">
+                    Bulk Actions
+                </button>
+</div>
+</section>
+<!-- Category Tabs & Secondary Actions -->
+<div class="flex flex-col md:flex-row justify-between items-center gap-stack-md mb-stack-md">
+<div class="flex items-center gap-3 w-full md:w-auto">
+<select class="px-4 py-2 border border-outline-variant rounded-lg text-body-md bg-surface-main focus:ring-2 focus:ring-primary" id="category-filter">
+<option value="">All Categories</option>
+</select>
+<span class="text-body-sm text-on-surface-variant" id="catalog-count-label"></span>
+</div>
+<div class="flex items-center gap-stack-sm w-full md:w-auto">
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 border border-outline text-on-surface rounded-lg text-body-md hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                    Export Catalog
+                </button>
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 border border-outline text-on-surface rounded-lg text-body-md hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">upload</span>
+                    Import CSV
+                </button>
+</div>
+</div>
+<!-- Catalog Table Container -->
+<div class="bg-surface-main border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-4 py-4 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">SKU</th>
+<th class="px-4 py-4 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Product Name</th>
+<th class="px-4 py-4 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Category</th>
+<th class="px-4 py-4 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Price</th>
+<th class="px-4 py-4 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Stock</th>
+<th class="px-4 py-4 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Unit</th>
+<th class="px-4 py-4 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="px-4 py-4 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Attributes</th>
+<th class="px-4 py-4 text-right"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant" id="catalog-tbody">
+<tr><td class="px-4 py-8 text-center text-on-surface-variant" colspan="9">Loading products…</td></tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer Pagination -->
+<div class="px-6 py-4 bg-surface-container-low flex justify-between items-center border-t border-outline-variant">
+<span class="text-body-sm text-on-surface-variant" id="catalog-pagination-label">Loading…</span>
+<div class="flex items-center gap-stack-sm">
+<button class="p-2 border border-outline rounded-lg hover:bg-white disabled:opacity-50" id="catalog-prev-btn">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-2 border border-outline rounded-lg hover:bg-white disabled:opacity-50" id="catalog-next-btn">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Add/Edit Product Modal -->
+<div class="fixed inset-0 bg-black/50 z-[9990] hidden items-center justify-center p-4" id="product-modal">
+<div class="bg-surface-main rounded-xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+<div class="flex items-center justify-between p-5 border-b border-outline-variant">
+<h3 class="font-headline-md text-headline-md font-bold" id="product-modal-title">Add Product</h3>
+<button class="p-1 hover:bg-surface-container-highest rounded-full" id="product-modal-close">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-5 space-y-4">
+<div>
+<label class="block text-label-bold font-label-bold text-on-surface-variant mb-1">Product Name</label>
+<input class="w-full h-11 px-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary" id="pm-name" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="block text-label-bold font-label-bold text-on-surface-variant mb-1">Category</label>
+<input class="w-full h-11 px-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary" id="pm-category" type="text"/>
+</div>
+<div>
+<label class="block text-label-bold font-label-bold text-on-surface-variant mb-1">Item Code</label>
+<input class="w-full h-11 px-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary" id="pm-item-code" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-3">
+<div>
+<label class="block text-label-bold font-label-bold text-on-surface-variant mb-1">Selling Price</label>
+<input class="w-full h-11 px-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary" id="pm-price" step="0.01" type="number"/>
+</div>
+<div>
+<label class="block text-label-bold font-label-bold text-on-surface-variant mb-1">MRP</label>
+<input class="w-full h-11 px-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary" id="pm-mrp" step="0.01" type="number"/>
+</div>
+<div>
+<label class="block text-label-bold font-label-bold text-on-surface-variant mb-1">Stock Qty</label>
+<input class="w-full h-11 px-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary" id="pm-stock" step="0.01" type="number"/>
+</div>
+</div>
+<div>
+<label class="block text-label-bold font-label-bold text-on-surface-variant mb-1">Image URL</label>
+<input class="w-full h-11 px-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary" id="pm-image" placeholder="https://…" type="text"/>
+</div>
+<label class="flex items-center gap-2">
+<input class="w-4 h-4" id="pm-active" type="checkbox"/>
+<span class="text-body-md">Active (visible in store)</span>
+</label>
+<p class="text-sm text-status-error hidden" id="product-modal-error"></p>
+</div>
+<div class="flex items-center justify-between gap-3 p-5 border-t border-outline-variant">
+<button class="text-status-error font-label-bold text-label-bold hover:underline hidden" id="pm-delete-btn">Delete Product</button>
+<div class="flex gap-3 ml-auto">
+<button class="px-4 py-2 rounded-lg border border-outline text-on-surface" id="pm-cancel-btn">Cancel</button>
+<button class="px-6 py-2 rounded-lg bg-primary text-on-primary font-bold" id="pm-save-btn">Save</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Error/Sync Toast -->
+<div class="fixed bottom-container-margin right-container-margin z-50 animate-bounce" id="sync-toast">
+<div class="bg-error-container text-on-error-container p-4 rounded-xl shadow-xl flex items-center gap-3 border border-error/20 glass-effect">
+<span class="material-symbols-outlined text-error">report</span>
+<div>
+<p class="font-bold text-body-md">3 rows rejected during sync</p>
+<button class="text-body-sm underline hover:text-error transition-colors" onclick="this.parentElement.parentElement.parentElement.remove()">Click for details</button>
+</div>
+<button class="ml-4 hover:opacity-50" onclick="this.parentElement.parentElement.remove()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+        // Smooth scroll for anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple sync simulation
+        const syncBtn = document.querySelector('button:has(.material-symbols-outlined:contains("sync"))');
+        if(syncBtn) {
+            syncBtn.addEventListener('click', () => {
+                const icon = syncBtn.querySelector('.material-symbols-outlined');
+                icon.classList.add('animate-spin');
+                syncBtn.disabled = true;
+                syncBtn.textContent = 'Syncing...';
+                
+                setTimeout(() => {
+                    icon.classList.remove('animate-spin');
+                    syncBtn.disabled = false;
+                    syncBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">sync</span> Sync Now';
+                }, 2000);
+            });
+        }
+    </script>
+<script>if ('serviceWorker' in navigator) { navigator.serviceWorker.register('../pwa/admin/service-worker.js').catch(()=>{}); }</script>
+<script src="../assets/admin-responsive.js"></script>
+<script>
+(function () {
+    const PAGE_SIZE = 50;
+    let currentOffset = 0;
+    let currentSearch = '';
+    let currentCategory = '';
+    let currentTotal = 0;
+    let editingProduct = null;
+
+    const tbody = document.getElementById('catalog-tbody');
+    const countLabel = document.getElementById('catalog-count-label');
+    const pagLabel = document.getElementById('catalog-pagination-label');
+    const prevBtn = document.getElementById('catalog-prev-btn');
+    const nextBtn = document.getElementById('catalog-next-btn');
+    const searchInput = document.getElementById('catalog-search');
+    const categorySelect = document.getElementById('category-filter');
+
+    function money(n) {
+        return '₹' + Number(n || 0).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function statusBadge(p) {
+        if (!p.is_active) return '<span class="bg-surface-container-highest text-on-surface-variant px-2 py-1 rounded text-[10px] font-bold uppercase">Inactive</span>';
+        if (Number(p.stock_quantity) <= 5) return '<span class="bg-status-warning/10 text-status-warning px-2 py-1 rounded text-[10px] font-bold uppercase">Low Stock</span>';
+        return '<span class="bg-primary-container/10 text-primary px-2 py-1 rounded text-[10px] font-bold uppercase">Active</span>';
+    }
+
+    function renderRows(products) {
+        if (!products.length) {
+            tbody.innerHTML = '<tr><td class="px-4 py-8 text-center text-on-surface-variant" colspan="9">No products match.</td></tr>';
+            return;
+        }
+        tbody.innerHTML = products.map((p) => `
+            <tr class="row-hover transition-colors">
+                <td class="px-4 py-4 text-body-md font-mono text-on-surface-variant">${p.item_code || '—'}</td>
+                <td class="px-4 py-4">
+                    <div class="flex items-center gap-3">
+                        <div class="h-10 w-10 bg-surface-container-highest rounded border border-outline-variant flex-shrink-0 overflow-hidden">
+                            ${p.image_url ? `<img class="h-full w-full object-cover" src="${p.image_url}"/>` : `<div class="h-full w-full flex items-center justify-center text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">image</span></div>`}
+                        </div>
+                        <span class="font-bold text-on-surface">${p.name}</span>
+                    </div>
+                </td>
+                <td class="px-4 py-4 text-body-md">${p.category}</td>
+                <td class="px-4 py-4 font-bold text-on-surface">${money(p.selling_price)}</td>
+                <td class="px-4 py-4 text-body-md">${p.stock_quantity}</td>
+                <td class="px-4 py-4 text-body-sm text-on-surface-variant">${p.stock_unit || ''}</td>
+                <td class="px-4 py-4">${statusBadge(p)}</td>
+                <td class="px-4 py-4 text-body-sm text-on-surface-variant">${p.mrp ? money(p.mrp) : '—'}</td>
+                <td class="px-4 py-4 text-right">
+                    <button class="p-1 hover:bg-surface-container-highest rounded transition-colors" data-edit-id="${p.id}">
+                        <span class="material-symbols-outlined text-on-surface-variant">edit</span>
+                    </button>
+                </td>
+            </tr>
+        `).join('');
+        tbody.querySelectorAll('[data-edit-id]').forEach((btn) => {
+            btn.addEventListener('click', () => openModal(products.find((p) => p.id === btn.dataset.editId)));
+        });
+    }
+
+    async function loadProducts() {
+        tbody.innerHTML = '<tr><td class="px-4 py-8 text-center text-on-surface-variant" colspan="9">Loading products…</td></tr>';
+        try {
+            const { data, count } = await PMSupabaseAdmin.fetchProductsAdmin({
+                search: currentSearch, category: currentCategory, limit: PAGE_SIZE, offset: currentOffset,
+            });
+            currentTotal = count;
+            renderRows(data);
+            const from = count === 0 ? 0 : currentOffset + 1;
+            const to = Math.min(currentOffset + PAGE_SIZE, count);
+            pagLabel.textContent = `Showing ${from}-${to} of ${count.toLocaleString('en-IN')} items`;
+            countLabel.textContent = `${count.toLocaleString('en-IN')} products`;
+            prevBtn.disabled = currentOffset === 0;
+            nextBtn.disabled = to >= count;
+        } catch (err) {
+            tbody.innerHTML = `<tr><td class="px-4 py-8 text-center text-status-error" colspan="9">${err.message.includes('Unauthorized') ? 'Session expired — please sign in again.' : 'Failed to load: ' + err.message}</td></tr>`;
+            if (err.message.includes('Unauthorized')) setTimeout(() => location.href = '../admin_login/code.html', 1500);
+        }
+    }
+
+    async function loadCategories() {
+        try {
+            const categories = await PMSupabaseAdmin.fetchAllCategoriesAdmin();
+            categorySelect.innerHTML = '<option value="">All Categories</option>' +
+                categories.map((c) => `<option value="${c}">${c}</option>`).join('');
+        } catch (err) { /* non-fatal */ }
+    }
+
+    let searchTimer;
+    searchInput.addEventListener('input', () => {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => {
+            currentSearch = searchInput.value.trim();
+            currentOffset = 0;
+            loadProducts();
+        }, 350);
+    });
+
+    categorySelect.addEventListener('change', () => {
+        currentCategory = categorySelect.value;
+        currentOffset = 0;
+        loadProducts();
+    });
+
+    prevBtn.addEventListener('click', () => {
+        currentOffset = Math.max(0, currentOffset - PAGE_SIZE);
+        loadProducts();
+    });
+    nextBtn.addEventListener('click', () => {
+        if (currentOffset + PAGE_SIZE < currentTotal) {
+            currentOffset += PAGE_SIZE;
+            loadProducts();
+        }
+    });
+
+    // --- Modal ---
+    const modal = document.getElementById('product-modal');
+    const modalTitle = document.getElementById('product-modal-title');
+    const modalError = document.getElementById('product-modal-error');
+    const deleteBtn = document.getElementById('pm-delete-btn');
+
+    function openModal(product) {
+        editingProduct = product || null;
+        modalTitle.textContent = product ? 'Edit Product' : 'Add Product';
+        document.getElementById('pm-name').value = product ? product.name : '';
+        document.getElementById('pm-category').value = product ? product.category : '';
+        document.getElementById('pm-item-code').value = product ? (product.item_code || '') : '';
+        document.getElementById('pm-price').value = product ? product.selling_price : '';
+        document.getElementById('pm-mrp').value = product ? (product.mrp || '') : '';
+        document.getElementById('pm-stock').value = product ? product.stock_quantity : 0;
+        document.getElementById('pm-image').value = product ? (product.image_url || '') : '';
+        document.getElementById('pm-active').checked = product ? !!product.is_active : true;
+        deleteBtn.classList.toggle('hidden', !product);
+        modalError.classList.add('hidden');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+    }
+    function closeModal() {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        editingProduct = null;
+    }
+
+    document.getElementById('add-product-btn').addEventListener('click', () => openModal(null));
+    document.getElementById('product-modal-close').addEventListener('click', closeModal);
+    document.getElementById('pm-cancel-btn').addEventListener('click', closeModal);
+
+    document.getElementById('pm-save-btn').addEventListener('click', async () => {
+        const name = document.getElementById('pm-name').value.trim();
+        const category = document.getElementById('pm-category').value.trim();
+        if (!name || !category) {
+            modalError.textContent = 'Name and category are required.';
+            modalError.classList.remove('hidden');
+            return;
+        }
+        const product = {
+            name,
+            category,
+            item_code: document.getElementById('pm-item-code').value.trim() || null,
+            selling_price: Number(document.getElementById('pm-price').value) || 0,
+            mrp: Number(document.getElementById('pm-mrp').value) || 0,
+            stock_quantity: Number(document.getElementById('pm-stock').value) || 0,
+            image_url: document.getElementById('pm-image').value.trim() || null,
+            is_active: document.getElementById('pm-active').checked,
+        };
+        if (editingProduct) product.id = editingProduct.id;
+        try {
+            await PMSupabaseAdmin.upsertProduct(product);
+            closeModal();
+            loadProducts();
+        } catch (err) {
+            modalError.textContent = err.message;
+            modalError.classList.remove('hidden');
+        }
+    });
+
+    deleteBtn.addEventListener('click', async () => {
+        if (!editingProduct) return;
+        if (!confirm(`Delete "${editingProduct.name}"? This can't be undone.`)) return;
+        try {
+            await PMSupabaseAdmin.deleteProduct(editingProduct.id);
+            closeModal();
+            loadProducts();
+        } catch (err) {
+            modalError.textContent = err.message;
+            modalError.classList.remove('hidden');
+        }
+    });
+
+    loadCategories();
+    loadProducts();
+})();
+</script>
+</body></html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<link rel="manifest" href="../pwa/rider/manifest.json"/>
+<meta name="theme-color" content="#1976d2"/>
+<link rel="apple-touch-icon" href="../pwa/rider/icon-192.png"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Perfect Mart Delivery Partner - Welcome</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "granite-accent": "#475569",
+                    "surface-dim": "#d6dccf",
+                    "surface-container-highest": "#dee5d8",
+                    "primary": "#006714",
+                    "inverse-on-surface": "#ecf3e6",
+                    "background": "#f5fbee",
+                    "surface-variant": "#dee5d8",
+                    "error": "#ba1a1a",
+                    "tertiary": "#a1275e",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#8ffb87",
+                    "on-error": "#ffffff",
+                    "surface": "#f5fbee",
+                    "primary-container": "#0c831f",
+                    "primary-fixed-dim": "#74dd6e",
+                    "on-surface": "#171d15",
+                    "tertiary-fixed-dim": "#ffb0c9",
+                    "on-secondary-fixed": "#241a00",
+                    "tertiary-fixed": "#ffd9e3",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#eff6e9",
+                    "outline-variant": "#becab7",
+                    "on-tertiary-fixed-variant": "#89104c",
+                    "cosmetics-accent": "#FF85A2",
+                    "secondary-fixed": "#ffe08d",
+                    "on-primary-container": "#e0ffd7",
+                    "on-surface-variant": "#3f4a3c",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#eaf0e3",
+                    "inverse-surface": "#2c322a",
+                    "surface-bright": "#f5fbee",
+                    "secondary-container": "#ffd24c",
+                    "surface-container-high": "#e4eadd",
+                    "on-primary-fixed": "#002203",
+                    "on-background": "#171d15",
+                    "secondary": "#745b00",
+                    "tertiary-container": "#c14177",
+                    "inverse-primary": "#74dd6e",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#3e001e",
+                    "on-secondary-container": "#735a00",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#00530e",
+                    "secondary-fixed-dim": "#edc23c",
+                    "status-warning": "#F59E0B",
+                    "on-secondary-fixed-variant": "#584400",
+                    "on-primary": "#ffffff",
+                    "surface-main": "#FFFFFF",
+                    "surface-tint": "#006e16",
+                    "outline": "#6f7a6a",
+                    "status-error": "#DC2626",
+                    "status-success": "#16A34A",
+                    "on-tertiary-container": "#fff4f5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "touch-target": "48px",
+                    "stack-sm": "8px",
+                    "stack-lg": "24px",
+                    "container-margin": "16px",
+                    "base": "4px",
+                    "gutter": "12px",
+                    "stack-md": "16px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "price-lg": ["Inter"],
+                    "label-bold": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-eta": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "price-lg": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display-eta": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(245, 251, 238, 0) 0%, rgba(245, 251, 238, 0.8) 50%, #f5fbee 100%);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating { animation: float 6s ease-in-out infinite; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col font-body-md overflow-hidden">
+<!-- Top App Bar (Suppressed on Splash as per Task Focus Rule, but kept minimal for Brand Identity) -->
+<header class="fixed top-0 left-0 right-0 z-50 flex items-center w-full px-container-margin h-touch-target">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[20px]">eco</span>
+</div>
+<span class="font-headline-md text-headline-md text-primary tracking-tight">The Perfect Mart</span>
+</div>
+</header>
+<main class="flex-1 relative flex flex-col items-center">
+<!-- Hero Image Section -->
+<div class="absolute inset-0 w-full h-[574px] overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" data-alt="A cheerful delivery professional in a bright green modern uniform smiling warmly while standing next to a sleek electric scooter. The rider is holding a large insulated The Perfect Mart delivery bag with a visible eco-friendly logo. The scene is set in a vibrant, sun-drenched urban environment during the golden hour, creating a mood of dependable and urgent service. The lighting is soft and professional, highlighting the high-energy and freshness of the The Perfect Mart brand." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCKZ97zqxh1Y3-2Gewqz_aCXzw9J_yFfYxEOgvrs4O1Oap6wygDnZ3l8Ze1Uhm3R8CUBe-vrpKJHRhUC89d-gtyJgtGMpk_XLNzloqUZgLqQy-JdFSflHELJTZrCoGSnKIrQMvpSvkOyzAiPhg5eB-WHc-2amEl1uY7tAznKxwl967HJzuTwZa4DViKuU9KXN1r-F6MycW05CnjfYn_FjSAc2o3P2Vl5V3HMta9HsNM9ao7FyZI0xuzMF6GlC7unxvD4_XJoajcIPR2')"></div>
+<div class="absolute inset-0 hero-gradient"></div>
+</div>
+<!-- Content Canvas -->
+<div class="relative z-10 mt-[442px] w-full px-container-margin flex flex-col items-center text-center">
+<!-- Branding & Welcome Messaging -->
+<div class="space-y-stack-sm max-w-sm mb-stack-lg">
+<h1 class="font-display-eta text-display-eta text-primary-container leading-tight">
+                    Deliver Freshness. <br/>
+<span class="text-on-surface">Earn Daily.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                    Join the city's fastest green logistics network. Dependable routes, instant relief for customers, and flexible hours for you.
+                </p>
+</div>
+<!-- Bento-style Stats Grid -->
+<div class="grid grid-cols-2 gap-gutter w-full max-w-md mb-stack-lg">
+<div class="glass-panel p-stack-md rounded-xl shadow-sm flex flex-col items-start border border-white/50">
+<span class="material-symbols-outlined text-primary mb-base">bolt</span>
+<span class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Fast Setup</span>
+<span class="font-headline-md text-headline-md text-primary-container">5 Minutes</span>
+</div>
+<div class="glass-panel p-stack-md rounded-xl shadow-sm flex flex-col items-start border border-white/50">
+<span class="material-symbols-outlined text-tertiary mb-base">account_balance_wallet</span>
+<span class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Daily Pay</span>
+<span class="font-headline-md text-headline-md text-tertiary-container">Instant</span>
+</div>
+</div>
+<!-- Call to Action Section -->
+<div class="w-full max-w-md space-y-stack-md pb-stack-lg">
+<button class="w-full h-touch-target bg-primary text-on-primary font-headline-md text-headline-md rounded-xl shadow-lg transition-transform duration-150 active:scale-95 flex items-center justify-center gap-2" onclick="location.href='../rider_login/code.html'">
+                    Get Started
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="w-full h-touch-target bg-surface-container-lowest text-primary border-2 border-primary/10 font-label-bold text-label-bold rounded-xl transition-all hover:bg-primary/5" onclick="location.href='../rider_login/code.html'">
+                    Already a Partner? Log In
+                </button>
+</div>
+<!-- Trust Indicators -->
+<div class="flex items-center gap-4 text-on-surface-variant opacity-60">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-background overflow-hidden bg-surface-dim">
+<img class="w-full h-full object-cover" data-alt="Portrait of a smiling delivery partner in a green polo shirt against a neutral professional studio background, light mode." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCmvaFbksGH6Q3k4qWdjqNSq63dK_tPC6fzcNwML4mzFDbGrHNyG4WTwv-kG9DCKcelPIEVqzUULna9hbHc2B44hP1Da-q0I_Y24eKVEWlJwGrNNqa5_udK8_WHXQjUOI5mc6343fOpM1lL89w2IwenZSXbVHVhT7KvUfL6hTsE-I5adqQuzCXBvoZ6JqbwP1B4uyImErXp0ju8aZTH5XCzFVHG_YFCqY6e8iDmsOUlGq6fS8cVQpv4cetf8fchSzm7Y63qOhmtU05"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-background overflow-hidden bg-surface-dim">
+<img class="w-full h-full object-cover" data-alt="Close up portrait of a confident female courier wearing a branded cap and smiling into the camera, modern logistics aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWe3Pa3-OQlkslG_67ydKrkpomJZDiKLFdDau6xqBb62CzmRDN0oPHW3rrGx0YroXGjTjxA2F17McgE_TUV4L0-eJneV1W_IxK_y-ZDT8x1Eq81IXVYvPMPvl1IAFTKmvXIkOjXnN9Y16XlFADLBZj65edYnKE3fkYyBOfFzRIU90horr3gw1Yz5UZ6u8xqEw-ZWZU8QkJLQTt1Oh8H1qFnmyKhdIz7mnxfMuxp4_pwNdn5YTxYr1086RJACB2eKzM6cU-cFR6_unU"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-background overflow-hidden bg-surface-dim">
+<img class="w-full h-full object-cover" data-alt="Friendly delivery rider with a helmet on his lap, smiling broadly in a modern clean street setting, corporate modern style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXZnjCX2gSlaaBqM99c5kuTWE3y76bqjOWE5dgTNVHyraZ8GQXRIkPR4tsZOa1XMc6h0-1jbBLszWcZCrh48D2KWl-9SHaHCIJ6wHZn9Y7abuvmbQh2ekAJY_sHnbM_a7HqfT6-_sXHr13vYnzd4bQyUVdlR364Hq1CtYQh1Yec7fjYabDW3gurfm0trkC7R1Ev0Bee179tB4Gy841n-4mLvmJ6p_MN9pSfieBH6FDqzicCoRk6n3hne0dLbJmZSyqdo4RpuCDMOmJ"/>
+</div>
+</div>
+<p class="font-label-bold text-label-bold">Join 5,000+ local riders</p>
+</div>
+</div>
+</main>
+<!-- Footer Decorative Element -->
+<div class="fixed bottom-0 left-0 right-0 h-1 bg-primary/20">
+<div class="h-full bg-primary w-1/3 transition-all duration-1000 ease-in-out" style="width: 100%; transition: width 3s ease-out;"></div>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth reveal animation for content
+            const elements = document.querySelectorAll('.z-10 > *');
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = `all 0.6s cubic-bezier(0.22, 1, 0.36, 1) ${index * 0.15}s`;
+                
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, 100);
+            });
+        });
+    </script>
+<script>if ('serviceWorker' in navigator) { navigator.serviceWorker.register('../pwa/rider/service-worker.js').catch(()=>{}); }</script>
+</body></html>

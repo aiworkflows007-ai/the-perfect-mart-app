@@ -1,0 +1,12 @@
+{
+  "name": "the-perfect-mart",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Quick-commerce platform — Grocery + Cosmetics + Granite + General",
+  "scripts": {
+    "start": "serve . -l tcp://0.0.0.0:${PORT:-5173}"
+  },
+  "dependencies": {
+    "serve": "^14.2.4"
+  }
+}

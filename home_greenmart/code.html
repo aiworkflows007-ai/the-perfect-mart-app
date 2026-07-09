@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>The Perfect Mart - Freshness Delivered</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-container-low": "#eff6e9",
+                "on-error-container": "#93000a",
+                "surface-variant": "#dee5d8",
+                "cosmetics-accent": "#FF85A2",
+                "on-secondary-container": "#735a00",
+                "on-primary-fixed": "#002203",
+                "primary-container": "#0c831f",
+                "status-error": "#DC2626",
+                "inverse-on-surface": "#ecf3e6",
+                "inverse-primary": "#74dd6e",
+                "secondary-fixed": "#ffe08d",
+                "inverse-surface": "#2c322a",
+                "error-container": "#ffdad6",
+                "surface-container-high": "#e4eadd",
+                "outline": "#6f7a6a",
+                "on-secondary-fixed-variant": "#584400",
+                "surface-container-lowest": "#ffffff",
+                "on-tertiary-container": "#fff4f5",
+                "secondary": "#745b00",
+                "secondary-container": "#ffd24c",
+                "on-secondary-fixed": "#241a00",
+                "tertiary-fixed": "#ffd9e3",
+                "surface-tint": "#006e16",
+                "tertiary-fixed-dim": "#ffb0c9",
+                "status-warning": "#F59E0B",
+                "surface-bright": "#f5fbee",
+                "on-error": "#ffffff",
+                "on-primary": "#ffffff",
+                "surface-dim": "#d6dccf",
+                "primary": "#006714",
+                "status-success": "#16A34A",
+                "primary-fixed-dim": "#74dd6e",
+                "background": "#f5fbee",
+                "surface-container": "#eaf0e3",
+                "on-secondary": "#ffffff",
+                "on-primary-fixed-variant": "#00530e",
+                "on-surface-variant": "#3f4a3c",
+                "on-background": "#171d15",
+                "on-primary-container": "#e0ffd7",
+                "outline-variant": "#becab7",
+                "surface-container-highest": "#dee5d8",
+                "on-surface": "#171d15",
+                "error": "#ba1a1a",
+                "surface-main": "#FFFFFF",
+                "surface": "#f5fbee",
+                "tertiary": "#a1275e",
+                "on-tertiary-fixed": "#3e001e",
+                "on-tertiary-fixed-variant": "#89104c",
+                "tertiary-container": "#c14177",
+                "primary-fixed": "#8ffb87",
+                "granite-accent": "#475569",
+                "secondary-fixed-dim": "#edc23c",
+                "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "container-margin": "16px",
+                "gutter": "12px",
+                "stack-sm": "8px",
+                "stack-lg": "24px",
+                "stack-md": "16px",
+                "touch-target": "48px",
+                "base": "4px"
+            },
+            "fontFamily": {
+                "price-lg": ["Inter"],
+                "body-md": ["Inter"],
+                "headline-md": ["Inter"],
+                "headline-lg": ["Inter"],
+                "body-lg": ["Inter"],
+                "label-bold": ["Inter"],
+                "body-sm": ["Inter"],
+                "headline-lg-mobile": ["Inter"],
+                "display-eta": ["Inter"]
+            },
+            "fontSize": {
+                "price-lg": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                "display-eta": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md antialiased mb-20">
+<!-- Top App Bar -->
+<header class="bg-surface-bright dark:bg-inverse-surface docked full-width top-0 z-50 sticky transition-all duration-300">
+<div class="flex flex-col gap-2 px-container-margin py-stack-sm w-full max-w-full">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 overflow-hidden">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" data-icon="location_on">location_on</span>
+<div class="flex flex-col">
+<span class="font-label-bold text-label-bold text-primary">Delivery to</span>
+<span class="font-body-md text-body-md truncate max-w-[150px] font-bold">742 Evergreen Terrace...</span>
+</div>
+</div>
+<div class="text-headline-lg-mobile font-headline-lg-mobile font-extrabold text-primary dark:text-primary-fixed-dim">The Perfect Mart</div>
+<button class="relative hover:bg-surface-container-low transition-colors duration-200 p-2 rounded-full active:scale-95 transition-transform" onclick="location.href='../checkout/code.html'">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" data-icon="shopping_cart">shopping_cart</span>
+<span class="absolute -top-1 -right-1 bg-primary text-on-primary text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold" data-cart-badge>0</span>
+</button>
+</div>
+<!-- Search Bar -->
+<div class="relative mt-2">
+<div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+</div>
+<input class="w-full h-touch-target bg-surface-container-lowest border-none rounded-xl pl-10 pr-10 focus:ring-2 focus:ring-primary text-body-md font-body-md shadow-sm" onclick="location.href='../search_results/code.html'" placeholder="Search for 'avocados'..." type="text"/>
+<div class="absolute inset-y-0 right-3 flex items-center">
+<span class="material-symbols-outlined text-primary" data-icon="mic">mic</span>
+</div>
+</div>
+</div>
+</header>
+<main class="flex flex-col gap-stack-lg pb-10">
+<!-- Hero Section: 10 Min Delivery -->
+<section class="px-container-margin pt-4">
+<div class="relative overflow-hidden rounded-2xl bg-primary-container text-on-primary-container p-6 flex flex-col justify-between h-48 shadow-lg group">
+<div class="absolute top-0 right-0 w-1/2 h-full -mr-8 transform rotate-6 opacity-20 bg-primary-fixed scale-125"></div>
+<div class="z-10 flex flex-col h-full justify-center">
+<div class="inline-flex items-center gap-1 bg-white/20 backdrop-blur-md rounded-full px-3 py-1 w-fit mb-2">
+<span class="material-symbols-outlined text-xs" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="text-[10px] font-bold tracking-widest uppercase">Hyper-Fast</span>
+</div>
+<h1 class="font-display-eta text-display-eta leading-tight">Delivery in<br/><span class="text-white">10 mins</span></h1>
+<p class="text-body-sm font-body-sm opacity-90 mt-1">Freshness that arrives before you're ready.</p>
+</div>
+<div class="absolute right-4 bottom-4 w-24 h-24 z-0 group-hover:scale-110 transition-transform duration-500">
+<img class="w-full h-full object-contain" data-alt="A high-speed, dynamic visual of a delivery bike rider wearing a bright green uniform, trailing light streaks in a modern city at dusk. The aesthetic is clean and corporate-minimalist with Action Green accents, emphasizing urgency and dependability. Soft bokeh highlights and sharp focus on the delivery box create a professional commercial feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPvQcKDcPhCjge9b4S4XijxMjgeldW_Kn7aXhu6Vq0DomzzMHS-3JXYsaN-yvBTB9VEsNVmwICXxtx06GVkFMMgbg28eAyt3DSGksMDO4ycO8EM3qTNiggxGQzs0maTlubyLQzIFRi6zyEs30x1-g6BWJPIQotfM_b7EAL819aT9yAaE1VWgKloIZtSws8-GfjRB3qEzUothwzFUdU0uLSE-NplCqopsejJrcv6XGATru1pPXnbSWsSbYM6-SdeShc4lO3pPLLXRuJ"/>
+</div>
+</div>
+</section>
+<!-- Category Grid: Bento Style -->
+<section class="px-container-margin">
+<div class="grid grid-cols-4 gap-gutter">
+<!-- Groceries (Large) -->
+<div class="col-span-2 row-span-2 bg-surface-main p-4 rounded-2xl shadow-sm border border-outline-variant/30 flex flex-col justify-between hover:border-primary transition-colors cursor-pointer group" onclick="location.href='../search_results/code.html'">
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md">Groceries</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Daily Essentials</span>
+</div>
+<div class="h-24 mt-2 overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A premium close-up of vibrant, fresh organic vegetables including kale, bright red tomatoes, and crisp carrots. The lighting is bright and natural, set against a clean white minimalist background. The color palette is dominated by Action Green and earth tones, reflecting freshness and health in a professional lifestyle photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc_q040yGBrwM9S-AnFQyU1XCCnly8Pm2sKs31xyVrk-ZweXMgU0kJBs9bR7KOZf3M6Hm6FFtdfW9AYL9E0RyRLBFS5Xi7GbxJ8vKuwFiizctH6zZ3EaC8KKzicqG1TrYlU8dzAWEYnef3sVk22Ddb9-y7otQpxTi7UOdDkrf9QVzXkh7bi4pG3rUmRovgdl01VhobtV1hFW7fKwS3bqYNZj5e-SSbIS20q_OT_pAfzQ2r16Nn829m1Os_GpgsUry5adXqfnvdRYt0"/>
+</div>
+</div>
+<!-- Cosmetics -->
+<div class="col-span-2 bg-cosmetics-accent/10 p-4 rounded-2xl shadow-sm border border-cosmetics-accent/20 flex items-center justify-between hover:bg-cosmetics-accent/20 transition-colors cursor-pointer group" onclick="location.href='../search_results/code.html'">
+<div class="flex flex-col">
+<span class="font-label-bold text-label-bold text-tertiary">Cosmetics</span>
+<span class="text-[10px] text-tertiary/70">Luxury Care</span>
+</div>
+<span class="material-symbols-outlined text-tertiary text-3xl group-hover:rotate-12 transition-transform" data-icon="face_6">face_6</span>
+</div>
+<!-- Granite -->
+<div class="col-span-1 bg-granite-accent/10 p-3 rounded-2xl shadow-sm border border-granite-accent/20 flex flex-col items-center justify-center text-center hover:bg-granite-accent/20 transition-colors cursor-pointer group" onclick="location.href='../search_results/code.html'">
+<span class="material-symbols-outlined text-granite-accent mb-1" data-icon="texture">texture</span>
+<span class="text-[10px] font-bold text-granite-accent">Granite</span>
+</div>
+<!-- General -->
+<div class="col-span-1 bg-secondary-container/20 p-3 rounded-2xl shadow-sm border border-secondary-container/40 flex flex-col items-center justify-center text-center hover:bg-secondary-container/30 transition-colors cursor-pointer group" onclick="location.href='../search_results/code.html'">
+<span class="material-symbols-outlined text-secondary mb-1" data-icon="category">category</span>
+<span class="text-[10px] font-bold text-secondary">General</span>
+</div>
+</div>
+</section>
+<!-- Fresh Picks: Horizontal Scroll (live from Supabase) -->
+<section class="flex flex-col gap-4">
+<div class="px-container-margin flex justify-between items-end">
+<div>
+<h2 class="font-headline-md text-headline-md">Fresh Picks For You</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">From our live catalog</p>
+</div>
+<button class="text-primary font-label-bold text-label-bold flex items-center" onclick="location.href='../search_results/code.html'">
+                    See All <span class="material-symbols-outlined text-sm ml-1" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar px-container-margin" id="fresh-picks-row">
+<div class="text-body-sm text-on-surface-variant py-4">Loading products…</div>
+</div>
+</section>
+<!-- Trending Now: Grid (live from Supabase) -->
+<section class="flex flex-col gap-4">
+<div class="px-container-margin">
+<h2 class="font-headline-md text-headline-md">Trending Now</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">More from the catalog</p>
+</div>
+<div class="grid grid-cols-2 gap-gutter px-container-margin" id="trending-grid">
+<div class="text-body-sm text-on-surface-variant py-4 col-span-2">Loading products…</div>
+</div>
+</section>
+<!-- Dynamic Offer Banner -->
+<section class="px-container-margin">
+<div class="bg-secondary-fixed text-on-secondary-fixed p-6 rounded-3xl flex items-center justify-between relative overflow-hidden">
+<div class="flex flex-col gap-1 z-10">
+<span class="text-headline-md font-headline-md">Get $5 OFF</span>
+<span class="text-body-sm font-body-sm">On orders above $20. Use code: <span class="font-bold">FRESH5</span></span>
+<button class="mt-2 w-fit px-6 py-2 bg-on-secondary-fixed text-secondary-fixed rounded-full text-label-bold font-label-bold hover:opacity-90 transition-opacity" onclick="location.href='../offers_coupons/code.html'">
+                        Apply Now
+                    </button>
+</div>
+<div class="absolute -right-10 -bottom-10 w-40 h-40 bg-secondary-fixed-dim/30 rounded-full blur-3xl"></div>
+<span class="material-symbols-outlined text-7xl text-on-secondary-fixed/10 absolute right-4 bottom-0 rotate-12" data-icon="redeem">redeem</span>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-touch-target bg-surface-main dark:bg-surface-container-highest px-2 pb-safe rounded-t-xl shadow-lg border-t border-outline-variant">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1 scale-90 transition-transform duration-150" href="../home_greenmart/code.html">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-label-bold font-label-bold">Home</span>
+</a>
+<!-- Categories -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:opacity-80 transition-opacity" href="../search_results/code.html">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="text-label-bold font-label-bold">Categories</span>
+</a>
+<!-- Search (Contextual/redundant but in spec) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:opacity-80 transition-opacity" href="../search_results/code.html">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="text-label-bold font-label-bold">Search</span>
+</a>
+<!-- Account -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:opacity-80 transition-opacity" href="../customer_profile/code.html">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-label-bold font-label-bold">Account</span>
+</a>
+</nav>
+<!-- Micro-interaction Script -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="../assets/supabase.js"></script>
+<script src="../assets/cart.js"></script>
+<script>
+        (function loadHomeProducts() {
+            function cardHtml(p, compact) {
+                const img = p.image_url || PMSupabase.PLACEHOLDER_IMAGE;
+                if (compact) {
+                    return `
+                    <div class="flex-shrink-0 w-36 bg-surface-main rounded-xl p-2 border border-outline-variant/30 shadow-sm flex flex-col" data-product-id="${p.id}" data-product-name="${p.name.replace(/"/g, '&quot;')}" data-product-price="${p.selling_price}" data-product-unit="${p.stock_unit || ''}" onclick="location.href='../product_details/code.html?id=${p.id}'">
+                        <div class="w-full aspect-square bg-surface-container rounded-lg overflow-hidden relative mb-2">
+                            <img class="w-full h-full object-cover" src="${img}"/>
+                        </div>
+                        <span class="text-body-sm font-bold truncate">${p.name}</span>
+                        <span class="text-body-sm text-on-surface-variant mb-2">${p.category}</span>
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="font-price-lg text-price-lg text-on-surface">${PMSupabase.money(p.selling_price)}</span>
+                            <button class="w-8 h-8 bg-primary-container text-on-primary-container rounded-lg flex items-center justify-center hover:scale-95 transition-transform active:scale-90">
+                                <span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                            </button>
+                        </div>
+                    </div>`;
+                }
+                return `
+                <div class="bg-surface-main rounded-2xl p-3 border border-outline-variant/30 shadow-sm flex flex-col gap-2" data-product-id="${p.id}" data-product-name="${p.name.replace(/"/g, '&quot;')}" data-product-price="${p.selling_price}" data-product-unit="${p.stock_unit || ''}" onclick="location.href='../product_details/code.html?id=${p.id}'">
+                    <div class="w-full h-32 rounded-xl bg-surface-container overflow-hidden">
+                        <img class="w-full h-full object-cover" src="${img}"/>
+                    </div>
+                    <div>
+                        <h3 class="font-label-bold text-label-bold truncate">${p.name}</h3>
+                        <p class="text-[10px] text-on-surface-variant">${p.category}</p>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="font-price-lg text-price-lg text-tertiary">${PMSupabase.money(p.selling_price)}</span>
+                        <button class="px-4 py-1 bg-tertiary-container text-on-tertiary-container rounded-full text-label-bold font-label-bold hover:scale-95 transition-all">ADD</button>
+                    </div>
+                </div>`;
+            }
+
+            function wireAddButtons(container) {
+                container.querySelectorAll('button').forEach((button) => {
+                    button.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        const card = this.closest('[data-product-id]');
+                        if (!card) return;
+                        GMCart.addToCart({
+                            id: card.dataset.productId,
+                            name: card.dataset.productName,
+                            price: card.dataset.productPrice,
+                            unit: card.dataset.productUnit,
+                            image: card.querySelector('img') ? card.querySelector('img').src : '',
+                        });
+                        const original = this.innerHTML;
+                        this.innerHTML = '<span class="material-symbols-outlined text-sm">check</span>';
+                        this.classList.add('bg-status-success', 'text-white');
+                        setTimeout(() => {
+                            this.innerHTML = original;
+                            this.classList.remove('bg-status-success', 'text-white');
+                        }, 1200);
+                    });
+                });
+            }
+
+            const freshRow = document.getElementById('fresh-picks-row');
+            const trendingGrid = document.getElementById('trending-grid');
+
+            PMSupabase.fetchActiveProducts({ limit: 8, offset: 0 }).then(({ data }) => {
+                if (!data.length) {
+                    freshRow.innerHTML = '<p class="text-body-sm text-on-surface-variant px-2">No products yet — check back soon.</p>';
+                    return;
+                }
+                freshRow.innerHTML = data.map((p) => cardHtml(p, true)).join('');
+                wireAddButtons(freshRow);
+            }).catch(() => {
+                freshRow.innerHTML = '<p class="text-body-sm text-status-error px-2">Couldn\'t load products.</p>';
+            });
+
+            PMSupabase.fetchActiveProducts({ limit: 4, offset: 8 }).then(({ data }) => {
+                if (!data.length) {
+                    trendingGrid.innerHTML = '';
+                    return;
+                }
+                trendingGrid.innerHTML = data.map((p) => cardHtml(p, false)).join('');
+                wireAddButtons(trendingGrid);
+            }).catch(() => {
+                trendingGrid.innerHTML = '<p class="text-body-sm text-status-error px-2 col-span-2">Couldn\'t load products.</p>';
+            });
+        })();
+
+        // Note: add-to-cart buttons are wired by wireAddButtons() above.
+        // The generic button handler below was causing double-fires and DOM destruction.
+
+        // Simple scroll spy for header shadow
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 10) {
+                header.classList.add('shadow-md');
+                header.classList.remove('shadow-none');
+            } else {
+                header.classList.remove('shadow-md');
+                header.classList.add('shadow-none');
+            }
+        });
+    </script>
+</body></html>

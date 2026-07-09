@@ -1,0 +1,15 @@
+{
+  "name": "The Perfect Mart — Admin",
+  "short_name": "PM Admin",
+  "description": "Manage catalog, orders, riders and reports for The Perfect Mart.",
+  "start_url": "/admin_login/code.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f5f3fa",
+  "theme_color": "#6a1b9a",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "/pwa/admin/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/pwa/admin/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<link rel="manifest" href="../pwa/rider/manifest.json"/>
+<meta name="theme-color" content="#1976d2"/>
+<link rel="apple-touch-icon" href="../pwa/rider/icon-192.png"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Rider Earnings - The Perfect Mart</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#c14177",
+                        "on-tertiary-fixed": "#3e001e",
+                        "granite-accent": "#475569",
+                        "surface-dim": "#d6dccf",
+                        "outline": "#6f7a6a",
+                        "surface-main": "#FFFFFF",
+                        "inverse-primary": "#74dd6e",
+                        "surface-container-highest": "#dee5d8",
+                        "on-secondary-fixed": "#241a00",
+                        "on-background": "#171d15",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#dee5d8",
+                        "on-surface-variant": "#3f4a3c",
+                        "background": "#f5fbee",
+                        "on-primary-fixed": "#002203",
+                        "surface-container-high": "#e4eadd",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#eaf0e3",
+                        "secondary": "#745b00",
+                        "on-primary-container": "#e0ffd7",
+                        "cosmetics-accent": "#FF85A2",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#ffb0c9",
+                        "status-warning": "#F59E0B",
+                        "on-secondary-fixed-variant": "#584400",
+                        "tertiary-fixed": "#ffd9e3",
+                        "secondary-fixed-dim": "#edc23c",
+                        "surface-bright": "#f5fbee",
+                        "primary": "#006714",
+                        "inverse-on-surface": "#ecf3e6",
+                        "on-tertiary-fixed-variant": "#89104c",
+                        "on-primary-fixed-variant": "#00530e",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#becab7",
+                        "surface-container-low": "#eff6e9",
+                        "status-success": "#16A34A",
+                        "primary-fixed": "#8ffb87",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "status-error": "#DC2626",
+                        "surface": "#f5fbee",
+                        "on-surface": "#171d15",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#2c322a",
+                        "on-tertiary-container": "#fff4f5",
+                        "tertiary": "#a1275e",
+                        "surface-tint": "#006e16",
+                        "on-secondary-container": "#735a00",
+                        "secondary-fixed": "#ffe08d",
+                        "secondary-container": "#ffd24c",
+                        "on-error": "#ffffff",
+                        "primary-container": "#0c831f",
+                        "primary-fixed-dim": "#74dd6e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-margin": "16px",
+                        "touch-target": "48px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "base": "4px",
+                        "stack-lg": "24px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-eta": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "price-lg": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "display-eta": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "price-lg": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                        "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { -webkit-tap-highlight-color: transparent; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  <script src="../assets/auth.js"></script>
+<script>PMAuth.guardRider();</script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="w-full sticky top-0 z-50 bg-surface border-b border-outline-variant shadow-sm flex items-center px-container-margin h-touch-target">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer" onclick="location.href='../rider_navigation/code.html'">arrow_back</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Delivery Partner</h1>
+</div>
+</header>
+<main class="max-w-md mx-auto px-container-margin py-stack-md space-y-stack-lg">
+<!-- Earnings Overview Card -->
+<section class="bg-primary-container text-on-primary-container rounded-xl p-stack-lg shadow-lg relative overflow-hidden">
+<!-- Subtle background effect -->
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-white/10 rounded-full blur-3xl"></div>
+<div class="relative z-10 space-y-stack-md">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-label-bold text-label-bold opacity-80 uppercase tracking-wider">Current Balance</p>
+<h2 class="font-display-eta text-display-eta">₹4,250.00</h2>
+</div>
+<div class="bg-white/20 p-2 rounded-lg">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+</div>
+<div class="bg-black/10 rounded-lg p-stack-sm flex justify-between items-center">
+<p class="font-body-sm">Total this week</p>
+<p class="font-headline-md text-headline-md">₹12,400.00</p>
+</div>
+<button class="w-full bg-white text-primary font-headline-md py-3 rounded-lg flex items-center justify-center gap-2 active:scale-95 transition-transform duration-150 shadow-md">
+<span class="material-symbols-outlined">payments</span>
+                    Withdraw to Bank
+                </button>
+</div>
+</section>
+<!-- Weekly Performance Stats -->
+<section class="grid grid-cols-3 gap-gutter">
+<div class="bg-surface-container rounded-xl p-stack-sm flex flex-col items-center justify-center text-center space-y-1">
+<span class="material-symbols-outlined text-primary">distance</span>
+<p class="font-headline-md text-headline-md">312 <span class="text-[10px] font-normal">km</span></p>
+<p class="font-body-sm text-on-surface-variant">Distance</p>
+</div>
+<div class="bg-surface-container rounded-xl p-stack-sm flex flex-col items-center justify-center text-center space-y-1 border-x border-outline-variant/30">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+<p class="font-headline-md text-headline-md">84</p>
+<p class="font-body-sm text-on-surface-variant">Trips</p>
+</div>
+<div class="bg-surface-container rounded-xl p-stack-sm flex flex-col items-center justify-center text-center space-y-1">
+<span class="material-symbols-outlined text-primary">volunteer_activism</span>
+<p class="font-headline-md text-headline-md">₹840</p>
+<p class="font-body-sm text-on-surface-variant">Tips</p>
+</div>
+</section>
+<!-- Tabs / Filter -->
+<section class="space-y-stack-md">
+<div class="flex p-1 bg-surface-container-high rounded-xl">
+<button class="flex-1 py-2 font-label-bold text-label-bold rounded-lg bg-surface-main text-on-surface shadow-sm transition-all duration-200" id="tab-recent">
+                    Recent Trips
+                </button>
+<button class="flex-1 py-2 font-label-bold text-label-bold rounded-lg text-on-surface-variant hover:text-on-surface transition-all duration-200" id="tab-payout">
+                    Payout History
+                </button>
+</div>
+<!-- Trip History List -->
+<div class="space-y-gutter">
+<div class="flex justify-between items-center px-1">
+<h3 class="font-headline-md text-headline-md">Recent Deliveries</h3>
+<button class="text-primary font-label-bold text-label-bold flex items-center">
+                        Filter <span class="material-symbols-outlined text-[18px]">filter_list</span>
+</button>
+</div>
+<div class="space-y-stack-sm">
+<!-- List Item 1 -->
+<div class="bg-surface-container-lowest p-stack-md rounded-xl border border-outline-variant flex justify-between items-center active:bg-surface-container transition-colors">
+<div class="flex gap-4 items-center">
+<div class="w-10 h-10 rounded-full bg-status-success/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-status-success">check_circle</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface">#GM-12948</p>
+<p class="font-body-sm text-on-surface-variant">Today, 10:45 AM</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-price-lg text-price-lg text-primary">₹65.00</p>
+<span class="text-[10px] font-bold text-status-success bg-status-success/10 px-2 py-0.5 rounded-full">COMPLETED</span>
+</div>
+</div>
+<!-- List Item 2 -->
+<div class="bg-surface-container-lowest p-stack-md rounded-xl border border-outline-variant flex justify-between items-center active:bg-surface-container transition-colors">
+<div class="flex gap-4 items-center">
+<div class="w-10 h-10 rounded-full bg-status-success/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-status-success">check_circle</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface">#GM-12942</p>
+<p class="font-body-sm text-on-surface-variant">Today, 09:12 AM</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-price-lg text-price-lg text-primary">₹48.00</p>
+<span class="text-[10px] font-bold text-status-success bg-status-success/10 px-2 py-0.5 rounded-full">COMPLETED</span>
+</div>
+</div>
+<!-- List Item 3 -->
+<div class="bg-surface-container-lowest p-stack-md rounded-xl border border-outline-variant flex justify-between items-center active:bg-surface-container transition-colors">
+<div class="flex gap-4 items-center">
+<div class="w-10 h-10 rounded-full bg-status-success/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-status-success">check_circle</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface">#GM-12899</p>
+<p class="font-body-sm text-on-surface-variant">Yesterday, 11:30 PM</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-price-lg text-price-lg text-primary">₹112.00</p>
+<span class="text-[10px] font-bold text-status-success bg-status-success/10 px-2 py-0.5 rounded-full">COMPLETED</span>
+</div>
+</div>
+<!-- List Item 4 -->
+<div class="bg-surface-container-lowest p-stack-md rounded-xl border border-outline-variant flex justify-between items-center active:bg-surface-container transition-colors opacity-80">
+<div class="flex gap-4 items-center">
+<div class="w-10 h-10 rounded-full bg-status-success/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-status-success">check_circle</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface">#GM-12885</p>
+<p class="font-body-sm text-on-surface-variant">Yesterday, 08:20 PM</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-price-lg text-price-lg text-primary">₹55.00</p>
+<span class="text-[10px] font-bold text-status-success bg-status-success/10 px-2 py-0.5 rounded-full">COMPLETED</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container border-t border-outline-variant shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] flex justify-around items-center h-16 pb-safe px-container-margin">
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-transform duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined">package_2</span>
+<span class="font-label-bold text-label-bold">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-transform duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="font-label-bold text-label-bold">Earnings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-transform duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-bold text-label-bold">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple tab switching interaction
+        const tabRecent = document.getElementById('tab-recent');
+        const tabPayout = document.getElementById('tab-payout');
+
+        tabRecent.addEventListener('click', () => {
+            tabRecent.classList.add('bg-surface-main', 'text-on-surface', 'shadow-sm');
+            tabRecent.classList.remove('text-on-surface-variant');
+            tabPayout.classList.remove('bg-surface-main', 'text-on-surface', 'shadow-sm');
+            tabPayout.classList.add('text-on-surface-variant');
+        });
+
+        tabPayout.addEventListener('click', () => {
+            tabPayout.classList.add('bg-surface-main', 'text-on-surface', 'shadow-sm');
+            tabPayout.classList.remove('text-on-surface-variant');
+            tabRecent.classList.remove('bg-surface-main', 'text-on-surface', 'shadow-sm');
+            tabRecent.classList.add('text-on-surface-variant');
+        });
+    </script>
+<script>if ('serviceWorker' in navigator) { navigator.serviceWorker.register('../pwa/rider/service-worker.js').catch(()=>{}); }</script>
+</body></html>

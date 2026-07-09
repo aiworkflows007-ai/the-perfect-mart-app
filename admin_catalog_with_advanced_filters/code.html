@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<link rel="manifest" href="../pwa/admin/manifest.json"/>
+<meta name="theme-color" content="#6a1b9a"/>
+<link rel="apple-touch-icon" href="../pwa/admin/icon-192.png"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Catalog Management | The Perfect Mart Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #becab7; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6f7a6a; }
+        
+        /* Custom Table Highlighting */
+        .row-hover:hover { background-color: #eff6e9; }
+        .glass-effect { backdrop-filter: blur(8px); background-color: rgba(255, 255, 255, 0.8); }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#c14177",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "status-warning": "#F59E0B",
+                        "secondary-fixed-dim": "#edc23c",
+                        "primary-fixed": "#8ffb87",
+                        "background": "#f5fbee",
+                        "inverse-on-surface": "#ecf3e6",
+                        "surface-dim": "#d6dccf",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#a1275e",
+                        "on-tertiary-container": "#fff4f5",
+                        "on-primary-fixed": "#002203",
+                        "surface": "#f5fbee",
+                        "on-secondary-container": "#735a00",
+                        "outline-variant": "#becab7",
+                        "primary-container": "#0c831f",
+                        "on-tertiary-fixed-variant": "#89104c",
+                        "secondary": "#745b00",
+                        "on-surface": "#171d15",
+                        "surface-main": "#FFFFFF",
+                        "surface-variant": "#F3F4F6",
+                        "secondary-fixed": "#ffe08d",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#74dd6e",
+                        "on-primary-fixed-variant": "#00530e",
+                        "on-secondary-fixed-variant": "#584400",
+                        "surface-tint": "#006e16",
+                        "on-secondary-fixed": "#241a00",
+                        "primary": "#006714",
+                        "error-container": "#ffdad6",
+                        "status-success": "#16A34A",
+                        "surface-container": "#eaf0e3",
+                        "on-surface-variant": "#3f4a3c",
+                        "surface-container-high": "#e4eadd",
+                        "tertiary-fixed-dim": "#ffb0c9",
+                        "on-background": "#171d15",
+                        "surface-bright": "#f5fbee",
+                        "on-primary-container": "#e0ffd7",
+                        "cosmetics-accent": "#FF85A2",
+                        "on-tertiary-fixed": "#3e001e",
+                        "on-primary": "#ffffff",
+                        "outline": "#6f7a6a",
+                        "status-error": "#DC2626",
+                        "surface-container-low": "#eff6e9",
+                        "inverse-primary": "#74dd6e",
+                        "granite-accent": "#475569",
+                        "tertiary-fixed": "#ffd9e3",
+                        "surface-container-highest": "#dee5d8",
+                        "secondary-container": "#ffd24c",
+                        "inverse-surface": "#2c322a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "touch-target": "48px",
+                        "gutter": "12px",
+                        "stack-lg": "24px",
+                        "base": "4px",
+                        "stack-sm": "8px",
+                        "container-margin": "16px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "price-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-eta": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<script src="../assets/auth.js"></script>
+<script>PMAuth.guardAdmin();</script>
+<link rel="stylesheet" href="../assets/admin-responsive.css"/>
+</head>
+<body class="bg-background font-body-md text-on-surface selection:bg-primary-container selection:text-white">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low dark:bg-inverse-surface border-r border-outline-variant dark:border-outline z-50 flex flex-col py-gutter">
+<div class="px-6 mb-8">
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">The Perfect Mart</h1>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Super Admin</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors group" href="../admin_order_feed/code.html">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">shopping_cart</span>
+<span class="font-body-md text-body-md">Orders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-primary dark:text-primary-fixed font-bold border-r-4 border-primary bg-surface-container-highest transition-all group" href="../admin_catalog_management/code.html">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">inventory_2</span>
+<span class="font-body-md text-body-md">Catalog</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors group" href="../admin_rider_management/code.html">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">delivery_dining</span>
+<span class="font-body-md text-body-md">Riders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors group" href="../admin_reports_dashboard/code.html">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">analytics</span>
+<span class="font-body-md text-body-md">Reports</span>
+</a>
+</nav>
+<div class="px-4 mt-auto">
+<button class="w-full bg-primary text-on-primary font-label-bold text-label-bold py-3 rounded-lg hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">upload_file</span>
+                Quick Upload
+            </button>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 bg-surface/80 backdrop-blur-md border-b border-outline-variant shadow-sm h-touch-target px-container-margin flex justify-between items-center">
+<div class="flex items-center gap-container-margin w-1/2">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full focus:ring-2 focus:ring-primary text-body-md font-body-md" placeholder="Search catalog, SKU, or categories..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<span class="font-headline-md text-headline-md font-black text-primary hidden md:block">Admin Console</span>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-surface-container-highest rounded-full transition-all active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<button class="p-2 hover:bg-surface-container-highest rounded-full transition-all active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant">settings</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden ml-2 border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a female logistics administrator with a friendly expression, wearing business casual attire, set against a clean studio background with soft lighting and a professional corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWHIiIiIg8NgCppBkxbSE1Wd1l7459046TJgEo4ldz-lAC0yDOVIVWqxBlD2BOLMX6Gd1ts7FsgMYLDrY1ImFWwuCZ87-PVxlrGDpK13HFWY7hLjaqTZBqWnrnhZHByJjSzc_OWF_pBcpixm5N3eHVa4uPVSD23y6AYhC0-oZ0Nliu7fMzaU0FFhmsT0ZBZRMWF-Gvn1NpBSCQ73guWjkc1UjQkaHSPGB5BT8vcUIDya4VpvM5Q_xq1X2qC8mLXcWohDAooUjB0GTo"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-20 p-container-margin min-h-screen">
+<!-- Page Header & Sync Status -->
+<section class="flex flex-col md:flex-row justify-between items-start md:items-end gap-stack-md mb-stack-lg">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-stack-sm">Catalog Management</h2>
+<div class="flex items-center gap-stack-md">
+<div class="bg-surface-container-high rounded-xl px-4 py-3 flex items-center gap-3 border border-outline-variant shadow-sm">
+<div class="w-2 h-2 rounded-full bg-status-success animate-pulse"></div>
+<div class="text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Google Sheets:</span>
+<span class="text-primary font-bold">Connected</span>
+</div>
+<div class="w-px h-4 bg-outline-variant"></div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">
+                            Last Sync: 5 mins ago
+                        </div>
+<a class="text-primary text-label-bold font-label-bold hover:underline ml-2" href="#">View Logs</a>
+</div>
+</div>
+</div>
+<div class="flex gap-stack-sm">
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-lg font-label-bold text-label-bold flex items-center gap-2 hover:shadow-md transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]">sync</span>
+                    Sync Now
+                </button>
+<button class="bg-surface-main border border-outline text-on-surface px-4 py-2 rounded-lg font-label-bold text-label-bold hover:bg-surface-container-low transition-all">
+                    Bulk Actions
+                </button>
+</div>
+</section>
+<!-- Category Tabs & Secondary Actions -->
+<div class="flex flex-col md:flex-row justify-between items-center gap-stack-md mb-stack-md">
+<div class="flex border-b border-outline-variant w-full md:w-auto overflow-x-auto no-scrollbar">
+<button class="px-6 py-3 border-b-2 border-primary text-primary font-bold text-body-md">All Items</button>
+<button class="px-6 py-3 border-b-2 border-transparent text-on-surface-variant hover:text-primary transition-colors text-body-md">Grocery</button>
+<button class="px-6 py-3 border-b-2 border-transparent text-on-surface-variant hover:text-primary transition-colors text-body-md">Cosmetics</button>
+<button class="px-6 py-3 border-b-2 border-transparent text-on-surface-variant hover:text-primary transition-colors text-body-md">Granite &amp; Stone</button>
+</div>
+<div class="flex items-center gap-stack-sm w-full md:w-auto">
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 border border-outline text-on-surface rounded-lg text-body-md hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                    Export Catalog
+                </button>
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 border border-outline text-on-surface rounded-lg text-body-md hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">upload</span>
+                    Import CSV
+                </button>
+</div>
+</div><div class="bg-surface-container-low border border-outline-variant rounded-lg p-4 mb-stack-md flex flex-wrap items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">filter_list</span>
+<span class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Advanced Filters:</span>
+</div>
+<!-- Granite & Stone Filters -->
+<div class="flex items-center gap-3 border-r border-outline-variant pr-4">
+<select class="bg-surface-main border-outline-variant rounded text-body-sm py-1 px-3 focus:ring-primary focus:border-primary">
+<option disabled="" selected="">Thickness</option>
+<option>18mm</option>
+<option>20mm</option>
+<option>30mm</option>
+</select>
+<select class="bg-surface-main border-outline-variant rounded text-body-sm py-1 px-3 focus:ring-primary focus:border-primary">
+<option disabled="" selected="">Finish</option>
+<option>Polished</option>
+<option>Honed</option>
+<option>Leathered</option>
+</select>
+</div>
+<!-- Cosmetics Filters -->
+<div class="flex items-center gap-3 border-r border-outline-variant pr-4">
+<select class="bg-surface-main border-outline-variant rounded text-body-sm py-1 px-3 focus:ring-primary focus:border-primary">
+<option disabled="" selected="">Shade Family</option>
+<option>Nudes</option>
+<option>Reds</option>
+<option>Pinks</option>
+</select>
+<select class="bg-surface-main border-outline-variant rounded text-body-sm py-1 px-3 focus:ring-primary focus:border-primary">
+<option disabled="" selected="">Skin Type</option>
+<option>Oily</option>
+<option>Dry</option>
+<option>Combination</option>
+</select>
+</div>
+<!-- Grocery Filters -->
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 bg-surface-main border border-outline-variant rounded px-3 py-1">
+<span class="text-body-sm">Veg Only</span>
+<input class="rounded text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+</div>
+<select class="bg-surface-main border-outline-variant rounded text-body-sm py-1 px-3 focus:ring-primary focus:border-primary">
+<option disabled="" selected="">Brand</option>
+<option>Amul</option>
+<option>Mother Dairy</option>
+<option>Organic India</option>
+</select>
+</div>
+<button class="ml-auto text-primary font-label-bold text-label-bold hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">restart_alt</span>
+        Reset Filters
+    </button>
+</div>
+<!-- Catalog Table Container -->
+<div class="bg-surface-main border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-4 py-4 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">SKU</th>
+<th class="px-4 py-4 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Product Name</th>
+<th class="px-4 py-4 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Category</th>
+<th class="px-4 py-4 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Price</th>
+<th class="px-4 py-4 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Stock</th>
+<th class="px-4 py-4 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Unit</th>
+<th class="px-4 py-4 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="px-4 py-4 font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">Attributes</th>
+<th class="px-4 py-4 text-right"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1: Granite -->
+<tr class="row-hover transition-colors">
+<td class="px-4 py-4 text-body-md font-mono text-on-surface-variant">GR-BLK-001</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 bg-surface-container-highest rounded border border-outline-variant flex-shrink-0">
+<img class="h-full w-full object-cover" data-alt="High-resolution close-up of a polished black granite slab showing intricate silver and white crystalline patterns. The lighting is bright and professional, highlighting the stone's reflective surface and premium texture against a neutral studio background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCrZwCdH9zuX3pKUXzy27f-9K7Ov16J_3Y8U4SscL1sDO2b8tOmdW07gRJc5XJoCthZtTtVTzrfUbxiqn0J1X2j5xs0kTlzHfFF4qZ5Uw6W_UwFQT2_q7Ol5OVDjNFxgVls8Jx2B0P2pglUFqSYd0wgBCiL2a0X_FhuRa07Ej7LVp1-I6ZWERSDD78W2bTpQt9MuDJgTbwwo69E7crJIHMYwCzLCBIBiq9VcyRxQ2DHHjgX9_OOTRf40XvAUw_5FaWk4lfaRbPcTWY"/>
+</div>
+<span class="font-bold text-on-surface">Galaxy Black Granite</span>
+</div>
+</td>
+<td class="px-4 py-4 text-body-md">Granite &amp; Stone</td>
+<td class="px-4 py-4 font-bold text-on-surface">₹450.00</td>
+<td class="px-4 py-4 text-body-md">1,240</td>
+<td class="px-4 py-4 text-body-sm text-on-surface-variant">sqft</td>
+<td class="px-4 py-4">
+<span class="bg-primary-container/10 text-primary px-2 py-1 rounded text-[10px] font-bold uppercase">Active</span>
+</td>
+<td class="px-4 py-4">
+<span class="bg-granite-accent/10 text-granite-accent px-2 py-1 rounded-full text-[10px] font-bold flex items-center gap-1 w-max">
+<span class="material-symbols-outlined text-[14px]">local_shipping</span>
+                                    Van Required
+                                </span>
+</td>
+<td class="px-4 py-4 text-right">
+<button class="p-1 hover:bg-surface-container-highest rounded transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: Grocery -->
+<tr class="row-hover transition-colors">
+<td class="px-4 py-4 text-body-md font-mono text-on-surface-variant">GR-ORG-MILK</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 bg-surface-container-highest rounded border border-outline-variant flex-shrink-0">
+<img class="h-full w-full object-cover" data-alt="A carton of fresh organic full-cream milk sitting on a rustic wooden table with soft, warm morning sunlight streaming in from the side. The scene is fresh and dependable, featuring vibrant natural colors and a clean, high-energy food photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnNy_53PucWtR36OHTEhuY5J_t7wDOA86vp73v54mnBCiWjtuoVCyvklz74aQ0XQ2DhZe1XCEEM72RVoAj3FBxIRJdq-WKn-RLvB4WMF_IusYPcOGNNpqeUio7QPDvxu9RY0JCLRKg_icQVQ6vD58jnd_j94czDqK8GV44mSxSnv_qNnb9sd07oHMjSGGZ0tbVNqQsLEezMcPrIANpLTpXy8Ks9Cq2x5OgdjZk-hgYPcfQQz0d671RXs04aPtCc_jF6bbNZHyeIBgL"/>
+</div>
+<span class="font-bold text-on-surface">Organic A2 Milk (1L)</span>
+</div>
+</td>
+<td class="px-4 py-4 text-body-md">Grocery</td>
+<td class="px-4 py-4 font-bold text-on-surface">₹95.00</td>
+<td class="px-4 py-4">
+<span class="text-error font-bold">12</span>
+</td>
+<td class="px-4 py-4 text-body-sm text-on-surface-variant">pc</td>
+<td class="px-4 py-4">
+<span class="bg-status-warning/10 text-status-warning px-2 py-1 rounded text-[10px] font-bold uppercase">Low Stock</span>
+</td>
+<td class="px-4 py-4">
+<span class="bg-error/10 text-error px-2 py-1 rounded-full text-[10px] font-bold flex items-center gap-1 w-max">
+<span class="material-symbols-outlined text-[14px]">event_busy</span>
+                                    Expiry Soon
+                                </span>
+</td>
+<td class="px-4 py-4 text-right">
+<button class="p-1 hover:bg-surface-container-highest rounded transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3: Cosmetics -->
+<tr class="row-hover transition-colors">
+<td class="px-4 py-4 text-body-md font-mono text-on-surface-variant">COS-LIP-RED</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 bg-surface-container-highest rounded border border-outline-variant flex-shrink-0">
+<img class="h-full w-full object-cover" data-alt="A luxury velvet matte lipstick in a deep ruby red shade, photographed against a minimalist pink marble surface with elegant shadows. The lighting is sophisticated and bright, creating a premium cosmetics brand feel with high-contrast details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsSIUc5y-hybCtO-x9_BDcUQaC5INGLGT_NiOn4XOqSHDUYm-CW8O9MCXuNFEkzoi7PFxLAQ-C7B3DcgHdwhAvOzGBPxw2x7p2KhqGw8y5jiUbi_6PL1lePDpPl6OjnLH_qVw7nwdvfZHjHmSrTN9iAZzQHFiEyBDTXYjS3qz7yx7OkoY3EhBJ1tZnmwODM72hEfcnZj8gCm7RW50eWVhigDgTkZHutAHb_K4_JrKbeRg_R32DMkaczw4HlDI2eh7bQIpB7UMhbvud"/>
+</div>
+<span class="font-bold text-on-surface">Velvet Matte Lipstick</span>
+</div>
+</td>
+<td class="px-4 py-4 text-body-md">Cosmetics</td>
+<td class="px-4 py-4 font-bold text-on-surface">₹899.00</td>
+<td class="px-4 py-4 text-body-md">450</td>
+<td class="px-4 py-4 text-body-sm text-on-surface-variant">pc</td>
+<td class="px-4 py-4">
+<span class="bg-surface-container-highest text-on-surface-variant px-2 py-1 rounded text-[10px] font-bold uppercase">Draft</span>
+</td>
+<td class="px-4 py-4">
+<span class="bg-cosmetics-accent/10 text-cosmetics-accent px-2 py-1 rounded-full text-[10px] font-bold flex items-center gap-1 w-max">
+<span class="material-symbols-outlined text-[14px]">new_releases</span>
+                                    New Arrival
+                                </span>
+</td>
+<td class="px-4 py-4 text-right">
+<button class="p-1 hover:bg-surface-container-highest rounded transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4: Granite Heavy -->
+<tr class="row-hover transition-colors">
+<td class="px-4 py-4 text-body-md font-mono text-on-surface-variant">GR-WHT-CAR</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 bg-surface-container-highest rounded border border-outline-variant flex-shrink-0">
+<img class="h-full w-full object-cover" data-alt="A large, premium Carrara white marble slab with soft grey veining. The texture is matte and elegant, perfect for high-end architecture. The lighting is soft and diffuse, capturing the stone's sophisticated and airy aesthetic in a modern warehouse setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOar_wcJI-5EY8yTrRQYnmrbmgtSJbsThSgythOgPVHoRVQzL86zQj4ZAc4MZ0QF-1acgjaJwV-BKfA1C9Xq4gJFRDR4tYaU3DCqIisvkKMaPJq0EGeGIeuk1GnvKJTz4_sGf6FDhoZy1gelZ4qY1br3TUbSAfPFgGGI8YB36MfTHUXDkQwFSVe6755qGXj5DuQ5C1u4nlJh_GYN_RhX1Y5MqSQZ4FvTCeZPmmMLPf63WGtGSzh5DIpt8gVhz0m-Lc_GVnIRULGk06"/>
+</div>
+<span class="font-bold text-on-surface">Carrara White Marble</span>
+</div>
+</td>
+<td class="px-4 py-4 text-body-md">Granite &amp; Stone</td>
+<td class="px-4 py-4 font-bold text-on-surface">₹1,250.00</td>
+<td class="px-4 py-4 text-body-md">3,000</td>
+<td class="px-4 py-4 text-body-sm text-on-surface-variant">sqft</td>
+<td class="px-4 py-4">
+<span class="bg-primary-container/10 text-primary px-2 py-1 rounded text-[10px] font-bold uppercase">Active</span>
+</td>
+<td class="px-4 py-4">
+<div class="flex flex-col gap-1">
+<span class="bg-granite-accent/10 text-granite-accent px-2 py-1 rounded-full text-[10px] font-bold flex items-center gap-1 w-max">
+<span class="material-symbols-outlined text-[14px]">local_shipping</span>
+                                        Van Required
+                                    </span>
+<span class="bg-secondary-container/20 text-secondary px-2 py-1 rounded-full text-[10px] font-bold flex items-center gap-1 w-max">
+<span class="material-symbols-outlined text-[14px]">precision_manufacturing</span>
+                                        Custom Cut
+                                    </span>
+</div>
+</td>
+<td class="px-4 py-4 text-right">
+<button class="p-1 hover:bg-surface-container-highest rounded transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer Pagination -->
+<div class="px-6 py-4 bg-surface-container-low flex justify-between items-center border-t border-outline-variant">
+<span class="text-body-sm text-on-surface-variant">Showing 1-4 of 124 items</span>
+<div class="flex items-center gap-stack-sm">
+<button class="p-2 border border-outline rounded-lg hover:bg-white disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="px-3 py-1 bg-primary text-on-primary rounded-lg text-body-sm font-bold">1</button>
+<button class="px-3 py-1 hover:bg-white rounded-lg text-body-sm">2</button>
+<button class="px-3 py-1 hover:bg-white rounded-lg text-body-sm">3</button>
+<button class="p-2 border border-outline rounded-lg hover:bg-white">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Error/Sync Toast -->
+<div class="fixed bottom-container-margin right-container-margin z-50 animate-bounce" id="sync-toast">
+<div class="bg-error-container text-on-error-container p-4 rounded-xl shadow-xl flex items-center gap-3 border border-error/20 glass-effect">
+<span class="material-symbols-outlined text-error">report</span>
+<div>
+<p class="font-bold text-body-md">3 rows rejected during sync</p>
+<button class="text-body-sm underline hover:text-error transition-colors" onclick="this.parentElement.parentElement.parentElement.remove()">Click for details</button>
+</div>
+<button class="ml-4 hover:opacity-50" onclick="this.parentElement.parentElement.remove()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+        // Smooth scroll for anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple sync simulation
+        const syncBtn = document.querySelector('button:has(.material-symbols-outlined:contains("sync"))');
+        if(syncBtn) {
+            syncBtn.addEventListener('click', () => {
+                const icon = syncBtn.querySelector('.material-symbols-outlined');
+                icon.classList.add('animate-spin');
+                syncBtn.disabled = true;
+                syncBtn.textContent = 'Syncing...';
+                
+                setTimeout(() => {
+                    icon.classList.remove('animate-spin');
+                    syncBtn.disabled = false;
+                    syncBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">sync</span> Sync Now';
+                }, 2000);
+            });
+        }
+    </script>
+<script>if ('serviceWorker' in navigator) { navigator.serviceWorker.register('../pwa/admin/service-worker.js').catch(()=>{}); }</script>
+<script src="../assets/admin-responsive.js"></script>
+</body></html>

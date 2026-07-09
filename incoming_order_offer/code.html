@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<link rel="manifest" href="../pwa/rider/manifest.json"/>
+<meta name="theme-color" content="#1976d2"/>
+<link rel="apple-touch-icon" href="../pwa/rider/icon-192.png"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Incoming Order - Rider Connect</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .timer-progress {
+            stroke-dasharray: 283;
+            stroke-dashoffset: 0;
+            transition: stroke-dashoffset 1s linear;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.9); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 0.4; }
+            100% { transform: scale(0.9); opacity: 0.8; }
+        }
+        .pulse-animation {
+            animation: pulse-ring 2s infinite ease-in-out;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#ecf3e6",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#2c322a",
+                        "on-primary-fixed": "#002203",
+                        "on-tertiary-fixed-variant": "#89104c",
+                        "cosmetics-accent": "#FF85A2",
+                        "tertiary-fixed": "#ffd9e3",
+                        "on-primary-fixed-variant": "#00530e",
+                        "status-success": "#16A34A",
+                        "tertiary": "#a1275e",
+                        "on-secondary-fixed": "#241a00",
+                        "on-secondary-fixed-variant": "#584400",
+                        "secondary-container": "#ffd24c",
+                        "surface-container": "#eaf0e3",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#fff4f5",
+                        "surface-container-high": "#e4eadd",
+                        "secondary": "#745b00",
+                        "surface-dim": "#d6dccf",
+                        "primary-container": "#0c831f",
+                        "granite-accent": "#475569",
+                        "on-tertiary": "#ffffff",
+                        "status-error": "#DC2626",
+                        "surface": "#f5fbee",
+                        "primary-fixed-dim": "#74dd6e",
+                        "background": "#f5fbee",
+                        "surface-main": "#FFFFFF",
+                        "primary": "#006714",
+                        "tertiary-container": "#c14177",
+                        "surface-variant": "#F3F4F6",
+                        "status-warning": "#F59E0B",
+                        "tertiary-fixed-dim": "#ffb0c9",
+                        "inverse-primary": "#74dd6e",
+                        "on-background": "#171d15",
+                        "on-primary-container": "#e0ffd7",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#735a00",
+                        "surface-bright": "#f5fbee",
+                        "primary-fixed": "#8ffb87",
+                        "secondary-fixed-dim": "#edc23c",
+                        "on-surface": "#171d15",
+                        "surface-container-low": "#eff6e9",
+                        "surface-container-highest": "#dee5d8",
+                        "surface-tint": "#006e16",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#3e001e",
+                        "outline": "#6f7a6a",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#ffe08d",
+                        "on-surface-variant": "#3f4a3c",
+                        "outline-variant": "#becab7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "base": "4px",
+                        "touch-target": "48px",
+                        "gutter": "12px",
+                        "container-margin": "16px",
+                        "stack-lg": "24px"
+                    },
+                    "fontFamily": {
+                        "price-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-eta": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "price-lg": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                        "display-eta": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  <script src="../assets/auth.js"></script>
+<script>PMAuth.guardRider();</script>
+</head>
+<body class="bg-surface text-on-surface font-body-md text-body-md overflow-x-hidden min-h-screen">
+<!-- Top App Bar (From Shared Components JSON) -->
+<header class="w-full sticky top-0 z-50 bg-surface border-b border-outline-variant shadow-sm flex justify-between items-center px-container-margin h-touch-target">
+<div class="flex items-center gap-stack-sm">
+<span class="material-symbols-outlined text-primary">menu</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-black text-primary">Rider Connect</span>
+</div>
+<div class="flex items-center gap-stack-md">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</div>
+</header>
+<main class="flex flex-col min-h-[calc(100vh-48px)] pb-32">
+<!-- Countdown & Map Canvas -->
+<section class="relative h-[309px] w-full bg-surface-container overflow-hidden">
+<!-- Map Placeholder -->
+<div class="w-full h-full grayscale-[20%] opacity-80" data-alt="A detailed vector-style city map focused on Chicago streets with a prominent bright green route line connecting three location pins. The map is minimalist with soft grey roads and white buildings, emphasizing the high-contrast green delivery path. Subtle markers indicate the store location and the customer residence in a modern, clean logistics interface aesthetic." data-location="Chicago, IL" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAM4VQtRAX733iMj2pYiOpNgGN6rEDfQKeFNkoXjfDKiT7QAqSMZ7qMtyA70Ds5miY1ia3C3sGh7oLwLxnTha6qKKaDllJZ0YYrG3jAp2UauG219JNGYxn6l48KtKO5VlFZ01clXAj1SSwNLjhLHqYqNpd_J3YsJscXvI0c2LUo-2-P613OGBcQg7t-S19IS8Gww3oWxaCOdlnJ4fG8gvTk9rGfNDskNmdyjZF4pVSeBANBG8sU_XvZD_GaZ_h0jxKqM2-UIDMAgKbv')"></div>
+<!-- Countdown Overlay -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="relative w-32 h-32 flex items-center justify-center bg-surface-container-lowest/90 backdrop-blur-md rounded-full shadow-xl">
+<svg class="absolute inset-0 w-full h-full -rotate-90">
+<circle class="text-surface-variant" cx="64" cy="64" fill="transparent" r="45" stroke="currentColor" stroke-width="8"></circle>
+<circle class="timer-progress text-primary" cx="64" cy="64" fill="transparent" id="countdown-circle" r="45" stroke="currentColor" stroke-dasharray="283" stroke-dashoffset="0" stroke-width="8"></circle>
+</svg>
+<div class="flex flex-col items-center">
+<span class="font-display-eta text-display-eta text-primary" id="countdown-text">60</span>
+<span class="font-label-bold text-label-bold text-on-surface-variant">SEC</span>
+</div>
+</div>
+</div>
+<!-- Urgent Badge -->
+<div class="absolute top-4 left-4 bg-status-error text-white px-3 py-1 rounded-full font-label-bold text-label-bold flex items-center gap-1 shadow-lg pulse-animation">
+<span class="material-symbols-outlined text-sm">bolt</span>
+                HIGH DEMAND
+            </div>
+</section>
+<!-- Order Content -->
+<section class="px-container-margin -mt-6 relative z-10">
+<!-- Details Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-lg p-stack-md border border-outline-variant">
+<div class="flex justify-between items-start mb-stack-md">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-1">New Delivery Offer</h2>
+<div class="flex items-center gap-2">
+<span class="bg-surface-container-high px-2 py-0.5 rounded text-on-surface-variant font-label-bold text-label-bold">ID: #ORD-2983</span>
+<!-- Special Handling Badge -->
+<span class="bg-granite-accent text-white px-2 py-0.5 rounded flex items-center gap-1 font-label-bold text-label-bold">
+<span class="material-symbols-outlined text-[14px]">local_shipping</span>
+                                GRANITE (VAN REQ.)
+                            </span>
+</div>
+</div>
+<div class="text-right">
+<p class="font-display-eta text-display-eta text-primary">$4.50</p>
+<p class="font-label-bold text-label-bold text-on-surface-variant">Est. Earnings</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-stack-md border-t border-b border-outline-variant py-stack-md my-stack-md">
+<div class="flex items-center gap-stack-sm">
+<div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">store</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface-variant">To Store</p>
+<p class="font-price-lg text-price-lg">1.2 km</p>
+</div>
+</div>
+<div class="flex items-center gap-stack-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-container/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">person_pin_circle</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface-variant">To Customer</p>
+<p class="font-price-lg text-price-lg">2.5 km</p>
+</div>
+</div>
+</div>
+<div class="space-y-stack-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-stack-sm">
+<span class="material-symbols-outlined text-on-surface-variant">shopping_basket</span>
+<span class="font-body-lg text-body-lg font-bold">5 Items (Grocery + Cosmetics)</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+<div class="bg-surface-container-low p-stack-sm rounded-lg flex gap-stack-md">
+<div class="w-16 h-16 rounded bg-white flex-shrink-0" data-alt="High-resolution commercial photography of fresh organic groceries including kale, tomatoes, and bell peppers next to a luxury skincare bottle. Minimalist studio lighting with soft shadows on a clean off-white background, emphasizing freshness and premium quality for a delivery app interface." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuANo0OpqjkcbxUq1Xq2pWhDc00HttLweoz2ufsiOrH2oSvBElufdPMx4SCki2HA3p26T9jGW-dJvwDaTC-vSXmXpAiLRTRsOEUCQNA08BSv1XUeZxyANhU1tQav1tkWrgkNXd7s-o3xSFRwBtwPy_eH0jmzT7ITSp4S-uko3tXeFvFx-AYzxViI7OfGN36rPdGRdfToFKxN7AI7T-Xb04KxsIHmPTfRrIUX7FdEOXw08leiPRBtEne0peAzDSTcXTOquo_S7Pj3PONz')"></div>
+<div class="flex flex-col justify-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant">Including:</p>
+<p class="font-body-md text-body-md italic text-on-surface">Artisan Granite Coaster Set, Hydrating Face Mist...</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Route Details -->
+<div class="mt-stack-md space-y-stack-sm">
+<div class="flex items-start gap-stack-md">
+<div class="flex flex-col items-center pt-1">
+<div class="w-3 h-3 rounded-full border-2 border-primary bg-white"></div>
+<div class="w-0.5 h-8 border-l-2 border-dashed border-outline"></div>
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+</div>
+<div class="flex-1 space-y-4">
+<div>
+<p class="font-label-bold text-label-bold text-on-surface-variant">PICKUP</p>
+<p class="font-body-lg text-body-lg font-bold">Whole Foods Market - Downtown</p>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface-variant">DROP OFF</p>
+<p class="font-body-lg text-body-lg font-bold">452 N Michigan Ave, Suite 1205</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Action Buttons (Large Touch Targets) -->
+<div class="fixed bottom-0 left-0 w-full bg-surface-container-lowest p-container-margin shadow-[0_-8px_16px_rgba(0,0,0,0.05)] border-t border-outline-variant z-50">
+<div class="flex gap-stack-md max-w-md mx-auto">
+<button class="flex-1 h-16 rounded-xl border-2 border-outline-variant text-on-surface-variant font-headline-md text-headline-md active:scale-95 transition-transform flex items-center justify-center gap-2" id="reject-btn" onclick="location.href='../rider_navigation/code.html'">
+<span class="material-symbols-outlined">close</span>
+                Reject
+            </button>
+<button class="flex-[2] h-16 rounded-xl bg-primary text-white font-headline-md text-headline-md shadow-lg shadow-primary/20 active:scale-95 transition-transform flex items-center justify-center gap-2" id="accept-btn" onclick="location.href='../rider_navigation/code.html'">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                Accept
+            </button>
+</div>
+</div>
+<script>
+        // Timer Logic
+        let timeLeft = 60;
+        const countdownText = document.getElementById('countdown-text');
+        const countdownCircle = document.getElementById('countdown-circle');
+        const TOTAL_DASH = 283;
+
+        const timer = setInterval(() => {
+            timeLeft--;
+            countdownText.innerText = timeLeft;
+            
+            // Update progress circle
+            const offset = (timeLeft / 60) * TOTAL_DASH;
+            countdownCircle.style.strokeDashoffset = TOTAL_DASH - offset;
+
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                alert('Order offer expired.');
+                window.location.reload();
+            }
+            
+            // Warning color shift
+            if (timeLeft <= 10) {
+                countdownText.classList.replace('text-primary', 'text-status-error');
+                countdownCircle.classList.replace('text-primary', 'text-status-error');
+            }
+        }, 1000);
+
+        // Micro-interactions
+        document.getElementById('accept-btn').addEventListener('click', () => {
+            const btn = document.getElementById('accept-btn');
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Accepting...';
+            btn.disabled = true;
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined">done_all</span> Confirmed!';
+                btn.classList.replace('bg-primary', 'bg-status-success');
+                clearInterval(timer);
+            }, 1500);
+        });
+
+        document.getElementById('reject-btn').addEventListener('click', () => {
+            if(confirm('Are you sure you want to decline this order? This may impact your acceptance rate.')) {
+                document.body.style.opacity = '0.5';
+                document.body.style.transition = 'opacity 0.5s';
+                setTimeout(() => window.location.reload(), 500);
+            }
+        });
+    </script>
+<script>if ('serviceWorker' in navigator) { navigator.serviceWorker.register('../pwa/rider/service-worker.js').catch(()=>{}); }</script>
+</body></html>

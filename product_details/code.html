@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>The Perfect Mart - Maybelline SuperStay Matte Ink</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#eff6e9",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#dee5d8",
+                    "cosmetics-accent": "#FF85A2",
+                    "on-secondary-container": "#735a00",
+                    "on-primary-fixed": "#002203",
+                    "primary-container": "#0c831f",
+                    "status-error": "#DC2626",
+                    "inverse-on-surface": "#ecf3e6",
+                    "inverse-primary": "#74dd6e",
+                    "secondary-fixed": "#ffe08d",
+                    "inverse-surface": "#2c322a",
+                    "error-container": "#ffdad6",
+                    "surface-container-high": "#e4eadd",
+                    "outline": "#6f7a6a",
+                    "on-secondary-fixed-variant": "#584400",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#fff4f5",
+                    "secondary": "#745b00",
+                    "secondary-container": "#ffd24c",
+                    "on-secondary-fixed": "#241a00",
+                    "tertiary-fixed": "#ffd9e3",
+                    "surface-tint": "#006e16",
+                    "tertiary-fixed-dim": "#ffb0c9",
+                    "status-warning": "#F59E0B",
+                    "surface-bright": "#f5fbee",
+                    "on-error": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#d6dccf",
+                    "primary": "#006714",
+                    "status-success": "#16A34A",
+                    "primary-fixed-dim": "#74dd6e",
+                    "background": "#f5fbee",
+                    "surface-container": "#eaf0e3",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#00530e",
+                    "on-surface-variant": "#3f4a3c",
+                    "on-background": "#171d15",
+                    "on-primary-container": "#e0ffd7",
+                    "outline-variant": "#becab7",
+                    "surface-container-highest": "#dee5d8",
+                    "on-surface": "#171d15",
+                    "error": "#ba1a1a",
+                    "surface-main": "#FFFFFF",
+                    "surface": "#f5fbee",
+                    "tertiary": "#a1275e",
+                    "on-tertiary-fixed": "#3e001e",
+                    "on-tertiary-fixed-variant": "#89104c",
+                    "tertiary-fixed": "#ffd9e3",
+                    "granite-accent": "#475569",
+                    "secondary-fixed-dim": "#edc23c",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-margin": "16px",
+                    "gutter": "12px",
+                    "stack-sm": "8px",
+                    "stack-lg": "24px",
+                    "stack-md": "16px",
+                    "touch-target": "48px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "price-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-bold": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "display-eta": ["Inter"]
+            },
+            "fontSize": {
+                    "price-lg": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "display-eta": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Product Carousel Specifics */
+        .carousel-container {
+            scroll-snap-type: x mandatory;
+            display: flex;
+            overflow-x: auto;
+        }
+        .carousel-item {
+            scroll-snap-align: start;
+            flex: 0 0 100%;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 z-50 w-full bg-surface-bright flex flex-col gap-2 px-container-margin py-stack-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<button aria-label="Back" class="w-touch-target h-touch-target flex items-center justify-center hover:bg-surface-container-low transition-colors duration-200 active:scale-95 transition-transform" onclick="history.back()">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile font-extrabold text-primary">The Perfect Mart</h1>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Search" class="w-touch-target h-touch-target flex items-center justify-center hover:bg-surface-container-low transition-colors duration-200 active:scale-95 transition-transform" onclick="location.href='../search_results/code.html'">
+<span class="material-symbols-outlined text-primary">search</span>
+</button>
+<button aria-label="Cart" class="relative w-touch-target h-touch-target flex items-center justify-center hover:bg-surface-container-low transition-colors duration-200 active:scale-95 transition-transform" onclick="location.href='../checkout/code.html'">
+<span class="material-symbols-outlined text-primary">shopping_cart</span>
+<span class="absolute top-1 right-1 bg-primary text-on-primary text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold" data-cart-badge>0</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-16 pb-32">
+<!-- Image Carousel -->
+<section class="relative bg-surface-main">
+<div class="carousel-container hide-scrollbar" id="mainCarousel">
+<div class="carousel-item h-80 flex items-center justify-center p-container-margin">
+<img class="h-full w-full object-contain" data-alt="Close up high resolution professional photography of a Maybelline SuperStay Matte Ink lipstick in a vibrant rouge red shade. The product is placed on a clean, reflective white surface with soft studio lighting that emphasizes its sleek rectangular packaging and textured matte finish. The background is a soft gradient of light grey and white, matching a clean minimalist corporate cosmetic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAnI646SzmdqSZBfejBigVQfjoVNubxp38D22UmpHMF1vpTMLqVPFYQXnvv2k4ul9ik8t7JfR264MNQM4m3XPfu_ycyPhhQiiNsaGqQ9nM8xIi7UeUCoQ2jsLsMS1Nb4ANSbPAbVCgi3geV28En4JnAxQqnlJKQZN10s-uBMnVlVlw41aepO9ZCqccCvHT_gmThDhg1fwTmqNeNbyskwiSxWYEExoblASil-cM1vWqy9PFbJfudxiTLNJ_AOpjNJWAFTBTSs75za3k"/>
+</div>
+<div class="carousel-item h-80 flex items-center justify-center p-container-margin">
+<img class="h-full w-full object-contain" data-alt="A professional swatching shot of a Maybelline Matte Ink lipstick being applied to a fair skin tone. A thick, opaque streak of rich red liquid lipstick shows the intense pigment and smooth application. The lighting is bright and airy, typical of high-end beauty marketing, with a focus on the vivid Action Green and Primary Red color scheme of the platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABbf0tc81MmENDi2xLcik6Hw0l568ZPhXvgy_xtxPtxnphcT7a4BEsbQ-ZtCEcbu5w3ir2I9NiIIkBcSfHrSmE9kpE0Hkuq6q2sibNUwELiuCb9VNxsTogThG--4YoAuTOTKcvZQWOEbtAJXeXI_xPN3q8pA0dkaW9OCay-V_hwKLPZB3AAg6fb-_myes66OiF6rdsY32b-jpNPVDvMGJv45s8RNnx0EnTOToHaY8SO3KjWNcDnMUz2-enRmZuZvckPxAt1OA9P3BY"/>
+</div>
+<div class="carousel-item h-80 flex items-center justify-center p-container-margin">
+<img class="h-full w-full object-contain" data-alt="Minimalist product lifestyle shot of the Maybelline SuperStay Matte Ink lipstick tube standing upright next to its applicator brush. The applicator features a unique arrow tip designed for precision. The composition is clean and modern, with soft ambient shadows and a crisp, high-key lighting setup that evokes a sense of reliability and freshness." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMWwdSFXV9fw8UnjmwaOhrvR_QFP2VK7c-nky5vU8xHMtTLq4Q3x-SWW_QaYgpcIFWvK0RKJfSm85SA4yVG1SCgrM4G7WnM3nMbjjm25CGdYQybcg-Chd0gT7HSxDmGylyfjf2SXb1JIw0pCy80ge5GGszaY9r28CZ9QDcLMiKbehPqklBO9z8HLIVexkYjYSn9UE4DYH_Y8_3i5dcA7Fx_BYs2TElt2bH8Bs_2mjjKR9UcnurglDKZe7FoiUYZbOYB4gP-tsVqyay"/>
+</div>
+</div>
+<!-- Pagination Dots -->
+<div class="absolute bottom-4 left-0 right-0 flex justify-center gap-1.5">
+<div class="w-1.5 h-1.5 rounded-full bg-primary"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-outline-variant"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-outline-variant"></div>
+</div>
+</section>
+<!-- Product Details -->
+<section class="bg-surface-main px-container-margin py-stack-lg shadow-sm">
+<div class="flex flex-col gap-1">
+<span class="text-label-bold font-label-bold text-primary uppercase tracking-wider">Maybelline New York</span>
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface">SuperStay Matte Ink Liquid Lipstick</h2>
+<div class="flex items-center gap-2 mt-1">
+<div class="flex bg-surface-container-low px-2 py-0.5 rounded items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-bold font-label-bold text-on-surface">4.8</span>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant">2,450 Ratings</span>
+</div>
+</div>
+<!-- Volume & Expiry Info -->
+<div class="flex gap-stack-md mt-stack-md border-y border-surface-variant py-stack-md">
+<div class="flex-1 flex flex-col">
+<span class="text-body-sm font-body-sm text-on-surface-variant">Volume</span>
+<span class="text-body-md font-body-md font-bold text-on-surface">5 ml</span>
+</div>
+<div class="w-px bg-surface-variant"></div>
+<div class="flex-1 flex flex-col">
+<span class="text-body-sm font-body-sm text-on-surface-variant">Expiry Date</span>
+<span class="text-body-md font-body-md font-bold text-on-surface">Dec 2026</span>
+</div>
+</div>
+<!-- Shade Selector -->
+<div class="mt-stack-lg">
+<div class="flex justify-between items-end mb-stack-sm">
+<span class="text-label-bold font-label-bold text-on-surface">Select Shade</span>
+<span class="text-body-sm font-body-sm text-primary">Pioneer - 20</span>
+</div>
+<div class="flex gap-3 overflow-x-auto hide-scrollbar pb-2">
+<!-- Shade circles -->
+<button class="flex-shrink-0 w-12 h-12 rounded-full border-2 border-primary p-0.5 ring-2 ring-primary-container/20">
+<div class="w-full h-full rounded-full bg-[#8E001C]"></div>
+</button>
+<button class="flex-shrink-0 w-12 h-12 rounded-full border border-outline-variant p-0.5">
+<div class="w-full h-full rounded-full bg-[#C14177]"></div>
+</button>
+<button class="flex-shrink-0 w-12 h-12 rounded-full border border-outline-variant p-0.5">
+<div class="w-full h-full rounded-full bg-[#A1275E]"></div>
+</button>
+<button class="flex-shrink-0 w-12 h-12 rounded-full border border-outline-variant p-0.5">
+<div class="w-full h-full rounded-full bg-[#FF85A2]"></div>
+</button>
+<button class="flex-shrink-0 w-12 h-12 rounded-full border border-outline-variant p-0.5">
+<div class="w-full h-full rounded-full bg-[#58111A]"></div>
+</button>
+</div>
+</div>
+</section>
+<!-- Rapid Delivery Info -->
+<section class="mt-stack-sm px-container-margin py-stack-md bg-surface-main flex items-center gap-4">
+<div class="flex items-center gap-3 flex-1">
+<div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">speed</span>
+</div>
+<div>
+<p class="text-body-md font-body-md font-bold text-on-surface">10 min delivery</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Instant delivery to your doorstep</p>
+</div>
+</div>
+<div class="h-8 w-px bg-surface-variant"></div>
+<div class="flex items-center gap-3 flex-1">
+<div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">assignment_return</span>
+</div>
+<div>
+<p class="text-body-md font-body-md font-bold text-on-surface">Easy Policy</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">7-day replacement</p>
+</div>
+</div>
+</section>
+<!-- Description/Details Table -->
+<section class="mt-stack-sm px-container-margin py-stack-lg bg-surface-main">
+<h3 class="text-headline-md font-headline-md text-on-surface mb-stack-md">Product Specifications</h3>
+<div class="rounded-lg overflow-hidden border border-surface-variant">
+<div class="flex bg-surface-container-low p-3">
+<span class="w-1/3 text-body-sm font-body-sm text-on-surface-variant">Finish</span>
+<span class="w-2/3 text-body-sm font-body-sm font-bold text-on-surface">Matte</span>
+</div>
+<div class="flex bg-surface-main p-3">
+<span class="w-1/3 text-body-sm font-body-sm text-on-surface-variant">Longevity</span>
+<span class="w-2/3 text-body-sm font-body-sm font-bold text-on-surface">Up to 16 Hours</span>
+</div>
+<div class="flex bg-surface-container-low p-3">
+<span class="w-1/3 text-body-sm font-body-sm text-on-surface-variant">Form</span>
+<span class="w-2/3 text-body-sm font-body-sm font-bold text-on-surface">Liquid</span>
+</div>
+<div class="flex bg-surface-main p-3">
+<span class="w-1/3 text-body-sm font-body-sm text-on-surface-variant">Features</span>
+<span class="w-2/3 text-body-sm font-body-sm font-bold text-on-surface">Smudge Proof, Waterproof</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Action Bar -->
+<footer class="fixed bottom-0 left-0 w-full z-50 bg-surface-main shadow-[0_-4px_12px_rgba(0,0,0,0.08)] px-container-margin py-stack-md flex flex-col gap-3 pb-safe">
+<!-- Price and Discount -->
+<div class="flex items-center justify-between px-2">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="text-display-eta font-display-eta text-on-surface">₹699</span>
+<span class="text-body-md font-body-md text-on-surface-variant line-through">₹850</span>
+</div>
+<span class="text-label-bold font-label-bold text-primary">SAVE ₹151 (18% OFF)</span>
+</div>
+<div class="bg-primary-container/10 px-3 py-1.5 rounded-full flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary" style="font-variation-settings: 'FILL' 1;">timer</span>
+<span class="text-label-bold font-label-bold text-primary">8 MINS</span>
+</div>
+</div>
+<!-- Add to Cart / Quantity Selector -->
+<div class="flex gap-gutter h-touch-target">
+<!-- Quantity Stepper -->
+<div class="hidden flex items-center justify-between bg-surface-main border-2 border-primary-container rounded-lg w-1/3 px-2" id="stepper">
+<button class="w-8 h-8 flex items-center justify-center text-primary-container active:scale-90 transition-transform" onclick="updateQty(-1)">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="font-price-lg text-price-lg text-primary-container" id="qtyVal">1</span>
+<button class="w-8 h-8 flex items-center justify-center text-primary-container active:scale-90 transition-transform" onclick="updateQty(1)">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<!-- Main CTA -->
+<button class="flex-1 bg-primary-container text-on-primary-container rounded-lg font-headline-md text-headline-md shadow-lg active:scale-95 transition-all duration-150 flex items-center justify-center gap-2" id="addBtn" onclick="toggleStepper()">
+<span>ADD TO CART</span>
+<span class="material-symbols-outlined">shopping_basket</span>
+</button>
+</div>
+</footer>
+<script src="../assets/cart.js"></script>
+<script>
+        const PRODUCT = { id: 'matte-ink-lipstick', name: 'SuperStay Matte Ink Liquid Lipstick', price: 6.99, unit: '5 ml', image: document.querySelector('#mainCarousel img') ? document.querySelector('#mainCarousel img').src : '' };
+
+        let quantity = 1;
+        const addBtn = document.getElementById('addBtn');
+        const stepper = document.getElementById('stepper');
+        const qtyVal = document.getElementById('qtyVal');
+
+        function toggleStepper() {
+            addBtn.classList.add('hidden');
+            stepper.classList.remove('hidden');
+            stepper.classList.add('flex');
+            GMCart.addToCart(PRODUCT, quantity);
+            // Simplified "Add to Cart" logic
+            const checkoutBtn = document.createElement('button');
+            checkoutBtn.id = 'checkoutAction';
+            checkoutBtn.className = 'flex-1 bg-primary text-on-primary rounded-lg font-headline-md text-headline-md shadow-lg active:scale-95 transition-all duration-150 flex items-center justify-center gap-2';
+            checkoutBtn.innerHTML = '<span>VIEW CART</span><span class="material-symbols-outlined">chevron_right</span>';
+            checkoutBtn.addEventListener('click', function() {
+                location.href = '../checkout/code.html';
+            });
+            addBtn.parentNode.appendChild(checkoutBtn);
+        }
+
+        function updateQty(val) {
+            const prevQty = quantity;
+            quantity = Math.max(1, quantity + val);
+            qtyVal.innerText = quantity;
+            GMCart.setQty(PRODUCT.id, quantity);
+        }
+
+        // Horizontal Scroll Dot Indicator Logic
+        const carousel = document.getElementById('mainCarousel');
+        const dots = document.querySelectorAll('.absolute.bottom-4 > div');
+        
+        carousel.addEventListener('scroll', () => {
+            const index = Math.round(carousel.scrollLeft / carousel.offsetWidth);
+            dots.forEach((dot, i) => {
+                dot.className = `w-1.5 h-1.5 rounded-full ${i === index ? 'bg-primary' : 'bg-outline-variant'}`;
+            });
+        });
+    </script>
+</body></html>

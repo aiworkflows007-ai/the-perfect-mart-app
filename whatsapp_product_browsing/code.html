@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Perfect Mart - Granite & Stone</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#eaf0e3",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#fff4f5",
+                    "tertiary-fixed": "#ffd9e3",
+                    "granite-accent": "#475569",
+                    "surface-container-highest": "#dee5d8",
+                    "error": "#ba1a1a",
+                    "inverse-on-surface": "#ecf3e6",
+                    "surface-main": "#FFFFFF",
+                    "tertiary": "#a1275e",
+                    "surface-container-lowest": "#ffffff",
+                    "cosmetics-accent": "#FF85A2",
+                    "surface": "#f5fbee",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#584400",
+                    "on-tertiary-fixed": "#3e001e",
+                    "on-background": "#171d15",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#F3F4F6",
+                    "secondary": "#745b00",
+                    "on-tertiary-fixed-variant": "#89104c",
+                    "on-secondary-fixed": "#241a00",
+                    "on-secondary-container": "#735a00",
+                    "on-primary-fixed": "#002203",
+                    "inverse-primary": "#74dd6e",
+                    "surface-tint": "#006e16",
+                    "secondary-container": "#ffd24c",
+                    "primary-fixed-dim": "#74dd6e",
+                    "secondary-fixed-dim": "#edc23c",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#8ffb87",
+                    "error-container": "#ffdad6",
+                    "background": "#f5fbee",
+                    "surface-dim": "#d6dccf",
+                    "surface-container-low": "#eff6e9",
+                    "on-primary-container": "#e0ffd7",
+                    "tertiary-container": "#c14177",
+                    "status-error": "#DC2626",
+                    "outline-variant": "#becab7",
+                    "on-primary-fixed-variant": "#00530e",
+                    "secondary-fixed": "#ffe08d",
+                    "surface-bright": "#f5fbee",
+                    "inverse-surface": "#2c322a",
+                    "surface-container-high": "#e4eadd",
+                    "status-warning": "#F59E0B",
+                    "primary": "#006714",
+                    "status-success": "#16A34A",
+                    "outline": "#6f7a6a",
+                    "primary-container": "#0c831f",
+                    "on-surface-variant": "#3f4a3c",
+                    "on-surface": "#171d15",
+                    "tertiary-fixed-dim": "#ffb0c9"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "gutter": "12px",
+                    "container-margin": "16px",
+                    "touch-target": "48px",
+                    "stack-lg": "24px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "price-lg": ["Inter"],
+                    "label-bold": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "display-eta": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "price-lg": ["18px", {"lineHeight": "24px", "fontWeight": "700"}],
+                    "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "display-eta": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .chat-bg {
+            background-color: #e5ddd5;
+            background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+        }
+        .message-shadow {
+            box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body-md text-on-surface">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface-container dark:bg-surface-container-high shadow-sm flex items-center justify-between px-container-margin h-touch-target">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold overflow-hidden">
+<span class="material-symbols-outlined">storefront</span>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface">The Perfect Mart</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer transition-colors duration-200 active:opacity-80">search</span>
+<span class="material-symbols-outlined text-primary cursor-pointer transition-colors duration-200 active:opacity-80">more_vert</span>
+</div>
+</header>
+<!-- Chat Canvas -->
+<main class="chat-bg min-h-screen pt-16 pb-32 px-4 overflow-y-auto">
+<!-- Timestamp -->
+<div class="flex justify-center my-6">
+<span class="bg-surface-container-highest/60 backdrop-blur-sm text-on-surface-variant font-label-bold text-label-bold px-3 py-1 rounded-lg uppercase tracking-wider">Today</span>
+</div>
+<!-- User Message -->
+<div class="flex justify-end mb-4">
+<div class="bg-[#dcf8c6] message-shadow p-3 rounded-l-xl rounded-tr-xl max-w-[80%] relative">
+<p class="font-body-md text-on-surface">🪨 Granite & Stone</p>
+<span class="block text-[10px] text-right text-on-surface-variant mt-1">10:42 AM</span>
+</div>
+</div>
+<!-- Bot Response Message -->
+<div class="flex justify-start mb-4">
+<div class="bg-surface-main message-shadow p-3 rounded-r-xl rounded-tl-xl max-w-[85%]">
+<p class="font-body-md text-on-surface">Great choice! Here are our top Granite & Stone products available for delivery:</p>
+<span class="block text-[10px] text-on-surface-variant mt-1">10:43 AM</span>
+</div>
+</div>
+<!-- Multi-Product Horizontal Scroll -->
+<div class="flex overflow-x-auto gap-4 no-scrollbar pb-6 -mx-4 px-4 snap-x">
+<!-- Card 1 -->
+<div class="snap-center min-w-[260px] max-w-[280px] bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transform transition-transform active:scale-95 duration-150">
+<div class="h-40 w-full bg-surface-variant relative">
+<img class="w-full h-full object-cover" data-alt="A luxurious slab of polished Galaxy Black Granite with sparkling silver and gold flecks, displayed in a bright modern showroom with soft studio lighting. The stone texture is rich and deep, conveying premium quality and durability for high-end interior design projects. Minimalist corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYa6zSx3qILcmrYEXz_3zoUPkN5P1AeCry1EVUw9EaGF3s-nKkvF0lwpx6hqie2c7hlO_mAsPVWmvDbHiEvht9l3mH2adHdY8ru1FqeHzMZK8xLHczT5s4ArbrG7XiNDhq-4ZMM1g46zZf8pq9c14ks86dctyrlGfg6f7pCk0Cvsmn_bzp2kMhZ5R4Tu1UX6uj9vFCyVH0bNFMDDIiT3d03RyB-Rtn68goPNdOXdaDwBNFBYFO1Iaa9Nus9vFBaE_X-mkk5z8F76LJ"/>
+<div class="absolute top-2 right-2 bg-status-success text-white px-2 py-1 rounded-full font-label-bold text-[10px] shadow-sm">
+                        8 MINS
+                    </div>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight mb-1">Galaxy Black Granite</h3>
+<p class="font-price-lg text-price-lg text-primary mb-4">₹450<span class="text-body-sm font-body-sm text-on-surface-variant">/sqft</span></p>
+<button class="mt-auto w-full h-touch-target bg-primary text-on-primary font-label-bold rounded-xl flex items-center justify-center gap-2 active:opacity-90 transition-opacity" onclick="updateCartCount(1)">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+                        Add to Cart
+                    </button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="snap-center min-w-[260px] max-w-[280px] bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transform transition-transform active:scale-95 duration-150">
+<div class="h-40 w-full bg-surface-variant relative">
+<img class="w-full h-full object-cover" data-alt="Exquisite white Carrara Marble slab with soft grey veining across a pristine white surface. Photographed under neutral bright light to highlight the natural stone's elegance and smooth matte finish. The atmosphere is clean, sophisticated, and aligns with high-end architectural materials. Corporate minimalist photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQu0izQLOzv7FOnE59v0RIEFcqqaA1MhZlItcGY3a1M84Dti_ix26MG-N5ivgvNiBmaB7U3BkKCldJn6jOVLo56LJBFRQ7pksIfo67eh_7mwopagCOHvONNLw9VE5TKs0T0cP0uukaZKRUO6Sc_1dgBgR6jUaMnCay6Up5VanVB2O9oVlAa-veGskOe3TCCa2ZJdlZVK3AiTh0Ujc-YBaztzy_RHBSTkDq-PnCeJYLyjkB-MUMiiipe3qwmk-4-e3_IX60RLgs9SAc"/>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight mb-1">Carrara White Marble</h3>
+<p class="font-price-lg text-price-lg text-primary mb-4">₹1,250<span class="text-body-sm font-body-sm text-on-surface-variant">/sqft</span></p>
+<button class="mt-auto w-full h-touch-target bg-primary text-on-primary font-label-bold rounded-xl flex items-center justify-center gap-2 active:opacity-90 transition-opacity" onclick="updateCartCount(1)">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+                        Add to Cart
+                    </button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="snap-center min-w-[260px] max-w-[280px] bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transform transition-transform active:scale-95 duration-150">
+<div class="h-40 w-full bg-surface-variant relative">
+<img class="w-full h-full object-cover" data-alt="Stunning Crystal Blue Granite featuring deep blue crystalline patterns mixed with grey and charcoal tones. The image captures the unique reflective property of the stone under bright museum-style lighting. High contrast and vibrant colors that pop against a clean neutral background. Professional product showcase style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBJ3mQS4xx5d6pWSSX--hRUsllulSiPIrdcBx18lwmRIX-DBg3tijJU7XkLGSuxL1a9yQUvT481i4a4U9Gj-tPzi4BFtFl78wl9P2t2AIPcmpp7P5OTWqYaZ_95GhXO6LMiwUdRt3sC-o6CRUjCMDfEyPmRQdCJMSziRJrf3ImQdSQVHJy_IeiurzNKczYLRpDYn7wUt7MxgZb77JZBsLy65hI-HUmLrfyFQ0pVa_I3oaEAaCub20O8kOicKdVtTUstfP-3HaelW8G"/>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight mb-1">Crystal Blue Granite</h3>
+<p class="font-price-lg text-price-lg text-primary mb-4">₹800<span class="text-body-sm font-body-sm text-on-surface-variant">/sqft</span></p>
+<button class="mt-auto w-full h-touch-target bg-primary text-on-primary font-label-bold rounded-xl flex items-center justify-center gap-2 active:opacity-90 transition-opacity" onclick="updateCartCount(1)">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+                        Add to Cart
+                    </button>
+</div>
+</div>
+</div>
+<!-- Sticky Interaction Guide -->
+<div class="flex justify-center mt-4">
+<div class="bg-surface-container-low/80 backdrop-blur-md px-4 py-2 rounded-full border border-outline-variant flex items-center gap-2 animate-bounce">
+<span class="material-symbols-outlined text-primary text-[18px]">swipe_left</span>
+<span class="font-label-bold text-label-bold text-on-surface-variant">Swipe to see more products</span>
+</div>
+</div>
+</main>
+<!-- Bottom Action Bar (View Cart) -->
+<div class="fixed bottom-20 left-0 w-full px-container-margin z-40" id="cart-bar">
+<div class="max-w-md mx-auto h-14 bg-primary-container text-on-primary-container rounded-xl shadow-lg flex items-center justify-between px-6 cursor-pointer transition-transform duration-200 active:scale-95" onclick="location.href='../whatsapp_cart_checkout/code.html'">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">shopping_basket</span>
+<span class="font-label-bold text-label-bold uppercase tracking-wide" id="cart-text">View Cart (2 items)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-price-lg text-price-lg">₹2,150</span>
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Persistent Bottom Nav Shell -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-2 bg-surface dark:bg-surface-dim shadow-lg rounded-t-xl z-50 border-t border-outline-variant dark:border-outline h-[72px]">
+<div class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-primary-container/20 rounded-full px-4 py-1 scale-95 transition-transform duration-150 cursor-pointer">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-label-bold text-label-bold">Chat</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant scale-95 transition-transform duration-150 cursor-pointer hover:bg-surface-container-highest">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-label-bold text-label-bold">Catalog</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant scale-95 transition-transform duration-150 cursor-pointer hover:bg-surface-container-highest">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-bold text-label-bold">Orders</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant scale-95 transition-transform duration-150 cursor-pointer hover:bg-surface-container-highest">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-bold text-label-bold">Profile</span>
+</div>
+</nav>
+<script>
+        let cartCount = 2;
+        function updateCartCount(inc) {
+            cartCount += inc;
+            const cartText = document.getElementById('cart-text');
+            cartText.innerText = `View Cart (${cartCount} items)`;
+            
+            // Animation for visual feedback
+            const cartBar = document.getElementById('cart-bar');
+            cartBar.classList.add('scale-105');
+            setTimeout(() => {
+                cartBar.classList.remove('scale-105');
+            }, 200);
+        }
+
+        // Add a simple reveal animation for product cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.snap-center');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.4s ease-out';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body></html>
